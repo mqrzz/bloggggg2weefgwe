@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Доменное имя — полное руководство | Antviz</title>
+  <meta name="description" content="Что такое домен, как выбрать имя, купить, настроить DNS, поддомены, почту, продление и безопасность. Подробная инструкция." />
+  <link rel="canonical" href="https://antviz.ru/domain" />
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+    /* === ОБЩИЕ СТИЛИ (как в index, но с увеличенным мелким шрифтом) === */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+    :root{
+      --green:#1ede7b;
+      --green-h:#1ac16b;
+      --green-d:#149955;
+      --green-light:#d2f8e5;
+      --green-lighter:#e8fcf2;
+      --bg:#fff;
+      --bg2:#f2f4f7;
+      --bg3:#f9fafc;
+      --text:#191b1e;
+      --muted:#707a8a;
+      --border:#dfe3e8;
+      --border2:#cbcdd6;
+      --dark:#191b1e;
+      --dark2:#2b2f33;
+      --sh1:0 4px 16px rgba(0,51,153,.04),0 2px 2px rgba(0,51,153,.08);
+      --sh2:0 8px 20px rgba(0,51,153,.08),0 4px 8px rgba(0,51,153,.08);
+      --font:'Geologica','Inter','Arial',sans-serif;
+      --sp-l:100px;
+      --sp-m:60px;
+    }
+    .container{max-width:1328px;margin:0 auto;padding:0 20px;width:100%}
+    @media(min-width:1024px){.container{padding:0 64px}}
+    @media(min-width:1280px){.container{padding:0 96px}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .eyebrow{font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px}
+    .eyebrow.g{color:var(--green)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-weight:500;text-decoration:none;cursor:pointer;border:none;border-radius:12px;padding:17px 32px;font-size:16px;letter-spacing:-0.01em;transition:background .1s,transform .12s;white-space:nowrap}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-dark{background:var(--dark);color:#fff}
+    .btn-dark:hover{background:var(--dark2)}
+    .btn-green{background:var(--green);color:var(--dark)}
+    .btn-green:hover{background:var(--green-h)}
+    .btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}
+    .btn-outline:hover{border-color:var(--border2)}
+    .btn-lg{padding:20px 48px;font-size:18px;border-radius:12px}
+
+    /* === НОВЫЙ ВСТУПИТЕЛЬНЫЙ БЛОК (без hero) === */
+    .intro-wrap{background:var(--bg);padding:60px 0 20px}
+    .intro-inner{max-width:900px;margin:0 auto;text-align:center}
+    .intro-inner h1{font-size:clamp(40px,7vw,70px);font-weight:500;letter-spacing:-.04em;line-height:1.04;margin-bottom:16px;color:var(--text)}
+    .intro-inner h1 em{font-style:normal;color:var(--green)}
+    .intro-desc{font-size:18px;line-height:1.6;color:var(--muted);max-width:700px;margin:0 auto 32px}
+    .intro-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+
+    /* Оглавление (светлое, без нумерации) */
+    .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;max-width:800px;margin:0 auto;list-style:none;font-size:16px;font-weight:300;color:var(--muted);padding:0}
+    .toc-grid li{position:relative;padding-left:24px;text-align:left}
+    .toc-grid li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--green);border-radius:50%}
+    .toc-grid a{color:var(--text);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+    .toc-grid a:hover{border-bottom-color:var(--green)}
+    @media(max-width:600px){.toc-grid{grid-template-columns:1fr;gap:6px}}
+
+    /* === ЗАГОЛОВКИ РАЗДЕЛОВ (большие прямоугольники) === */
+    .section-head{background:var(--bg3);border:1px solid var(--border);border-radius:32px;padding:24px 40px;margin-bottom:32px;box-shadow:var(--sh1);display:inline-block;width:auto}
+    .section-head h2{font-size:clamp(28px,4vw,44px);font-weight:500;letter-spacing:-.03em;line-height:1.1;margin:0;color:var(--text)}
+    .section-head .sub{font-size:15px;color:var(--muted);font-weight:300;margin-top:4px;display:block}
+
+    /* Остальные стили секций */
+    .section-wrap{padding:var(--sp-l) 0}
+    .section-wrap:nth-child(even){background:var(--bg2)}
+    .section-wrap:nth-child(odd){background:var(--bg)}
+    .section-inner{max-width:960px;margin:0 auto}
+    .section-inner h3{font-size:clamp(22px,2.5vw,30px);font-weight:500;letter-spacing:-.02em;margin:40px 0 12px}
+    .section-inner p{font-size:16px;line-height:1.7;color:var(--muted);font-weight:300;margin-bottom:16px}
+    .section-inner ul, .section-inner ol{padding-left:24px;font-size:16px;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:16px}
+    .section-inner li{margin-bottom:6px}
+    .section-inner .table-wrap{overflow-x:auto;margin:24px 0}
+    .section-inner table{width:100%;border-collapse:collapse;font-size:15px;background:var(--bg3);border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+    .section-inner th{background:var(--dark);color:#fff;font-weight:500;padding:14px 20px;text-align:left;font-size:14px;text-transform:uppercase;letter-spacing:.05em}
+    .section-inner td{padding:12px 20px;border-bottom:1px solid var(--border);color:var(--text);font-size:15px}
+    .section-inner tr:last-child td{border-bottom:none}
+    .section-inner img{max-width:100%;border-radius:24px;border:1px solid var(--border);margin:24px 0;display:block}
+    .section-inner .highlight-box{background:var(--green-lighter);border-left:4px solid var(--green);padding:20px 24px;border-radius:12px;margin:24px 0}
+    .section-inner .highlight-box p{margin-bottom:0;color:var(--text);font-size:15px}
+    .btn-inline{display:inline-block;padding:12px 28px;background:var(--green);color:var(--dark);border-radius:8px;text-decoration:none;font-weight:500;font-size:15px;transition:background .1s}
+    .btn-inline:hover{background:var(--green-h)}
+    /* схема домена (текстовая) */
+    .domain-scheme{display:flex;flex-direction:column;align-items:center;gap:6px;margin:24px 0;font-size:15px;color:var(--text);background:var(--bg3);padding:24px;border-radius:24px;border:1px solid var(--border)}
+    .domain-scheme .level{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+    .domain-scheme .level span{background:var(--bg);padding:4px 14px;border-radius:20px;border:1px solid var(--border);font-weight:500}
+    .domain-scheme .arrow{color:var(--green);font-size:20px}
+    .domain-scheme .desc{font-size:14px;color:var(--muted)}
+
+    /* FAQ */
+    .faq-s{border-bottom:1px solid var(--border);cursor:pointer}
+    .faq-s:first-child{border-top:1px solid var(--border)}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-size:17px;font-weight:500;user-select:none;letter-spacing:-.01em}
+    .faq-icon{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .25s}
+    .faq-s.open .faq-icon{background:var(--dark);transform:rotate(45deg)}
+    .faq-icon svg{width:10px;height:10px}
+    .faq-s.open .faq-icon svg{color:#fff}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .32s ease,margin .32s ease}
+    .faq-s.open .faq-a{max-height:300px;margin-bottom:20px}
+    .faq-a p{font-size:15px;color:var(--muted);font-weight:300;line-height:1.65}
+
+    /* CTA */
+    .cta-wrap{padding:0 0 var(--sp-l);background:var(--bg)}
+    .cta-block{background:var(--bg2);border-radius:64px;padding:80px 100px;text-align:center;border:1px solid var(--border)}
+    @media(max-width:860px){.cta-block{padding:48px 32px;border-radius:32px}}
+    .cta-block h2{font-size:clamp(36px,6vw,72px);font-weight:500;letter-spacing:-.04em;margin-bottom:12px;line-height:1.04}
+    .cta-block p{font-size:18px;color:var(--muted);font-weight:300;margin-bottom:40px;line-height:1.5}
+
+    /* Cookie */
+    .cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+    .cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+    .cookie-text{font-size:15px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
+    .cookie-text a{color:var(--green-d);text-decoration:none}
+    .cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer}
+    .cookie-btn:hover{background:var(--dark2)}
+    @media(max-width:720px){.cookie-banner{bottom:80px;flex-direction:column;align-items:flex-start}}
+
+    /* мобильные */
+    @media(max-width:480px){
+      .intro-inner h1{font-size:clamp(32px,9vw,44px)}
+      .section-head{padding:16px 20px}
+      .section-head h2{font-size:clamp(24px,6vw,32px)}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Навигация (подключается из nav.js) -->
+<script src="nav.js" data-page="domain"></script>
+
+<!-- ===== НОВЫЙ ВСТУПИТЕЛЬНЫЙ БЛОК (без hero) ===== -->
+<section class="intro-wrap">
+  <div class="container">
+    <div class="intro-inner reveal">
+      <h1>Доменное имя — <em>полное руководство</em></h1>
+      <p class="intro-desc">
+        Здесь вы узнаете, что такое домен, как выбрать идеальное имя, где купить, как настроить DNS, 
+        завести почту, продлить и обезопасить своё владение. Всё простыми словами, без лишней технической воды.
+      </p>
+      <div class="intro-actions">
+        <a href="https://www.reg.ru/domain/new/?rlink=reflink-31947115" target="_blank" class="btn btn-green btn-lg">Купить домен</a>
+        <a href="#dns" class="btn btn-outline btn-lg">Настроить DNS</a>
+      </div>
+      <!-- Оглавление -->
+      <ul class="toc-grid">
+        <li><a href="#ch1">1. Что такое домен</a></li>
+        <li><a href="#ch2">2. Какие бывают зоны</a></li>
+        <li><a href="#ch3">3. Как выбрать имя</a></li>
+        <li><a href="#ch4">4. Где купить домен</a></li>
+        <li><a href="#ch5">5. Поддомены</a></li>
+        <li><a href="#ch6">6. DNS и настройка</a></li>
+        <li><a href="#ch7">7. Пошаговая инструкция</a></li>
+        <li><a href="#ch8">8. Почта на домене</a></li>
+        <li><a href="#ch9">9. Продление и занятость</a></li>
+        <li><a href="#ch10">10. История и безопасность</a></li>
+        <li><a href="#ch11">11. У вас уже есть домен?</a></li>
+        <li><a href="#ch12">12. Частые вопросы</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 1 ===== -->
+<section id="ch1" class="section-wrap" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>1. Что такое домен</h2>
+        <span class="sub">Адрес вашего сайта в интернете</span>
+      </div>
+      <p><strong>Домен</strong> – это уникальное имя, по которому люди находят ваш сайт. Например, <em>antviz.ru</em>. Вместо того чтобы запоминать сложный IP-адрес (например, 192.0.2.1), пользователь вводит в браузере понятное слово.</p>
+      <p>Можно представить домен как <strong>адрес вашего дома</strong>. Если у дома нет адреса – до него сложно добраться. Так и с сайтом: без домена его никто не найдёт.</p>
+      <p><strong>Зачем нужен домен:</strong></p>
+      <ul>
+        <li><strong>Идентификация</strong> – ваш бренд, имя в сети.</li>
+        <li><strong>Профессионализм</strong> – сайт на своём домене выглядит серьёзнее, чем на бесплатном поддомене.</li>
+        <li><strong>SEO</strong> – поисковики лучше ранжируют сайты с собственными доменами.</li>
+        <li><strong>Контроль</strong> – вы полностью управляете доменом, можете переносить его между хостингами.</li>
+      </ul>
+      <p><strong>Как устроен домен (уровни):</strong></p>
+      <div class="domain-scheme">
+        <div class="level">
+          <span>.</span> <span class="arrow">→</span> <span>.ru</span> <span class="arrow">→</span> <span>ваш-сайт</span> <span class="arrow">→</span> <span>shop</span>
+        </div>
+        <div class="level" style="gap:8px; font-size:14px; color:var(--muted);">
+          <span style="background:transparent;border:none;">корневая зона</span>
+          <span style="background:transparent;border:none;">домен второго уровня</span>
+          <span style="background:transparent;border:none;">поддомен</span>
+        </div>
+        <div class="desc">Пример: shop.ваш-сайт.ru – поддомен «shop» для магазина</div>
+      </div>
+      <p>На картинке ниже – схематичное изображение структуры домена.</p>
+      <!-- МЕСТО ДЛЯ ИЗОБРАЖЕНИЯ: схема структуры домена -->
+      <img src="img/domain-structure.png" alt="Структура доменного имени" style="width:100%;max-width:600px;" />
+      <p style="font-size:14px;color:var(--muted);text-align:center;">Схема уровней домена. Вставьте картинку <code>img/domain-structure.png</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 2 ===== -->
+<section id="ch2" class="section-wrap" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>2. Какие бывают доменные зоны</h2>
+        <span class="sub">Выберите правильное окончание</span>
+      </div>
+      <p>Доменная зона – это окончание домена (после точки). Самые популярные в России:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Зона</th><th>Для кого</th><th>Цена (Reg.ru, 2026)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>.ru</strong></td><td>Российские проекты, бизнес, личные сайты</td><td>~129–205 ₽/год</td></tr>
+            <tr><td><strong>.рф</strong></td><td>Кириллические названия (русские буквы)</td><td>~129–205 ₽/год</td></tr>
+            <tr><td><strong>.com</strong></td><td>Международные проекты, коммерция</td><td>~700–900 ₽/год</td></tr>
+            <tr><td><strong>.online</strong></td><td>Универсальная, подходит для всего</td><td>~300–500 ₽/год</td></tr>
+            <tr><td><strong>.site</strong>, <strong>.store</strong></td><td>Для сайтов, интернет-магазинов</td><td>~200–400 ₽/год</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Совет:</strong> если ваш бизнес ориентирован на Россию – выбирайте <strong>.ru</strong> или <strong>.рф</strong>. Если планируете иностранную аудиторию – лучше <strong>.com</strong>.</p>
+      <div class="highlight-box">
+        <p><strong>📌 Важно:</strong> цена может меняться в зависимости от акций регистратора. Регулярно проверяйте актуальные предложения.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 3 (НОВЫЙ) ===== -->
+<section id="ch3" class="section-wrap" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>3. Как выбрать идеальное доменное имя</h2>
+        <span class="sub">Советы для запоминающегося адреса</span>
+      </div>
+      <p>Выбор имени – ответственный шаг. Вот несколько рекомендаций:</p>
+      <ul>
+        <li><strong>Краткость</strong> – чем короче, тем легче запомнить и вводить. Идеально 5–10 символов.</li>
+        <li><strong>Брендовость</strong> – имя должно быть уникальным и ассоциироваться с вашей компанией или проектом.</li>
+        <li><strong>Без дефисов и цифр</strong> – они усложняют восприятие и увеличивают риск ошибок при вводе.</li>
+        <li><strong>Ключевые слова</strong> – если в имени есть слово, связанное с деятельностью (например, «мебель», «ремонт»), это помогает SEO.</li>
+        <li><strong>Зона</strong> – выбирайте зону, соответствующую региону и цели (см. раздел 2).</li>
+      </ul>
+      <p><strong>Проверка:</strong> перед регистрацией обязательно проверьте, не занято ли имя в социальных сетях и не нарушает ли оно чужие торговые марки.</p>
+      <div class="highlight-box">
+        <p><strong>💡 Совет:</strong> не торопитесь. Придумайте 5–10 вариантов, проверьте их доступность и выберите лучший.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 4 ===== -->
+<section id="ch4" class="section-wrap" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>4. Где и как купить домен</h2>
+        <span class="sub">Регистрация за 5 минут</span>
+      </div>
+      <p>Купить домен можно у специальных организаций – <strong>регистраторов</strong>. В России самый надёжный и популярный – <strong>Reg.ru</strong>. У них понятный интерфейс, круглосуточная поддержка и множество способов оплаты.</p>
+      <p><strong>Цена:</strong> домен в зоне .ru стоит примерно <strong>130–200 ₽ в год</strong> (в зависимости от акций). Это дешевле, чем чашка кофе в месяц.</p>
+      <p><strong>Как купить домен (пошагово):</strong></p>
+      <ol>
+        <li>Зайдите на сайт <a href="https://www.reg.ru/domain/new/?rlink=reflink-31947115" target="_blank">Reg.ru (реферальная ссылка)</a>.</li>
+        <li>Введите желаемое имя в строку поиска (например, <em>vashe-nazvanie</em>).</li>
+        <li>Система покажет, свободно ли оно, и предложит альтернативы.</li>
+        <li>Выберите понравившуюся зону (например, .ru) и нажмите «Зарегистрировать».</li>
+        <li>Заполните данные (ФИО, контакты) – они нужны для реестра доменов.</li>
+        <li>Оплатите (картой, СБП, электронными деньгами).</li>
+        <li>Готово – домен ваш на срок от 1 года.</li>
+      </ol>
+      <!-- МЕСТО ДЛЯ ИЗОБРАЖЕНИЯ: скриншот выбора домена на Reg.ru -->
+      <img src="img/reg-ru-domain.png" alt="Выбор домена на Reg.ru" style="width:100%;max-width:700px;" />
+      <p style="font-size:14px;color:var(--muted);text-align:center;">Пример страницы проверки домена в Reg.ru. Вставьте <code>img/reg-ru-domain.png</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 5 (НОВЫЙ) ===== -->
+<section id="ch5" class="section-wrap" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>5. Поддомены: что это и зачем</h2>
+        <span class="sub">Дополнительные разделы на одном домене</span>
+      </div>
+      <p><strong>Поддомен</strong> – это часть основного домена, которая стоит перед ним. Например, <em>blog.ваш-сайт.ru</em>, <em>shop.ваш-сайт.ru</em>, <em>support.ваш-сайт.ru</em>.</p>
+      <p>Поддомены позволяют:</p>
+      <ul>
+        <li><strong>Структурировать</strong> проект – выделить блог, магазин, форум или раздел поддержки.</li>
+        <li><strong>Размещать разные сайты</strong> на одном домене – например, основной сайт на одном хостинге, а блог на другом.</li>
+        <li><strong>Тестировать</strong> – можно сделать поддомен для тестовой версии сайта (например, <em>test.ваш-сайт.ru</em>).</li>
+      </ul>
+      <p>Настроить поддомен очень просто – в панели DNS вы добавляете A-запись или CNAME для нужного поддомена, указывая IP-адрес или целевой домен.</p>
+      <div class="highlight-box">
+        <p><strong>📌 Совет:</strong> не создавайте слишком много поддоменов – это может запутать посетителей. Обычно достаточно 2–3.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 6 ===== -->
+<section id="ch6" class="section-wrap" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>6. Что такое DNS и как настроить записи</h2>
+        <span class="sub">Телефонная книга интернета</span>
+      </div>
+      <p><strong>DNS (Domain Name System)</strong> – это «телефонная книга» интернета. Она преобразует домен (например, <em>ваш-сайт.ru</em>) в IP-адрес сервера, на котором хранится сайт.</p>
+      <p>Чтобы сайт открывался по вашему домену, нужно прописать специальные <strong>DNS-записи</strong> в панели управления доменом. Основные типы записей:</p>
+      <ul>
+        <li><strong>A-запись</strong> – привязывает домен (или поддомен) к IPv4-адресу сервера.</li>
+        <li><strong>CNAME</strong> – создаёт псевдоним (алиас) для другого домена. Часто используется для поддомена <code>www</code>.</li>
+        <li><strong>MX-записи</strong> – нужны для настройки почты на домене.</li>
+        <li><strong>TXT-записи</strong> – используются для подтверждения владения доменом (например, для Яндекс.Метрики).</li>
+      </ul>
+      <p><strong>Как добавить записи в Reg.ru:</strong></p>
+      <ol>
+        <li>Зайдите в личный кабинет Reg.ru.</li>
+        <li>Перейдите в раздел «Домены» → выберите ваш домен.</li>
+        <li>Нажмите «Изменить» в блоке «DNS-серверы и управление зоной».</li>
+        <li>Добавьте нужные записи (обычно их даёт ваш хостинг-провайдер).</li>
+        <li>Сохраните изменения и подождите делегирования (до 24 часов).</li>
+      </ol>
+      <!-- МЕСТО ДЛЯ ИЗОБРАЖЕНИЯ: панель DNS Reg.ru -->
+      <img src="img/reg-dns-panel.png" alt="Панель DNS Reg.ru" style="width:100%;max-width:700px;" />
+      <p style="font-size:14px;color:var(--muted);text-align:center;">Интерфейс добавления DNS-записей. Вставьте <code>img/reg-dns-panel.png</code>.</p>
+      <div class="highlight-box">
+        <p><strong>⚠️ Внимание:</strong> если вы заказали сайт у нас, мы пришлём готовый список записей – останется только скопировать.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 7 ===== -->
+<section id="ch7" class="section-wrap" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>7. Пошаговая инструкция по настройке</h2>
+        <span class="sub">Универсальный алгоритм</span>
+      </div>
+      <p>Эта инструкция подходит для любого хостинга:</p>
+      <ol>
+        <li><strong>Купите домен</strong> (см. раздел 4).</li>
+        <li><strong>Узнайте DNS-серверы вашего хостинга</strong> – обычно их присылают в письме.</li>
+        <li><strong>В панели Reg.ru укажите эти DNS-серверы</strong> – это называется делегированием.</li>
+        <li><strong>Добавьте A-запись</strong> для основного домена (IP даст хостинг).</li>
+        <li><strong>Добавьте CNAME для www</strong> – она должна указывать на основной домен.</li>
+        <li><strong>Дождитесь делегирования</strong> (обычно 1–2 часа, до 24).</li>
+        <li><strong>Проверьте</strong> – откройте браузер и введите домен.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 8 (НОВЫЙ) ===== -->
+<section id="ch8" class="section-wrap" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>8. Почта на домене</h2>
+        <span class="sub">Красивые адреса для бизнеса</span>
+      </div>
+      <p>С доменом вы можете завести профессиональную почту – например, <strong>info@ваш-сайт.ru</strong>, <strong>support@ваш-сайт.ru</strong>. Это выглядит надёжнее, чем почта на бесплатных сервисах (gmail, yandex).</p>
+      <p><strong>Как настроить:</strong></p>
+      <ul>
+        <li>В панели управления доменом добавьте <strong>MX-записи</strong>, которые укажут, какой почтовый сервер обрабатывает письма.</li>
+        <li>Обычно регистраторы (например, Reg.ru) предлагают встроенную почту или вы можете подключить Яндекс.Почту для домена (бесплатно).</li>
+        <li>После настройки создайте ящики и пользуйтесь.</li>
+      </ul>
+      <div class="highlight-box">
+        <p><strong>📌 Важно:</strong> почта на домене повышает доверие клиентов и упрощает коммуникацию.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 9 (НОВЫЙ) ===== -->
+<section id="ch9" class="section-wrap" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>9. Продление домена и что делать, если занят</h2>
+        <span class="sub">Не теряйте свой адрес</span>
+      </div>
+      <p><strong>Продление:</strong> домен покупается на ограниченный срок (обычно 1 год). За несколько недель до окончания регистратор пришлёт уведомление. Не забудьте продлить – иначе домен может быть выставлен на аукцион или занят другим человеком.</p>
+      <p><strong>Что делать, если желаемое имя занято:</strong></p>
+      <ul>
+        <li>Попробуйте другую зону (например, если <em>.ru</em> занят, проверьте <em>.online</em> или <em>.com</em>).</li>
+        <li>Измените имя – добавьте слово, дефис или сокращение.</li>
+        <li>Свяжитесь с текущим владельцем через whois-сервис – возможно, он готов продать домен.</li>
+        <li>Подождите освобождения – если домен не продлён, он становится доступным для регистрации.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 10 (НОВЫЙ) ===== -->
+<section id="ch10" class="section-wrap" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>10. История домена и безопасность</h2>
+        <span class="sub">Проверка репутации и защита от угонов</span>
+      </div>
+      <p><strong>История домена:</strong> перед покупкой подержанного домена полезно узнать его прошлое. Используйте сервисы типа <a href="https://whois.ru" target="_blank">whois.ru</a> или <a href="https://archive.org" target="_blank">Wayback Machine</a>, чтобы посмотреть, что было на сайте раньше. Если домен использовался для спама или мошенничества, это может навредить вашей репутации и SEO.</p>
+      <p><strong>Безопасность:</strong></p>
+      <ul>
+        <li>Включите <strong>двухфакторную аутентификацию</strong> (2FA) в личном кабинете регистратора.</li>
+        <li>Установите <strong>блокировку домена</strong> от переноса (Reg.ru предоставляет такую функцию).</li>
+        <li>Используйте сложный пароль и не храните его в открытом виде.</li>
+        <li>Регулярно проверяйте контактные данные – они должны быть актуальными, чтобы вы получали уведомления.</li>
+      </ul>
+      <div class="highlight-box">
+        <p><strong>🔐 Защита:</strong> потеря контроля над доменом может стоить бизнеса. Уделите безопасности особое внимание.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 11 ===== -->
+<section id="ch11" class="section-wrap" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>11. У вас уже есть домен? – мы поможем бесплатно</h2>
+        <span class="sub">Настройка без лишних затрат</span>
+      </div>
+      <p>Если вы уже купили домен (у любого регистратора), но не знаете, как его привязать к сайту – мы <strong>бесплатно</strong> поможем.</p>
+      <p><strong>Два варианта:</strong></p>
+      <ul>
+        <li><strong>Вариант А</strong> – вы даёте нам доступ к панели управления доменом. Мы сами внесём все необходимые DNS-записи.</li>
+        <li><strong>Вариант Б</strong> – мы присылаем вам готовый список записей, а вы копируете их в панель своего регистратора.</li>
+      </ul>
+      <p><strong>Не можете найти раздел DNS?</strong> Напишите в поддержку вашего регистратора:</p>
+      <div class="highlight-box" style="background:var(--bg);border-left-color:var(--dark);">
+        <p style="font-family:monospace;font-size:15px;color:var(--text);">
+        «Здравствуйте! Не могу найти раздел управления DNS для домена … Подскажите, пожалуйста, где можно добавить A-записи и CNAME. Спасибо.»
+        </p>
+      </div>
+      <p>Или просто напишите нам – мы подскажем и поможем.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАЗДЕЛ 12: FAQ ===== -->
+<section id="ch12" class="section-wrap" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-inner reveal">
+      <div class="section-head">
+        <h2>12. Часто задаваемые вопросы</h2>
+        <span class="sub">Короткие ответы на главное</span>
+      </div>
+      <div class="faq-strips" style="margin-top:24px;">
+        <div class="faq-s reveal"><div class="faq-q">Сколько ждать, пока домен заработает?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Обычно 1–2 часа, но официально до 24 часов. Это связано с обновлением кеша DNS по всему миру.</p></div></div>
+        <div class="faq-s reveal"><div class="faq-q">Можно ли купить домен на несколько лет?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Да, при регистрации можно выбрать срок от 1 до 10 лет. Это удобно, чтобы не забывать продлевать.</p></div></div>
+        <div class="faq-s reveal"><div class="faq-q">Что такое делегирование домена?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Это процесс, когда вы указываете, какие DNS-серверы обслуживают ваш домен. После этого все запросы к вашему домену направляются на указанный хостинг.</p></div></div>
+        <div class="faq-s reveal"><div class="faq-q">Можно ли использовать один домен для нескольких сайтов?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Да, через поддомены (например, shop.ваш-сайт.ru, blog.ваш-сайт.ru). Для каждого поддомена можно настроить отдельные записи.</p></div></div>
+        <div class="faq-s reveal"><div class="faq-q">Как перенести домен к другому регистратору?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Получите у текущего регистратора код переноса (auth-код) и на новом регистраторе запустите процедуру переноса. Обычно занимает 5–7 дней.</p></div></div>
+        <div class="faq-s reveal"><div class="faq-q">Что делать, если сайт не открывается после настройки?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Проверьте:</p><ul style="font-size:15px;color:var(--muted);padding-left:20px;"><li>Правильно ли указаны A-записи (IP-адрес).</li><li>Не истек ли срок регистрации домена.</li><li>Не блокируется ли домен в стране.</li><li>Проверьте через онлайн-инструменты (например, 2ip.ru). Если не помогло – напишите нам.</li></ul></div></div>
+        <div class="faq-s reveal"><div class="faq-q">Как проверить историю домена?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Используйте whois-сервисы (whois.ru) или архив Wayback Machine (archive.org), чтобы увидеть, что было на сайте раньше.</p></div></div>
+        <div class="faq-s reveal"><div class="faq-q">Как защитить домен от угона?<div class="faq-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="faq-a"><p>Включите двухфакторную аутентификацию, установите блокировку переноса и используйте сложный пароль. Регулярно проверяйте контактные данные.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-wrap">
+  <div class="container">
+    <div class="cta-block reveal">
+      <h2>Готовы завести свой домен?</h2>
+      <p>Купите его сейчас, а мы бесплатно поможем с настройкой.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://www.reg.ru/domain/new/?rlink=reflink-31947115" target="_blank" class="btn btn-dark btn-lg">Купить домен</a>
+        <a href="order.html" class="btn btn-green btn-lg">Заказать сайт под ключ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ПОДВАЛ ===== -->
+<script src="footer.js" data-page="domain"></script>
+
+<!-- ===== COOKIE ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">Мы используем файлы cookie. <a href="privacy">Политика конфиденциальности</a>.</div>
+  <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
+
+<!-- ===== СКРИПТЫ ===== -->
+<script>
+  // REVEAL
+  const obs = new IntersectionObserver(e => { e.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible') }) }, { threshold: .07 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // FAQ
+  document.querySelectorAll('.faq-s').forEach(s => {
+    s.addEventListener('click', () => {
+      const was = s.classList.contains('open');
+      document.querySelectorAll('.faq-s').forEach(x => x.classList.remove('open'));
+      if (!was) s.classList.add('open');
+    });
+  });
+
+  // COOKIE
+  function getCookieConsent() { return localStorage.getItem('cookie_consent') === 'true'; }
+  function setCookieConsent() { localStorage.setItem('cookie_consent', 'true'); localStorage.setItem('cookie_consent_date', Date.now()); }
+  (function () {
+    if (!getCookieConsent()) {
+      setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 800);
+    }
+  })();
+  window.acceptCookies = function () {
+    setCookieConsent();
+    const b = document.getElementById('cookieBanner');
+    b.style.transform = 'translateX(-50%) translateY(120px)';
+    b.style.opacity = '0';
+    setTimeout(() => b.remove(), 400);
+  };
+</script>
+</body>
+</html>
