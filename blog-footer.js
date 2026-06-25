@@ -103,7 +103,7 @@
       <div class="inner">
         <div class="top-grid">
           <div class="brand-col">
-            <a href="${base}index.html" class="logo">
+            <a href="https://blog.antviz.ru" class="logo">
               <img src="https://blog.antviz.ru/img/favicon.png" alt="Antviz"/>
               Antviz <span class="logo-blog">/ Блог</span>
             </a>
@@ -130,7 +130,7 @@
           <div>
             <span class="group-title">Статьи</span>
             <ul class="group-items">
-              <li><a href="${base}domain/vse-o-domene-instruktsiya.html">Всё о доменах</a></li>
+              <li><a href="https://blog.antviz.ru/domain/vse-o-domene-instruktsiya">Всё о доменах</a></li>
             </ul>
             <div class="cloudflare-block" style="margin-top:32px">
               <a href="https://www.cloudflare.com/" target="_blank" rel="noopener" aria-label="Cloudflare">
