@@ -99,7 +99,7 @@
         <div class="top-grid">
           <div class="brand-col">
             <a href="${base}index.html" class="logo">
-              <img src="https://antviz.ru/img/favicon.png" alt="Antviz"/>
+              <img src="https://blog.antviz.ru/img/favicon.png" alt="Antviz"/>
               Antviz <span class="logo-blog">/ Блог</span>
             </a>
             <p class="tagline">Полезные статьи о создании сайтов, доменах, хостинге и веб-разработке.</p>
