@@ -165,7 +165,7 @@
   const NAV_HTML = `
 <nav class="antviz-nav" id="antvizNav">
   <a class="an-logo" href="${b}index.html">
-    <img src="https://antviz.ru/img/favicon.png" alt="Antviz"/>
+    <img src="https://blog.antviz.ru/img/favicon.png" alt="Antviz"/>
     Antviz<span class="an-logo-sep">/</span><span class="an-logo-blog">Блог</span>
   </a>
 
