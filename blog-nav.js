@@ -147,11 +147,9 @@
     }
   `;
 
-  // Ссылки в центре навбара
+  // Ссылки в центре навбара — пока пусто, темы не придуманы
   const LINKS = [
-    { href: b + 'index.html',                           label: 'Все статьи', key: 'blog'    },
-    { href: b + 'domain/vse-o-domene-instruktsiya.html', label: 'Домены',     key: 'domain'  },
-    { href: 'https://antviz.ru',                         label: 'Antviz.ru',  key: 'main'    },
+    { href: 'https://antviz.ru', label: 'Antviz.ru', key: 'main' },
   ];
 
   const centerHtml = LINKS.map(l =>
