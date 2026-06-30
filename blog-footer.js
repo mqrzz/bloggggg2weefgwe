@@ -2,12 +2,23 @@
 
 (function() {
   const styles = `
+    .antviz-footer-wrap {
+      padding: 0 20px;
+      max-width: 1328px;
+      margin: 0 auto;
+    }
+    @media (min-width: 1024px) { .antviz-footer-wrap { padding: 0 64px; } }
+    @media (min-width: 1280px) { .antviz-footer-wrap { padding: 0 96px; } }
+
     .antviz-footer {
       padding: 4rem 5vw 2rem;
-      border-top: 1px solid rgba(255,255,255,.1);
       background: #000000;
-      margin-top: auto;
+      margin-top: 80px;
+      border-radius: 64px 64px 0 0;
       font-family: 'Geologica','Inter','Arial',sans-serif;
+    }
+    @media (max-width: 760px) {
+      .antviz-footer { border-radius: 32px 32px 0 0; margin-top: 48px; padding: 2.75rem 28px 1.75rem; }
     }
     .antviz-footer * { box-sizing: border-box; }
     .antviz-footer .inner { max-width: 1200px; margin: 0 auto; }
@@ -99,6 +110,7 @@
   const base     = depth > 0 ? '../' : '';
 
   const footerHTML = `
+    <div class="antviz-footer-wrap">
     <footer class="antviz-footer">
       <div class="inner">
         <div class="top-grid">
@@ -128,9 +140,11 @@
 
         <div class="groups">
           <div>
-            <span class="group-title">Статьи</span>
+            <span class="group-title">Разделы</span>
             <ul class="group-items">
-              <li><a href="https://blog.antviz.ru/domain/vse-o-domene-instruktsiya">Всё о доменах</a></li>
+              <li><a href="https://blog.antviz.ru/news">Новости</a></li>
+              <li><a href="https://blog.antviz.ru/updates">Что нового</a></li>
+              <li><a href="https://blog.antviz.ru/domain/vse-o-domene-instruktsiya">Статьи</a></li>
             </ul>
             <div class="cloudflare-block" style="margin-top:32px">
               <a href="https://www.cloudflare.com/" target="_blank" rel="noopener" aria-label="Cloudflare">
@@ -169,6 +183,7 @@
         </div>
       </div>
     </footer>
+    </div>
   `;
 
   function initFooter() {
