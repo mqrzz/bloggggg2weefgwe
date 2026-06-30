@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Новости — Блог Antviz</title>
+  <meta name="description" content="Новости Antviz: запуски, акции, изменения в работе сервиса и полезные апдейты." />
+  <link rel="canonical" href="https://blog.antviz.ru/news" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-serif;font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+:root{
+  --green:#1ede7b;--green-h:#1ac16b;--green-d:#149955;
+  --green-light:#d2f8e5;--green-lighter:#e8fcf2;
+  --bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;
+  --text:#191b1e;--muted:#707a8a;
+  --border:#dfe3e8;--border2:#cbcdd6;
+  --dark:#191b1e;--dark2:#2b2f33;
+  --sh1:0 4px 16px rgba(0,51,153,.04),0 2px 2px rgba(0,51,153,.08);
+  --sh2:0 8px 20px rgba(0,51,153,.08),0 4px 8px rgba(0,51,153,.08);
+  --font:'Geologica','Inter','Arial',sans-serif;
+  --sp-l:100px;--sp-m:60px;
+}
+.container{max-width:1328px;margin:0 auto;padding:0 20px;width:100%}
+@media(min-width:1024px){.container{padding:0 64px}}
+@media(min-width:1280px){.container{padding:0 96px}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px}
+.eyebrow.g{color:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-weight:500;text-decoration:none;cursor:pointer;border:none;border-radius:12px;padding:17px 32px;font-size:16px;letter-spacing:-0.01em;transition:background .1s,transform .12s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-green{background:var(--green);color:var(--dark)}.btn-green:hover{background:var(--green-h)}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--border2)}
+
+/* HERO */
+.hero-wrap{padding:var(--sp-l) 0 0;background:var(--bg)}
+.hero-block{background:var(--dark);border-radius:64px;padding:72px 80px;position:relative;overflow:hidden}
+@media(max-width:860px){.hero-block{padding:48px 32px;border-radius:32px}}
+.hero-eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:20px}
+.hero-block h1{font-size:clamp(40px,6vw,72px);font-weight:500;letter-spacing:-.04em;line-height:1.02;color:#fff}
+.hero-block p{font-size:clamp(15px,1.4vw,18px);color:rgba(255,255,255,.45);font-weight:300;line-height:1.5;max-width:520px;margin-top:20px}
+
+/* NEWS GRID */
+.news-wrap{padding:var(--sp-l) 0}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+@media(max-width:760px){.news-grid{grid-template-columns:1fr}}
+.news-card{
+  display:flex;flex-direction:column;gap:20px;
+  background:var(--bg3);border:1.5px solid var(--border);border-radius:40px;
+  padding:36px 36px 32px;text-decoration:none;color:inherit;
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+}
+.news-card:hover{transform:translateY(-3px);box-shadow:var(--sh2);border-color:var(--border2)}
+.news-card .ico{
+  width:48px;height:48px;border-radius:16px;background:var(--green-lighter);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.news-card .ico svg{width:22px;height:22px;stroke:var(--green-d);stroke-width:1.8;fill:none}
+.news-card .meta{display:flex;align-items:center;gap:10px}
+.news-card .date{font-size:13px;color:var(--muted);font-weight:300;letter-spacing:0}
+.news-card .tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green-d);background:var(--green-lighter);padding:4px 10px;border-radius:8px}
+.news-card h3{font-size:23px;font-weight:500;letter-spacing:-.02em;line-height:1.2;margin-top:4px}
+.news-card p{font-size:15px;color:var(--muted);font-weight:300;line-height:1.6}
+.news-card .read{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--text);margin-top:auto}
+.news-card .read svg{width:14px;height:14px;stroke:var(--text);stroke-width:2;fill:none;transition:transform .15s}
+.news-card:hover .read svg{transform:translateX(3px)}
+
+.news-card.featured{grid-column:1 / -1;flex-direction:row;align-items:center;gap:40px;padding:48px}
+@media(max-width:760px){.news-card.featured{flex-direction:column;padding:32px 28px}}
+.news-card.featured .ico{width:64px;height:64px;border-radius:20px}
+.news-card.featured .ico svg{width:28px;height:28px}
+.news-card.featured .text{flex:1}
+.news-card.featured h3{font-size:32px}
+
+/* EMPTY STATE (показываем, если новостей пока нет) */
+.empty-state{
+  background:var(--bg2);border:1px dashed var(--border2);border-radius:40px;
+  padding:56px 40px;text-align:center;margin-top:48px;
+}
+.empty-state p{color:var(--muted);font-size:16px;font-weight:300}
+
+/* COOKIE */
+.cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;font-family:var(--font)}
+.cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+.cookie-text{font-size:14px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
+.cookie-text a{color:var(--green-d);text-decoration:none}
+.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer}
+.cookie-btn:hover{background:var(--dark2)}
+  </style>
+</head>
+<body>
+<script src="https://blog.antviz.ru/blog-nav.js" data-page="news"></script>
+
+<!-- HERO -->
+<section class="hero-wrap">
+  <div class="container">
+    <div class="hero-block reveal">
+      <div class="hero-eyebrow">Новости Antviz</div>
+      <h1>Что<br/>происходит</h1>
+      <p>Запуски, акции и важные объявления — собираем здесь.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS GRID -->
+<section class="news-wrap">
+  <div class="container">
+    <p class="eyebrow reveal">Лента</p>
+
+    <div class="news-grid">
+
+      <a href="zapusk-bloga" class="news-card featured reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24"><path d="M5 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/><path d="M19 13l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1 1-2.5z"/></svg>
+        </div>
+        <div class="text">
+          <div class="meta">
+            <span class="tag">Запуск</span>
+            <span class="date">20 июля 2026</span>
+          </div>
+          <h3>Блог Antviz открыт</h3>
+          <p>Запускаем раздел со статьями о веб-разработке, SEO и дизайне — и заодно ленту новостей с разделом «Что нового».</p>
+          <div class="read">Читать <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </a>
+
+      <!--
+        Карточка одной новости — копируй блок ниже для каждой новой записи.
+        Файл на диске называется slug-novosti.html, но в href пиши БЕЗ .html —
+        GitHub Pages сам отдаёт чистый адрес /news/slug-novosti
+      -->
+      <a href="example-news-2" class="news-card reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg>
+        </div>
+        <div class="meta">
+          <span class="tag">Сервис</span>
+          <span class="date">—</span>
+        </div>
+        <h3>Заголовок второй новости</h3>
+        <p>Краткое описание — пара предложений о том, что произошло.</p>
+        <div class="read">Читать <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </a>
+
+    </div>
+
+    <!-- Если новостей нет вообще — показывай вместо .news-grid это: -->
+    <!--
+    <div class="empty-state reveal">
+      <p>Пока новостей нет. Загляните позже.</p>
+    </div>
+    -->
+  </div>
+</section>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">Мы используем файлы cookie. <a href="https://antviz.ru/privacy">Политика</a>.</div>
+  <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+(function(){if(localStorage.getItem('cookie_consent')!=='true')setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),800);})();
+window.acceptCookies=function(){localStorage.setItem('cookie_consent','true');const b=document.getElementById('cookieBanner');b.style.opacity='0';b.style.transform='translateX(-50%) translateY(120px)';setTimeout(()=>b.remove(),400);};
+</script>
+<script src="https://blog.antviz.ru/blog-footer.js" data-page="news"></script>
+</body>
+</html>
