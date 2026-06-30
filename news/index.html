@@ -70,12 +70,18 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
 .news-card .read svg{width:14px;height:14px;stroke:var(--text);stroke-width:2;fill:none;transition:transform .15s}
 .news-card:hover .read svg{transform:translateX(3px)}
 
-.news-card.featured{grid-column:1 / -1;flex-direction:row;align-items:center;gap:40px;padding:48px}
+.news-card.featured{grid-column:1 / -1;flex-direction:row;align-items:center;gap:40px;padding:48px;background:var(--dark);border-color:var(--dark)}
 @media(max-width:760px){.news-card.featured{flex-direction:column;padding:32px 28px}}
-.news-card.featured .ico{width:64px;height:64px;border-radius:20px}
-.news-card.featured .ico svg{width:28px;height:28px}
+.news-card.featured .ico{width:64px;height:64px;border-radius:20px;background:rgba(30,222,123,.12)}
+.news-card.featured .ico svg{width:28px;height:28px;stroke:var(--green)}
 .news-card.featured .text{flex:1}
-.news-card.featured h3{font-size:32px}
+.news-card.featured h3{font-size:32px;color:#fff}
+.news-card.featured .tag{background:rgba(30,222,123,.16)}
+.news-card.featured .date{color:rgba(255,255,255,.4)}
+.news-card.featured p{color:rgba(255,255,255,.45)}
+.news-card.featured .read{color:#fff}
+.news-card.featured .read svg{stroke:#fff}
+.news-card.featured:hover{border-color:var(--dark2)}
 
 /* EMPTY STATE (показываем, если новостей пока нет) */
 .empty-state{
@@ -116,7 +122,10 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
 
       <a href="zapusk-bloga" class="news-card featured reveal">
         <div class="ico">
-          <svg viewBox="0 0 24 24"><path d="M5 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/><path d="M19 13l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1 1-2.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/>
+            <path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/>
+          </svg>
         </div>
         <div class="text">
           <div class="meta">
@@ -125,7 +134,7 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
           </div>
           <h3>Блог Antviz открыт</h3>
           <p>Запускаем раздел со статьями о веб-разработке, SEO и дизайне — и заодно ленту новостей с разделом «Что нового».</p>
-          <div class="read">Читать <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
         </div>
       </a>
 
@@ -136,7 +145,11 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
       -->
       <a href="example-news-2" class="news-card reveal">
         <div class="ico">
-          <svg viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18h-5"/><path d="M18 14h-8"/>
+            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/>
+            <rect width="8" height="4" x="10" y="6" rx="1"/>
+          </svg>
         </div>
         <div class="meta">
           <span class="tag">Сервис</span>
@@ -144,7 +157,7 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
         </div>
         <h3>Заголовок второй новости</h3>
         <p>Краткое описание — пара предложений о том, что произошло.</p>
-        <div class="read">Читать <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
       </a>
 
     </div>
