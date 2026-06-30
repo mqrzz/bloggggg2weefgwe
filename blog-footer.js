@@ -2,106 +2,117 @@
 
 (function() {
   const styles = `
-    .antviz-footer-wrap {
-      padding: 0 20px;
-      max-width: 1328px;
-      margin: 0 auto;
-    }
-    @media (min-width: 1024px) { .antviz-footer-wrap { padding: 0 64px; } }
-    @media (min-width: 1280px) { .antviz-footer-wrap { padding: 0 96px; } }
-
     .antviz-footer {
-      padding: 4rem 5vw 2rem;
+      width: 100%;
+      padding: 5.5rem 5vw 2.25rem;
       background: #000000;
       margin-top: 80px;
-      border-radius: 64px 64px 0 0;
+      border-radius: 48px 48px 0 0;
       font-family: 'Geologica','Inter','Arial',sans-serif;
     }
     @media (max-width: 760px) {
-      .antviz-footer { border-radius: 32px 32px 0 0; margin-top: 48px; padding: 2.75rem 28px 1.75rem; }
+      .antviz-footer { border-radius: 28px 28px 0 0; margin-top: 48px; padding: 2.75rem 24px 1.75rem; }
     }
     .antviz-footer * { box-sizing: border-box; }
-    .antviz-footer .inner { max-width: 1200px; margin: 0 auto; }
+    .antviz-footer .inner { max-width: 1280px; margin: 0 auto; }
 
     .antviz-footer .top-grid {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 40px;
-      padding-bottom: 60px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      gap: 48px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
     }
     .antviz-footer .brand-col { display: flex; flex-direction: column; }
     .antviz-footer .logo {
-      display: inline-flex; align-items: center; gap: 9px;
+      display: inline-flex; align-items: center; gap: 11px;
       font-family: 'Geologica','Inter','Arial',sans-serif;
-      font-weight: 500; font-size: 16px; letter-spacing: -.02em;
-      color: #f0f0f5; text-decoration: none; margin-bottom: 24px;
+      font-weight: 500; font-size: 19px; letter-spacing: -.02em;
+      color: #f0f0f5; text-decoration: none; margin-bottom: 28px;
     }
-    .antviz-footer .logo img { width: 28px; height: 28px; border-radius: 7px; object-fit: cover; }
-    .antviz-footer .logo-blog { font-size: 13px; color: rgba(255,255,255,.25); font-weight: 300; margin-left: 2px; }
+    .antviz-footer .logo img { width: 34px; height: 34px; border-radius: 9px; object-fit: cover; }
+    .antviz-footer .logo-blog { font-size: 15px; color: rgba(255,255,255,.25); font-weight: 300; margin-left: 2px; }
     .antviz-footer .tagline {
-      font-size: 15px; color: rgba(255,255,255,.25); font-weight: 300;
-      line-height: 1.6; max-width: 280px; margin-bottom: 28px;
+      font-size: 16px; color: rgba(255,255,255,.3); font-weight: 300;
+      line-height: 1.6; max-width: 320px; margin-bottom: 28px;
     }
 
     .antviz-footer .socials {
-      display: flex; gap: 8px; align-self: start; justify-content: flex-end;
+      display: flex; gap: 10px; align-self: start; justify-content: flex-end;
     }
     .antviz-footer .soc {
-      width: 40px; height: 40px; border-radius: 12px;
-      background: rgba(255,255,255,.04);
+      width: 48px; height: 48px; border-radius: 14px;
+      background: rgba(255,255,255,.05);
       display: flex; align-items: center; justify-content: center;
       color: #f0f0f5; text-decoration: none; transition: background .2s;
     }
-    .antviz-footer .soc:hover { background: rgba(255,255,255,.08); }
-    .antviz-footer .soc svg { width: 18px; height: 18px; }
-    .antviz-footer .cloudflare-block { margin-top: 24px; }
-    .antviz-footer .cloudflare-label {
-      display: block; color: rgba(255,255,255,.2);
-      font-size: 13px; font-weight: 300; margin-top: 6px;
+    .antviz-footer .soc:hover { background: rgba(255,255,255,.1); }
+    .antviz-footer .soc svg { width: 21px; height: 21px; }
+
+    .antviz-footer .cf-block {
+      display: flex; align-items: center; gap: 14px;
+      margin-top: 36px;
     }
+    .antviz-footer .cf-icon {
+      width: 44px; height: 44px; border-radius: 13px;
+      background: rgba(243,128,32,.14);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .antviz-footer .cf-icon svg { width: 26px; height: 26px; stroke: #f38020; stroke-width: 2.2; fill: none; }
+    .antviz-footer .cf-text { display: flex; flex-direction: column; gap: 2px; }
+    .antviz-footer .cf-name { font-size: 15px; font-weight: 500; color: #f38020; letter-spacing: -.01em; }
+    .antviz-footer .cf-label { font-size: 13px; color: rgba(255,255,255,.28); font-weight: 300; }
 
     .antviz-footer .groups {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 40px; padding-top: 60px; padding-bottom: 48px;
+      gap: 40px; padding-top: 64px; padding-bottom: 52px;
     }
     .antviz-footer .group-title {
-      display: block; color: rgba(255,255,255,.2);
-      font-size: 13px; letter-spacing: .05em; text-transform: uppercase;
-      font-weight: 500; margin-bottom: 16px;
+      display: block; color: rgba(255,255,255,.25);
+      font-size: 14px; letter-spacing: .05em; text-transform: uppercase;
+      font-weight: 500; margin-bottom: 20px;
     }
-    .antviz-footer .group-items { list-style: none; margin: 0; padding: 0; font-size: 15px; line-height: 1.6; }
-    .antviz-footer .group-items li:not(:last-child) { margin-bottom: 10px; }
-    .antviz-footer .group-items a { color: #cfcfd6; text-decoration: none; transition: color .18s; }
+    .antviz-footer .group-items { list-style: none; margin: 0; padding: 0; font-size: 17px; line-height: 1.6; }
+    .antviz-footer .group-items li:not(:last-child) { margin-bottom: 13px; }
+    .antviz-footer .group-items a { color: #d8d8de; text-decoration: none; transition: color .18s; }
     .antviz-footer .group-items a:hover { color: #f0f0f5; }
     .antviz-footer .group-items a.cta { color: #1ede7b; font-weight: 500; }
     .antviz-footer .group-items a.cta:hover { color: #1ac16b; }
 
     .antviz-footer .bottom {
-      padding-top: 40px; border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 44px; border-top: 1px solid rgba(255,255,255,.07);
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 16px;
     }
-    .antviz-footer .copy { color: rgba(255,255,255,.18); font-size: 14px; }
-    .antviz-footer .legal-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .antviz-footer .copy { color: rgba(255,255,255,.22); font-size: 15px; }
+    .antviz-footer .legal-links { display: flex; flex-wrap: wrap; gap: 24px; }
     .antviz-footer .legal-links a {
-      color: rgba(255,255,255,.18); font-size: 14px;
+      color: rgba(255,255,255,.22); font-size: 15px;
       text-decoration: none; transition: color .18s;
     }
-    .antviz-footer .legal-links a:hover { color: rgba(255,255,255,.5); }
+    .antviz-footer .legal-links a:hover { color: rgba(255,255,255,.55); }
 
     .antviz-footer .meta-note {
-      grid-column: 1 / -1; color: rgba(255,255,255,.1);
-      font-size: 13px; line-height: 1.6; margin-top: 40px;
+      grid-column: 1 / -1; color: rgba(255,255,255,.12);
+      font-size: 13px; line-height: 1.6; margin-top: 44px;
+    }
+
+    @media (min-width: 1440px) {
+      .antviz-footer .inner { max-width: 1440px; }
+      .antviz-footer .logo { font-size: 21px; }
+      .antviz-footer .tagline { font-size: 17px; max-width: 360px; }
+      .antviz-footer .group-title { font-size: 15px; }
+      .antviz-footer .group-items { font-size: 18px; }
     }
 
     @media (max-width: 1023px) {
-      .antviz-footer .top-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
-      .antviz-footer .groups { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .antviz-footer .top-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; }
+      .antviz-footer .groups { grid-template-columns: 1fr 1fr; gap: 32px; padding-top: 44px; }
       .antviz-footer .bottom { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 600px) {
-      .antviz-footer .groups { grid-template-columns: 1fr; gap: 24px; }
+      .antviz-footer .groups { grid-template-columns: 1fr; gap: 26px; }
     }
   `;
 
@@ -110,7 +121,6 @@
   const base     = depth > 0 ? '../' : '';
 
   const footerHTML = `
-    <div class="antviz-footer-wrap">
     <footer class="antviz-footer">
       <div class="inner">
         <div class="top-grid">
@@ -146,11 +156,14 @@
               <li><a href="https://blog.antviz.ru/updates">Что нового</a></li>
               <li><a href="https://blog.antviz.ru/domain/vse-o-domene-instruktsiya">Статьи</a></li>
             </ul>
-            <div class="cloudflare-block" style="margin-top:32px">
-              <a href="https://www.cloudflare.com/" target="_blank" rel="noopener" aria-label="Cloudflare">
-                <img src="https://logo-teka.com/wp-content/uploads/2026/04/cloudflare-vertical-logo.png" alt="Cloudflare" style="height:24px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.3"/>
+            <div class="cf-block">
+              <a href="https://www.cloudflare.com/" target="_blank" rel="noopener" aria-label="Cloudflare" class="cf-icon">
+                <svg viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
               </a>
-              <span class="cloudflare-label">Под защитой</span>
+              <div class="cf-text">
+                <span class="cf-name">Cloudflare</span>
+                <span class="cf-label">Под защитой</span>
+              </div>
             </div>
           </div>
           <div>
@@ -183,7 +196,6 @@
         </div>
       </div>
     </footer>
-    </div>
   `;
 
   function initFooter() {
