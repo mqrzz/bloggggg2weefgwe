@@ -147,8 +147,10 @@
     }
   `;
 
-  // Ссылки в центре навбара — пока пусто, темы не придуманы
+  // Ссылки в центре навбара
   const LINKS = [
+    { href: 'https://blog.antviz.ru/news', label: 'Новости', key: 'news' },
+    { href: 'https://blog.antviz.ru/updates', label: 'Что нового', key: 'updates' },
     { href: 'https://antviz.ru', label: 'Antviz.ru', key: 'main' },
   ];
 
