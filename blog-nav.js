@@ -143,7 +143,6 @@
       .an-cta { display: none; }
       .an-burger { display: flex; }
       .an-mobile-sheet { display: flex; top: calc(14px + 58px + 8px); }
-      .an-logo-blog { display: none; }
     }
   `;
 
