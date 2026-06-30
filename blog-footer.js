@@ -158,7 +158,7 @@
             </ul>
             <div class="cf-block">
               <a href="https://www.cloudflare.com/" target="_blank" rel="noopener" aria-label="Cloudflare" class="cf-icon">
-                <svg viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                <img src="https://logo-teka.com/wp-content/uploads/2026/04/cloudflare-vertical-logo.png" alt="Cloudflare" style="width:28px;height:28px;object-fit:contain;display:block"/>
               </a>
               <div class="cf-text">
                 <span class="cf-name">Cloudflare</span>
