@@ -60,7 +60,7 @@
       flex-shrink: 0;
     }
     .antviz-footer .cf-logo-mask {
-      display: block; width: 28px; height: 28px;
+      display: block; width: 56px; height: 32px;
       background-color: #f38020;
       -webkit-mask-image: url('https://logo-teka.com/wp-content/uploads/2026/04/cloudflare-vertical-logo.png');
       mask-image: url('https://logo-teka.com/wp-content/uploads/2026/04/cloudflare-vertical-logo.png');
@@ -77,8 +77,8 @@
       gap: 40px; padding-top: 64px; padding-bottom: 52px;
     }
     .antviz-footer .group-title {
-      display: block; color: rgba(255,255,255,.25);
-      font-size: 14px; letter-spacing: .05em; text-transform: uppercase;
+      display: block; color: rgba(255,255,255,.28);
+      font-size: 17px; letter-spacing: .05em; text-transform: uppercase;
       font-weight: 500; margin-bottom: 20px;
     }
     .antviz-footer .group-items { list-style: none; margin: 0; padding: 0; font-size: 17px; line-height: 1.6; }
