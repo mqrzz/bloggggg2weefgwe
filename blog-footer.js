@@ -59,7 +59,15 @@
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .antviz-footer .cf-icon svg { width: 26px; height: 26px; stroke: #f38020; stroke-width: 2.2; fill: none; }
+    .antviz-footer .cf-logo-mask {
+      display: block; width: 28px; height: 28px;
+      background-color: #f38020;
+      -webkit-mask-image: url('https://logo-teka.com/wp-content/uploads/2026/04/cloudflare-vertical-logo.png');
+      mask-image: url('https://logo-teka.com/wp-content/uploads/2026/04/cloudflare-vertical-logo.png');
+      -webkit-mask-size: contain; mask-size: contain;
+      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+      -webkit-mask-position: center; mask-position: center;
+    }
     .antviz-footer .cf-text { display: flex; flex-direction: column; gap: 2px; }
     .antviz-footer .cf-name { font-size: 15px; font-weight: 500; color: #f38020; letter-spacing: -.01em; }
     .antviz-footer .cf-label { font-size: 13px; color: rgba(255,255,255,.28); font-weight: 300; }
@@ -158,7 +166,7 @@
             </ul>
             <div class="cf-block">
               <a href="https://www.cloudflare.com/" target="_blank" rel="noopener" aria-label="Cloudflare" class="cf-icon">
-                <img src="https://logo-teka.com/wp-content/uploads/2026/04/cloudflare-vertical-logo.png" alt="Cloudflare" style="width:28px;height:28px;object-fit:contain;display:block"/>
+                <span class="cf-logo-mask"></span>
               </a>
               <div class="cf-text">
                 <span class="cf-name">Cloudflare</span>
