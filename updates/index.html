@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://blog.antviz.ru/updates" />
   <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
@@ -16,6 +16,7 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
 :root{
   --green:#1ede7b;--green-h:#1ac16b;--green-d:#149955;
   --green-light:#d2f8e5;--green-lighter:#e8fcf2;
+  --blue:#5468d4;--blue-light:#eef1fd;
   --bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;
   --text:#191b1e;--muted:#707a8a;
   --border:#dfe3e8;--border2:#cbcdd6;
@@ -26,44 +27,87 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
 .container{max-width:1328px;margin:0 auto;padding:0 20px;width:100%}
 @media(min-width:1024px){.container{padding:0 64px}}
 @media(min-width:1280px){.container{padding:0 96px}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px}
 
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+
 /* HERO */
 .hero-wrap{padding:var(--sp-l) 0 0;background:var(--bg)}
-.hero-block{background:var(--dark);border-radius:64px;padding:72px 80px;position:relative;overflow:hidden}
-@media(max-width:860px){.hero-block{padding:48px 32px;border-radius:32px}}
-.hero-eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:20px}
-.hero-eyebrow svg{width:14px;height:14px}
-.hero-block h1{font-size:clamp(40px,6vw,72px);font-weight:500;letter-spacing:-.04em;line-height:1.02;color:#fff}
-.hero-block p{font-size:clamp(15px,1.4vw,18px);color:rgba(255,255,255,.45);font-weight:300;line-height:1.5;max-width:520px;margin-top:20px}
+.hero-block{background:var(--dark);border-radius:64px;padding:88px 80px;position:relative;overflow:hidden}
+@media(max-width:860px){.hero-block{padding:56px 28px;border-radius:32px}}
 
-/* TIMELINE — центрированная колонка, шире на десктопе */
+.hero-glow{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-glow span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55}
+.hero-glow span.g1{width:420px;height:420px;background:radial-gradient(circle,var(--green) 0%,transparent 70%);top:-160px;right:-80px;animation:drift1 16s ease-in-out infinite}
+.hero-glow span.g2{width:340px;height:340px;background:radial-gradient(circle,var(--blue) 0%,transparent 70%);bottom:-140px;left:-60px;opacity:.35;animation:drift2 20s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.12)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-20px) scale(1.08)}}
+
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(ellipse at top right,#000 0%,transparent 65%);pointer-events:none}
+
+.hero-content{position:relative;z-index:2}
+.hero-eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:24px}
+.hero-eyebrow svg{width:14px;height:14px}
+.hero-block h1{font-size:clamp(40px,6vw,76px);font-weight:600;letter-spacing:-.04em;line-height:1.0;color:#fff}
+.hero-block h1 .accent{background:linear-gradient(100deg,var(--green) 10%,#8ff5c4 55%,var(--green) 90%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.hero-block p{font-size:clamp(15px,1.4vw,18px);color:rgba(255,255,255,.5);font-weight:300;line-height:1.55;max-width:540px;margin-top:22px}
+
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);font-size:13px;font-weight:500;padding:9px 16px;border-radius:100px;backdrop-filter:blur(6px)}
+.hero-badge.live{color:#fff;border-color:rgba(30,222,123,.4);background:rgba(30,222,123,.1)}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;position:relative}
+.pulse-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--green);animation:pulseRing 1.8s ease-out infinite}
+@keyframes pulseRing{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.8);opacity:0}}
+
+/* TIMELINE */
 .tl-wrap{padding:var(--sp-l) 0}
 .tl-inner{max-width:760px;margin:0 auto}
+.tl-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.tl-note{font-size:13.5px;color:var(--muted);font-weight:300;display:flex;align-items:center;gap:7px}
+.tl-note svg{width:14px;height:14px;stroke:var(--muted);flex-shrink:0}
+
 .tl{position:relative;margin-top:48px}
-.tl::before{content:'';position:absolute;left:25px;top:8px;bottom:8px;width:2px;background:var(--border)}
+.tl-track{position:absolute;left:25px;top:8px;bottom:8px;width:2px;background:var(--border);border-radius:2px;overflow:hidden}
+.tl-track-fill{position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(180deg,var(--green) 0%,var(--green-d) 100%);border-radius:2px;transition:height .15s linear}
+
 .tl-item{position:relative;padding-left:76px;margin-bottom:48px}
 .tl-item:last-child{margin-bottom:0}
 .tl-dot{
   position:absolute;left:0;top:0;width:52px;height:52px;border-radius:16px;
   background:var(--green-lighter);border:1px solid var(--green-light);
   display:flex;align-items:center;justify-content:center;z-index:1;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
 }
 .tl-dot svg{width:22px;height:22px;stroke:var(--green-d)}
-.tl-item.major .tl-dot{background:var(--dark);border-color:var(--dark)}
+.tl-item.major .tl-dot{background:var(--dark);border-color:var(--dark);box-shadow:0 0 0 6px var(--green-lighter),0 8px 20px -6px rgba(20,153,85,.5)}
 .tl-item.major .tl-dot svg{stroke:var(--green)}
-.tl-card{background:var(--bg3);border:1px solid var(--border);border-radius:28px;padding:28px 32px}
-@media(max-width:560px){.tl-card{padding:22px 20px}}
-.tl-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-.tl-version{font-size:21px;font-weight:500;letter-spacing:-.02em;color:var(--text)}
+.tl-item.major .tl-dot::after{content:'';position:absolute;inset:-6px;border-radius:22px;border:1.5px solid var(--green);opacity:0;animation:dotPulse 2.2s ease-out infinite}
+@keyframes dotPulse{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+.tl-item:hover .tl-dot{transform:scale(1.08) rotate(-4deg)}
+
+.tl-card{background:var(--bg3);border:1px solid var(--border);border-radius:28px;padding:30px 32px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,border-color .35s ease}
+.tl-item.major .tl-card{background:linear-gradient(180deg,#fff 0%,var(--bg3) 100%);border-color:var(--green-light)}
+.tl-item:hover .tl-card{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(20,30,40,.18);border-color:var(--border2)}
+.tl-item.major:hover .tl-card{border-color:var(--green-h);box-shadow:0 24px 48px -20px rgba(20,153,85,.28)}
+@media(max-width:560px){.tl-card{padding:24px 20px}}
+
+.tl-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.tl-version{font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--text)}
 .tl-date{font-size:14px;color:var(--muted);font-weight:300}
-.tl-badge{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--green-d);background:var(--green-light);padding:3px 10px;border-radius:7px}
-.tl-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-.tl-list li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--muted);font-weight:300;line-height:1.55}
+.tl-badge{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--green-d);background:var(--green-light);padding:4px 11px;border-radius:7px}
+.tl-badge.fresh{color:#fff;background:linear-gradient(100deg,var(--green-d),var(--green-h));position:relative;padding-left:20px}
+.tl-badge.fresh::before{content:'';position:absolute;left:9px;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:#fff}
+
+.tl-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.tl-list li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--muted);font-weight:300;line-height:1.6}
+.tl-list b{color:var(--text);font-weight:500}
 .tl-list .kind{
-  flex-shrink:0;width:24px;height:24px;border-radius:8px;margin-top:0;
+  flex-shrink:0;width:24px;height:24px;border-radius:8px;margin-top:1px;
   display:flex;align-items:center;justify-content:center;
 }
 .tl-list .kind svg{width:13px;height:13px}
@@ -71,15 +115,19 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
 .kind.add svg{stroke:var(--green-d)}
 .kind.fix{background:#fdeeee}
 .kind.fix svg{stroke:#c84b4b}
-.kind.change{background:#eef1fd}
-.kind.change svg{stroke:#5468d4}
+.kind.change{background:var(--blue-light)}
+.kind.change svg{stroke:var(--blue)}
+
+.tl-end{margin-top:44px;text-align:center;padding:28px 20px;border:1px dashed var(--border2);border-radius:24px}
+.tl-end p{font-size:14px;color:var(--muted);font-weight:300;line-height:1.6}
+.tl-end b{color:var(--text);font-weight:500}
 
 /* COOKIE */
 .cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;font-family:var(--font)}
 .cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
 .cookie-text{font-size:14px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
 .cookie-text a{color:var(--green-d);text-decoration:none}
-.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer}
+.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;transition:background .2s}
 .cookie-btn:hover{background:var(--dark2)}
   </style>
 </head>
@@ -104,14 +152,21 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
 <section class="tl-wrap">
   <div class="container">
     <div class="tl-inner">
-      <p class="eyebrow reveal">Версии</p>
+      <div class="tl-top">
+        <p class="eyebrow reveal" style="margin-bottom:0">Версии</p>
+      </div>
+      <p class="tl-note reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        На этой странице отображаются только 3 самых свежих обновления
+      </p>
 
-      <div class="tl">
+      <div class="tl" id="tl">
+        <div class="tl-track"><div class="tl-track-fill" id="tlFill"></div></div>
 
         <!--
-          ШАБЛОН ЗАПИСИ — копируй .tl-item для каждой новой версии.
+          ШАБЛОН ЗАПИСИ — копируй .tl-item для каждой новой версии, показываем только 3 последние.
           Классы иконок в .tl-list: kind add / kind fix / kind change
-          Крупный релиз (редизайн, новый раздел) — добавь класс major к .tl-item
+          Крупный релиз (редизайн, новый раздел) — добавь класс major к .tl-item и бейдж tl-badge fresh
         -->
 
         <div class="tl-item major reveal">
@@ -120,13 +175,32 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
           </div>
           <div class="tl-card">
             <div class="tl-head">
+              <span class="tl-version">v1.2.0</span>
+              <span class="tl-date">11 июля 2026</span>
+              <span class="tl-badge fresh">Свежее</span>
+            </div>
+            <ul class="tl-list">
+              <li><span class="kind add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span><span><b>Страница регистрации и входа полностью переделана.</b> Обновлён визуальный стиль, доработано расположение полей и подсказок, а также добавлена новая секция с преимуществами сервиса — теперь новым пользователям проще понять, что их ждёт внутри ещё до создания аккаунта.</span></li>
+              <li><span class="kind fix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span><span><b>Исправлены баги на всех страницах сайта.</b> Устранён ряд мелких визуальных и логических неточностей — от личного кабинета и настроек до оформления заказа, интерфейс стал стабильнее и приятнее в работе.</span></li>
+              <li><span class="kind change"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m7.5 4.27 9 5.15"/></svg></span><span><b>Скорректирована страница заказов.</b> Уточнено отображение статусов и деталей заказа, чтобы информация была понятнее с первого взгляда.</span></li>
+              <li><span class="kind fix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span><span><b>Устранена долгая загрузка главной страницы профиля.</b> Переработан процесс подгрузки данных — страница профиля теперь открывается заметно быстрее, особенно при большом количестве заказов и активности на аккаунте.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>
+          </div>
+          <div class="tl-card">
+            <div class="tl-head">
               <span class="tl-version">v1.1.3</span>
               <span class="tl-date">29 июня 2026</span>
               <span class="tl-badge">Новое</span>
             </div>
             <ul class="tl-list">
-              <li><span class="kind add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>Запущен блог: статьи, новости и эта страница с историей обновлений</li>
-              <li><span class="kind add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>Добавлена Cloudflare Turnstile CAPTCHA на странице авторизации и оформления заказа</li>
+              <li><span class="kind add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span><span><b>Запущен блог Antviz.</b> Здесь будут появляться статьи, новости команды и эта страница с историей обновлений — теперь все изменения продукта собраны в одном месте.</span></li>
+              <li><span class="kind add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span><span><b>Добавлена защита от ботов.</b> На страницах авторизации и оформления заказа подключена Cloudflare Turnstile CAPTCHA для дополнительной безопасности аккаунтов.</span></li>
             </ul>
           </div>
         </div>
@@ -141,28 +215,18 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
               <span class="tl-date">25 июня 2026</span>
             </div>
             <ul class="tl-list">
-              <li><span class="kind fix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span>Исправлена ошибка с «осиротевшими» заказами при отмене оплаты</li>
-              <li><span class="kind change"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m7.5 4.27 9 5.15"/></svg></span>Переработана логика создания заказа — он создается только после подтверждения оплаты</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="tl-item reveal">
-          <div class="tl-dot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-          </div>
-          <div class="tl-card">
-            <div class="tl-head">
-              <span class="tl-version">v1.1.0</span>
-              <span class="tl-date">20 июня 2026</span>
-            </div>
-            <ul class="tl-list">
-              <li><span class="kind add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>Режим обслуживания сайта (maintenance mode) с понятным экраном для посетителей</li>
+              <li><span class="kind fix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span><span><b>Исправлена ошибка с «осиротевшими» заказами.</b> Устранена ситуация, при которой заказ мог остаться в системе даже после отмены оплаты.</span></li>
+              <li><span class="kind change"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m7.5 4.27 9 5.15"/></svg></span><span><b>Переработана логика создания заказа.</b> Теперь заказ создаётся в системе только после подтверждения оплаты, что делает процесс надёжнее.</span></li>
             </ul>
           </div>
         </div>
 
       </div>
+
+      <div class="tl-end reveal">
+        <p>Это <b>3 последних обновления</b>. Мы продолжаем регулярно улучшать Antviz — заходите на эту страницу, чтобы быть в курсе новых релизов.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -174,9 +238,32 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
 
 <script>
 const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%6)*70+'ms';obs.observe(el)});
+
 (function(){if(localStorage.getItem('cookie_consent')!=='true')setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),800);})();
 window.acceptCookies=function(){localStorage.setItem('cookie_consent','true');const b=document.getElementById('cookieBanner');b.style.opacity='0';b.style.transform='translateX(-50%) translateY(120px)';setTimeout(()=>b.remove(),400);};
+
+/* Заполнение линии таймлайна по мере прокрутки */
+(function(){
+  const tl=document.getElementById('tl');
+  const fill=document.getElementById('tlFill');
+  if(!tl||!fill)return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking=false;
+  function update(){
+    const rect=tl.getBoundingClientRect();
+    const vh=window.innerHeight;
+    const start=vh*0.85;
+    const total=rect.height+vh*0.85-vh*0.35;
+    let progress=(start-rect.top)/total;
+    progress=Math.max(0,Math.min(1,progress));
+    fill.style.height=(progress*100)+'%';
+    ticking=false;
+  }
+  function onScroll(){if(!ticking){requestAnimationFrame(update);ticking=true}}
+  if(reduced){fill.style.height='100%'}
+  else{window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);update()}
+})();
 </script>
 <script src="https://blog.antviz.ru/blog-footer.js" data-page="updates"></script>
 </body>
