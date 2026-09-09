@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Миграция сайта без потери SEO — гайд | Блог Antviz</title>
+  <meta name="description" content="Редиректы 301, перенос позиций и что проверить перед сменой домена или хостинга, чтобы не потерять трафик из поиска." />
+  <link rel="canonical" href="https://blog.antviz.ru/articles/migraciya-sajta-bez-poteri-seo" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Миграция сайта без потери SEO — Блог Antviz" />
+  <meta property="og:description" content="Редиректы 301, перенос позиций и что проверить перед сменой домена или хостинга, чтобы не потерять трафик из поиска." />
+  <meta property="og:url" content="https://blog.antviz.ru/articles/migraciya-sajta-bez-poteri-seo" />
+  <meta property="og:image" content="https://blog.antviz.ru/img/og/migration.png" />
+  <meta property="og:site_name" content="Блог Antviz" />
+  <meta property="article:published_time" content="2026-09-05T12:00:00+03:00" />
+  <meta property="article:section" content="SEO" />
+  <meta property="article:author" content="Antviz" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.antviz.ru/img/og/migration.png" />
+  <meta name="twitter:title" content="Миграция сайта без потери SEO — Блог Antviz" />
+  <meta name="twitter:description" content="Редиректы 301, перенос позиций и чек-лист перед сменой домена или хостинга." />
+  <link rel="alternate" type="application/rss+xml" title="Блог Antviz" href="https://blog.antviz.ru/feed.xml" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
+  <link rel="manifest" href="https://blog.antviz.ru/manifest.json" />
+  <link rel="apple-touch-icon" href="https://antviz.ru/img/favicon.png" />
+  <meta name="theme-color" content="#121212" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Миграция сайта без потери SEO",
+    "description": "Редиректы 301, перенос позиций и что проверить перед сменой домена или хостинга, чтобы не потерять трафик из поиска.",
+    "datePublished": "2026-10-03",
+    "url": "https://blog.antviz.ru/articles/migraciya-sajta-bez-poteri-seo",
+    "author": { "@type": "Organization", "name": "Antviz", "url": "https://antviz.ru" },
+    "publisher": { "@type": "Organization", "name": "Antviz", "url": "https://antviz.ru" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://blog.antviz.ru/articles/migraciya-sajta-bez-poteri-seo" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Блог", "item": "https://blog.antviz.ru/" },
+      { "@type": "ListItem", "position": 2, "name": "Статьи", "item": "https://blog.antviz.ru/articles" },
+      { "@type": "ListItem", "position": 3, "name": "Миграция сайта без потери SEO", "item": "https://blog.antviz.ru/articles/migraciya-sajta-bez-poteri-seo" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Сколько времени занимает восстановление позиций после переезда?", "acceptedAnswer": { "@type": "Answer", "text": "При аккуратной миграции с редиректами 301 — от нескольких дней до месяца. Без редиректов позиции могут не восстановиться вообще, так как поисковик посчитает старые страницы удалёнными." } },
+      { "@type": "Question", "name": "Обязательно ли делать редирект на каждую страницу отдельно?", "acceptedAnswer": { "@type": "Answer", "text": "Да, если структура URL совпадает 1 к 1 — можно одним правилом. Если структура изменилась, нужна таблица соответствия старых и новых адресов." } },
+      { "@type": "Question", "name": "Что делать, если старый домен уже недоступен?", "acceptedAnswer": { "@type": "Answer", "text": "Постарайтесь сохранить хотя бы возможность настроить DNS/редирект на старом домене ещё несколько месяцев — резкое отключение без редиректов теряет весь накопленный SEO-вес." } }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-serif;font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+:root{--bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;--border:#dfe3e8;--border2:#cbcdd6;--dark:#191b1e;--dark2:#2b2f33;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-h:#1ac16b;--green-lighter:#e8fcf2;--muted:#707a8a;--sh2:0 8px 20px rgba(0,51,153,.08), 0 4px 8px rgba(0,51,153,.08);--sp-l:100px;--sp-m:60px;--text:#191b1e;}
+.container{max-width:1328px;margin:0 auto;padding:0 20px;width:100%}
+@media(min-width:1024px){.container{padding:0 64px}}
+@media(min-width:1280px){.container{padding:0 96px}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-weight:500;text-decoration:none;cursor:pointer;border:none;border-radius:12px;padding:17px 32px;font-size:16px;letter-spacing:-0.01em;transition:background .1s,transform .12s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-dark{background:var(--dark);color:#fff}.btn-dark:hover{background:var(--dark2)}
+.btn-green{background:var(--green);color:var(--dark)}.btn-green:hover{background:var(--green-h)}
+.btn-inv{background:transparent;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7)}.btn-inv:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-lg{padding:20px 48px;font-size:18px;border-radius:12px}
+.hero-wrap{padding:var(--sp-l) 0 0;background:var(--bg)}
+.hero-block{background:var(--dark);border-radius:64px;padding:80px 100px;text-align:center;position:relative;overflow:hidden}
+@media(max-width:860px){.hero-block{padding:48px 32px;border-radius:32px}}
+.hero-eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:24px}
+.hero-block h1{font-size:clamp(40px,6.4vw,76px);font-weight:500;letter-spacing:-.04em;line-height:1.03;color:#fff;margin-bottom:24px}
+.hero-block h1 em{font-style:normal;color:var(--green)}
+.hero-block p{font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.45);font-weight:300;line-height:1.5;max-width:560px;margin:0 auto 40px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.pub-date{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.4);margin-bottom:18px}
+.pub-date svg{width:13px;height:13px;stroke:rgba(255,255,255,.4);stroke-width:2;fill:none}
+.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);font-weight:300;padding-top:24px}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .15s}
+.breadcrumb a:hover{color:var(--text)}
+.breadcrumb .bc-sep{color:var(--border2)}
+.breadcrumb .bc-cur{color:var(--text);font-weight:400}
+.tldr-wrap{padding:36px 0 0;background:var(--bg)}
+.tldr-card{max-width:900px;margin:0 auto;background:var(--bg3);border:1.5px solid var(--border);border-radius:28px;padding:30px 34px}
+.tldr-label{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--green-d);text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+.tldr-label svg{width:15px;height:15px;stroke:var(--green-d);stroke-width:2;fill:none}
+.tldr-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0}
+.tldr-card li{font-size:15.5px;color:var(--text);font-weight:300;line-height:1.55;display:flex;gap:11px;align-items:flex-start}
+.tldr-card li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);margin-top:8px;flex-shrink:0}
+.toc-wrap{padding:var(--sp-m) 0;background:var(--bg2)}
+.toc-inner{max-width:960px;margin:0 auto}
+.toc-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:24px}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;list-style:none}
+@media(max-width:600px){.toc-grid{grid-template-columns:1fr}}
+.toc-grid li{border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.toc-grid li:nth-child(even){border-right:none}
+@media(max-width:600px){.toc-grid li{border-right:none}}
+.toc-grid a{display:flex;align-items:center;gap:12px;padding:18px 0;font-size:16px;font-weight:300;color:var(--text);text-decoration:none;transition:color .15s}
+.toc-grid a:hover{color:var(--green)}
+.toc-grid a.toc-active{color:var(--green-d);font-weight:500}
+.toc-n{font-size:12px;font-weight:500;color:var(--border2);min-width:24px}
+.section-wrap{padding:var(--sp-l) 0}
+.sec-eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:16px}
+.sec-h2{font-size:clamp(32px,4.6vw,56px);font-weight:500;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px}
+.sec-sub{font-size:18px;color:var(--muted);font-weight:300;line-height:1.5;margin-bottom:40px;max-width:640px}
+.sec-body{max-width:760px}
+.sec-body p{font-size:17px;line-height:1.7;color:var(--muted);font-weight:300;margin-bottom:20px}
+.sec-body p strong{color:var(--text);font-weight:500}
+.sec-body ul{padding-left:0;list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
+.sec-body li{font-size:17px;color:var(--muted);font-weight:300;line-height:1.65;display:flex;gap:12px;align-items:flex-start}
+.sec-body li::before{content:'—';color:var(--green);flex-shrink:0;font-weight:500}
+.table-wrap{overflow-x:auto;margin:32px 0}
+table{width:100%;border-collapse:collapse;font-size:16px;background:var(--bg3);border-radius:24px;overflow:hidden;border:1px solid var(--border)}
+th{background:var(--dark);color:#fff;font-weight:500;padding:16px 24px;text-align:left;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{padding:14px 24px;border-bottom:1px solid var(--border);color:var(--text);font-size:16px;font-weight:300}
+tr:last-child td{border-bottom:none}
+.hl{background:var(--green-lighter);border-left:4px solid var(--green);padding:20px 28px;border-radius:16px;margin:24px 0}
+.hl p{font-size:16px;color:var(--text);font-weight:300;line-height:1.6;margin:0}
+.hl p strong{color:var(--text);font-weight:500}
+.steps{display:flex;flex-direction:column;gap:0;margin:32px 0}
+.step{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.step:last-child{border-bottom:none}
+.step-n{width:48px;height:48px;border-radius:50%;background:var(--dark);color:#fff;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-.02em}
+.step-body strong{font-size:17px;font-weight:500;color:var(--text);display:block;margin-bottom:4px}
+.step-body span{font-size:15px;color:var(--muted);font-weight:300;line-height:1.6}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+@media(max-width:720px){.check-grid{grid-template-columns:1fr}}
+.check-card{background:var(--bg3);border:1.5px solid var(--border);border-radius:24px;padding:24px 26px;display:flex;gap:14px;align-items:flex-start}
+.check-card .ico{width:36px;height:36px;border-radius:11px;background:var(--green-lighter);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.check-card .ico svg{width:18px;height:18px;stroke:var(--green-d);stroke-width:2;fill:none}
+.check-card strong{font-size:16px;font-weight:500;color:var(--text);display:block;margin-bottom:4px}
+.check-card span{font-size:14px;color:var(--muted);font-weight:300;line-height:1.55}
+.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.rel-grid{grid-template-columns:1fr}}
+.rel-card{display:flex;gap:16px;align-items:flex-start;background:var(--bg3);border:1.5px solid var(--border);border-radius:24px;padding:24px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.rel-card:hover{transform:translateY(-2px);box-shadow:var(--sh2);border-color:var(--border2)}
+.rel-ico{width:40px;height:40px;border-radius:12px;background:var(--green-lighter);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rel-ico svg{width:19px;height:19px;stroke:var(--green-d)}
+.rel-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green-d);background:var(--green-lighter);padding:3px 8px;border-radius:7px}
+.rel-card h4{font-size:17px;font-weight:500;letter-spacing:-.015em;margin:8px 0 6px;color:var(--text)}
+.rel-card p{font-size:14px;color:var(--muted);font-weight:300;line-height:1.5;margin:0}
+.faq-s{border-bottom:1px solid var(--border);cursor:pointer}
+.faq-s:first-child{border-top:1px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;font-size:18px;font-weight:500;letter-spacing:-.02em;user-select:none;color:var(--text)}
+.faq-ico{width:28px;height:28px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .25s}
+.faq-s.open .faq-ico{background:var(--dark);transform:rotate(45deg)}
+.faq-ico svg{width:12px;height:12px;stroke:var(--text);stroke-width:2;fill:none}
+.faq-s.open .faq-ico svg{stroke:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,margin .3s}
+.faq-s.open .faq-a{max-height:400px;margin-bottom:24px}
+.faq-a p{font-size:16px;color:var(--muted);font-weight:300;line-height:1.7}
+.cta-wrap{padding:var(--sp-m) 0 var(--sp-l);background:var(--bg)}
+.cta-block{background:var(--bg2);border-radius:64px;padding:80px 100px;text-align:center;border:1px solid var(--border)}
+@media(max-width:860px){.cta-block{padding:48px 28px;border-radius:32px}}
+.cta-block h2{font-size:clamp(32px,5.4vw,64px);font-weight:500;letter-spacing:-.04em;margin-bottom:16px;line-height:1.04}
+.cta-block p{font-size:18px;color:var(--muted);font-weight:300;margin-bottom:40px;line-height:1.5}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.read-progress{position:fixed;top:0;left:0;height:3px;background:var(--green);width:0%;z-index:9999;transition:width .08s linear}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--dark);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:400}
+.back-to-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.back-to-top svg{width:20px;height:20px;stroke:#fff;stroke-width:2;fill:none}
+.share-bar{display:flex;gap:10px;flex-wrap:wrap;padding:20px 0 0}
+.share-btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:14px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);border-radius:999px;padding:9px 16px;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s}
+.share-btn:hover{background:#eceef1;border-color:var(--border2)}
+.share-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}
+.skip-link{position:fixed;top:-60px;left:16px;z-index:99999;background:#121212;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;transition:top .2s}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--green-d,#149955);outline-offset:2px}
+.cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--bg3);border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+.cookie-text{font-size:15px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
+.cookie-text a{color:var(--green-d);text-decoration:none}
+.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer}
+@media(max-width:720px){.cookie-banner{bottom:80px;flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.hero-block h1{font-size:clamp(32px,9vw,44px)}.section-wrap{padding:60px 0}}
+  </style>
+</head>
+<body>
+<div class="read-progress" id="readProgress"></div>
+<a href="#main" class="skip-link">Перейти к содержанию</a>
+
+<script src="https://blog.antviz.ru/blog-nav.js" data-page="articles"></script>
+
+<div class="container">
+  <nav class="breadcrumb reveal" aria-label="Хлебные крошки">
+    <a href="../">Блог</a><span class="bc-sep">/</span>
+    <a href="../articles">Статьи</a><span class="bc-sep">/</span>
+    <span class="bc-cur">Миграция сайта без потери SEO</span>
+  </nav>
+</div>
+<div class="container">
+  <div class="share-bar reveal">
+    <button class="share-btn" id="shareCopy"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопировать ссылку</button>
+    <a class="share-btn" href="https://t.me/share/url?url=https%3A%2F%2Fblog.antviz.ru%2Farticles%2Fmigraciya-sajta-bez-poteri-seo&text=%D0%9C%D0%B8%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20%D0%B1%D0%B5%D0%B7%20%D0%BF%D0%BE%D1%82%D0%B5%D1%80%D0%B8%20SEO" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Поделиться в Telegram</a>
+  </div>
+</div>
+<section class="hero-wrap" id="main">
+  <div class="container">
+    <div class="hero-block reveal">
+      <div class="hero-eyebrow">Блог · SEO</div>
+      <div class="pub-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>3 октября 2026</div>
+      <h1>Миграция сайта<br/><em>без потери SEO</em></h1>
+      <p>Что проверить перед сменой домена или хостинга, чтобы не растерять позиции и трафик из поиска.</p>
+      <div class="hero-btns">
+        <a href="#ch2" class="btn btn-green btn-lg">Чек-лист миграции</a>
+        <a href="#ch3" class="btn btn-inv btn-lg">Редиректы 301</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tldr-wrap">
+  <div class="container">
+    <div class="tldr-card reveal">
+      <div class="tldr-label"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2l1.7 4.6 4.6 1.7-4.6 1.7L12 15.8l-1.7-4.6-4.6-1.7 4.6-1.7L12 3.2z"/></svg>Коротко</div>
+      <ul>
+      <li>Без 301-редиректов со старых адресов на новые поисковик посчитает страницы удалёнными — позиции обнулятся</li>
+      <li>Если структура URL меняется — нужна полная таблица соответствия старых и новых адресов, а не общее правило</li>
+      <li>Sitemap.xml нужно обновить и переотправить в Google Search Console и Яндекс.Вебмастер сразу после переезда</li>
+      <li>Восстановление позиций после аккуратной миграции — от нескольких дней до месяца</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="toc-wrap">
+  <div class="container">
+    <div class="toc-inner reveal">
+      <div class="toc-label">Содержание</div>
+      <ul class="toc-grid">
+        <li><a href="#ch1"><span class="toc-n">01</span>Что рискует потеряться</a></li>
+        <li><a href="#ch2"><span class="toc-n">02</span>Чек-лист перед миграцией</a></li>
+        <li><a href="#ch3"><span class="toc-n">03</span>Редиректы 301</a></li>
+        <li><a href="#ch4"><span class="toc-n">04</span>После переезда</a></li>
+        <li><a href="#ch5"><span class="toc-n">05</span>Частые вопросы</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="ch1" class="section-wrap" style="background:var(--bg)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">01 / Риски</div>
+    <h2 class="sec-h2">Что рискует потеряться при миграции</h2>
+    <p class="sec-sub">Смена домена или хостинга — для поисковика это новый сайт, если не сказать иначе</p>
+    <div class="sec-body">
+      <p>Поисковики видят миграцию как появление совершенно нового набора страниц, если их явно не связать со старыми. Без правильной настройки редиректов накопленные годами позиции, ссылочная масса и доверие поисковика к домену просто исчезают.</p>
+      <p>Особенно рискованно менять сразу и домен, и хостинг, и структуру URL — сложно понять, что именно сломало позиции, если что-то пошло не так.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ch2" class="section-wrap" style="background:var(--bg2)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">02 / Чек-лист</div>
+    <h2 class="sec-h2">Чек-лист перед миграцией</h2>
+    <p class="sec-sub">Подготовка занимает больше времени, чем сам переезд</p>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><div class="step-body"><strong>Выгрузите список всех текущих проиндексированных URL</strong><span>Через Google Search Console — отчёт по индексации покажет, что вообще нужно перенаправить</span></div></div>
+      <div class="step"><div class="step-n">02</div><div class="step-body"><strong>Составьте таблицу соответствия старых и новых адресов</strong><span>Каждый старый URL должен вести на конкретный новый — не просто на главную</span></div></div>
+      <div class="step"><div class="step-n">03</div><div class="step-body"><strong>Сохраните мета-теги и структуру заголовков</strong><span>Title, description и H1 должны остаться семантически теми же на новых страницах</span></div></div>
+      <div class="step"><div class="step-n">04</div><div class="step-body"><strong>Выберите низкую по трафику дату переезда</strong><span>Не запускайте миграцию перед пиковым сезоном продаж — если что-то пойдёт не так, времени на исправление будет меньше</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="ch3" class="section-wrap" style="background:var(--bg)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">03 / Редиректы</div>
+    <h2 class="sec-h2">Редиректы 301 — обязательный элемент</h2>
+    <p class="sec-sub">Не 302, а именно 301</p>
+    <div class="sec-body">
+      <p>Редирект 301 означает «страница переехала навсегда» — поисковик передаёт накопленный вес новой странице. Редирект 302 («временно») этого не делает — используйте только 301 для миграции.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Код</th><th>Значение</th><th>Передаёт SEO-вес?</th></tr></thead>
+        <tbody>
+          <tr><td><strong>301</strong></td><td>Перемещено навсегда</td><td>Да</td></tr>
+          <tr><td><strong>302</strong></td><td>Временное перемещение</td><td>Нет</td></tr>
+          <tr><td><strong>404</strong></td><td>Страница не найдена</td><td>Нет — вес теряется</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="ch4" class="section-wrap" style="background:var(--bg2)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">04 / После переезда</div>
+    <h2 class="sec-h2">Что сделать сразу после переезда</h2>
+    <p class="sec-sub">Первые 48 часов особенно важны</p>
+    <div class="sec-body">
+      <ul>
+        <li>Обновите и переотправьте sitemap.xml в Google Search Console и Яндекс.Вебмастер</li>
+        <li>Через инструмент «Смена адреса» в Search Console явно укажите новый домен, если он изменился</li>
+        <li>Проверьте несколько ключевых URL вручную — открываются ли они, ведут ли редиректы туда, куда нужно</li>
+        <li>Мониторьте позиции и трафик ежедневно первые две недели — так проще поймать проблему рано</li>
+      </ul>
+    </div>
+    <div class="hl"><p><strong>Важно:</strong> не удаляйте старый домен сразу — держите его с настроенными редиректами хотя бы несколько месяцев, пока поисковик полностью не переиндексирует новый.</p></div>
+  </div>
+</section>
+
+<section id="ch5" class="section-wrap" style="background:var(--bg)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">05 / FAQ</div>
+    <h2 class="sec-h2">Частые вопросы</h2>
+    <p class="sec-sub">Короткие ответы на главное</p>
+    <div style="max-width:800px">
+      <div class="faq-s"><div class="faq-q">Сколько времени занимает восстановление позиций после переезда?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><p>При аккуратной миграции с редиректами 301 — от нескольких дней до месяца. Без редиректов позиции могут не восстановиться вообще, так как поисковик посчитает старые страницы удалёнными.</p></div></div>
+      <div class="faq-s"><div class="faq-q">Обязательно ли делать редирект на каждую страницу отдельно?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><p>Да, если структура URL совпадает 1 к 1 — можно одним правилом. Если структура изменилась, нужна таблица соответствия старых и новых адресов.</p></div></div>
+      <div class="faq-s"><div class="faq-q">Что делать, если старый домен уже недоступен?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><p>Постарайтесь сохранить хотя бы возможность настроить DNS/редирект на старом домене ещё несколько месяцев — резкое отключение без редиректов теряет весь накопленный SEO-вес.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="related-wrap section-wrap" style="background:var(--bg2);padding-top:0">
+  <div class="container reveal">
+    <div class="sec-eyebrow">Читайте также</div>
+    <h2 class="sec-h2" style="font-size:clamp(26px,3.4vw,38px);margin-bottom:32px">Похожие статьи</h2>
+    <div class="rel-grid">
+      <a href="seo-dlya-staticheskih-saitov" class="rel-card">
+        <div class="rel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <div><span class="rel-tag">SEO</span><h4>SEO для статических сайтов</h4><p>Мета-теги, микроразметка, sitemap.xml и индексация в Google и Яндекс.</p></div>
+      </a>
+      <a href="hosting-github-pages-vs-vps" class="rel-card">
+        <div class="rel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg></div>
+        <div><span class="rel-tag">Хостинг</span><h4>GitHub Pages vs VPS</h4><p>Если миграция включает смену хостинга — с чего начать выбор.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-wrap">
+  <div class="container">
+    <div class="cta-block reveal">
+      <h2>Планируете переезд сайта?</h2>
+      <p>Проведём миграцию с сохранением позиций — редиректы, sitemap, мониторинг после переезда.</p>
+      <div class="cta-btns">
+        <a href="https://antviz.ru/order" class="btn btn-green btn-lg">Заказать сайт</a>
+        <a href="https://antviz.ru/profile/support" class="btn btn-dark btn-lg">Задать вопрос</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Наверх"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+
+<script src="https://blog.antviz.ru/blog-footer.js" data-page="articles"></script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">Мы используем файлы cookie. <a href="https://antviz.ru/privacy">Политика</a>.</div>
+  <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
+
+<script>
+const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('.faq-s').forEach(s=>{
+  s.addEventListener('click',()=>{
+    const was=s.classList.contains('open');
+    document.querySelectorAll('.faq-s').forEach(x=>x.classList.remove('open'));
+    if(!was)s.classList.add('open');
+  });
+});
+
+(function(){
+  const bar = document.getElementById('readProgress');
+  function upd(){
+    const h = document.documentElement;
+    const sc = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    if(bar) bar.style.width = (isFinite(sc)?sc:0) + '%';
+  }
+  document.addEventListener('scroll', upd, {passive:true});
+  upd();
+})();
+
+(function(){
+  const btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', () => { btn.classList.toggle('show', window.scrollY > 600); }, {passive:true});
+  btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+})();
+
+(function(){
+  const copyBtn = document.getElementById('shareCopy');
+  if(!copyBtn) return;
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const orig = copyBtn.innerHTML;
+      copyBtn.textContent = 'Скопировано!';
+      setTimeout(() => copyBtn.innerHTML = orig, 1800);
+    });
+  });
+})();
+
+(function(){
+  const links = document.querySelectorAll('.toc-grid a[href^="#"]');
+  if(!links.length) return;
+  const map = new Map();
+  links.forEach(a => {
+    const sec = document.getElementById(a.getAttribute('href').slice(1));
+    if(sec) map.set(sec, a);
+  });
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      const a = map.get(en.target);
+      if(!a || !en.isIntersecting) return;
+      links.forEach(l => l.classList.remove('toc-active'));
+      a.classList.add('toc-active');
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  map.forEach((a, sec) => spy.observe(sec));
+})();
+
+(function(){if(localStorage.getItem('cookie_consent')!=='true')setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),800);})();
+window.acceptCookies=function(){localStorage.setItem('cookie_consent','true');const b=document.getElementById('cookieBanner');b.style.opacity='0';b.style.transform='translateX(-50%) translateY(120px)';setTimeout(()=>b.remove(),400);};
+</script>
+</body>
+</html>

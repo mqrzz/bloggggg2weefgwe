@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Логи и мониторинг для небольшого сайта — гайд | Блог Antviz</title>
+  <meta name="description" content="Как узнать о падении сайта раньше, чем об этом напишет клиент — простой мониторинг без сложных платформ." />
+  <link rel="canonical" href="https://blog.antviz.ru/articles/logi-i-monitoring-dlya-nebolshogo-sajta" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Логи и мониторинг для небольшого сайта — Блог Antviz" />
+  <meta property="og:description" content="Как узнать о падении сайта раньше, чем об этом напишет клиент — простой мониторинг без сложных платформ." />
+  <meta property="og:url" content="https://blog.antviz.ru/articles/logi-i-monitoring-dlya-nebolshogo-sajta" />
+  <meta property="og:image" content="https://blog.antviz.ru/img/og/monitoring.png" />
+  <meta property="og:site_name" content="Блог Antviz" />
+  <meta property="article:published_time" content="2026-09-05T12:00:00+03:00" />
+  <meta property="article:section" content="Надёжность" />
+  <meta property="article:author" content="Antviz" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.antviz.ru/img/og/monitoring.png" />
+  <meta name="twitter:title" content="Логи и мониторинг для небольшого сайта — Блог Antviz" />
+  <meta name="twitter:description" content="Как узнать о падении сайта раньше, чем об этом напишет клиент — простой мониторинг без сложных платформ." />
+  <link rel="alternate" type="application/rss+xml" title="Блог Antviz" href="https://blog.antviz.ru/feed.xml" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
+  <link rel="manifest" href="https://blog.antviz.ru/manifest.json" />
+  <link rel="apple-touch-icon" href="https://antviz.ru/img/favicon.png" />
+  <meta name="theme-color" content="#121212" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Логи и мониторинг для небольшого сайта",
+    "description": "Как узнать о падении сайта раньше, чем об этом напишет клиент — простой мониторинг без сложных платформ.",
+    "datePublished": "2026-11-14",
+    "url": "https://blog.antviz.ru/articles/logi-i-monitoring-dlya-nebolshogo-sajta",
+    "author": { "@type": "Organization", "name": "Antviz", "url": "https://antviz.ru" },
+    "publisher": { "@type": "Organization", "name": "Antviz", "url": "https://antviz.ru" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://blog.antviz.ru/articles/logi-i-monitoring-dlya-nebolshogo-sajta" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Блог", "item": "https://blog.antviz.ru/" },
+      { "@type": "ListItem", "position": 2, "name": "Статьи", "item": "https://blog.antviz.ru/articles" },
+      { "@type": "ListItem", "position": 3, "name": "Логи и мониторинг для небольшого сайта", "item": "https://blog.antviz.ru/articles/logi-i-monitoring-dlya-nebolshogo-sajta" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Нужен ли мониторинг статическому сайту на GitHub Pages?", "acceptedAnswer": { "@type": "Answer", "text": "Сам GitHub Pages падает крайне редко, но полезно мониторить домен и SSL-сертификат — истёкший сертификат положит сайт для всех посетителей." } },
+      { "@type": "Question", "name": "Сколько стоит базовый мониторинг доступности?", "acceptedAnswer": { "@type": "Answer", "text": "Большинство сервисов вроде UptimeRobot имеют бесплатный тариф, которого достаточно для одного-двух сайтов с проверкой раз в 5 минут." } },
+      { "@type": "Question", "name": "Что делать с логами на VPS, если их становится слишком много?", "acceptedAnswer": { "@type": "Answer", "text": "Настройте ротацию логов (logrotate) — старые записи автоматически архивируются и удаляются, не занимая место на диске бесконечно." } }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-serif;font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+:root{--bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;--border:#dfe3e8;--border2:#cbcdd6;--dark:#191b1e;--dark2:#2b2f33;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-h:#1ac16b;--green-lighter:#e8fcf2;--muted:#707a8a;--sh2:0 8px 20px rgba(0,51,153,.08), 0 4px 8px rgba(0,51,153,.08);--sp-l:100px;--sp-m:60px;--text:#191b1e;}
+.container{max-width:1328px;margin:0 auto;padding:0 20px;width:100%}
+@media(min-width:1024px){.container{padding:0 64px}}
+@media(min-width:1280px){.container{padding:0 96px}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-weight:500;text-decoration:none;cursor:pointer;border:none;border-radius:12px;padding:17px 32px;font-size:16px;letter-spacing:-0.01em;transition:background .1s,transform .12s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-dark{background:var(--dark);color:#fff}.btn-dark:hover{background:var(--dark2)}
+.btn-green{background:var(--green);color:var(--dark)}.btn-green:hover{background:var(--green-h)}
+.btn-inv{background:transparent;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7)}.btn-inv:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-lg{padding:20px 48px;font-size:18px;border-radius:12px}
+.hero-wrap{padding:var(--sp-l) 0 0;background:var(--bg)}
+.hero-block{background:var(--dark);border-radius:64px;padding:80px 100px;text-align:center;position:relative;overflow:hidden}
+@media(max-width:860px){.hero-block{padding:48px 32px;border-radius:32px}}
+.hero-eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:24px}
+.hero-block h1{font-size:clamp(40px,6.4vw,76px);font-weight:500;letter-spacing:-.04em;line-height:1.03;color:#fff;margin-bottom:24px}
+.hero-block h1 em{font-style:normal;color:var(--green)}
+.hero-block p{font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.45);font-weight:300;line-height:1.5;max-width:560px;margin:0 auto 40px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.pub-date{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.4);margin-bottom:18px}
+.pub-date svg{width:13px;height:13px;stroke:rgba(255,255,255,.4);stroke-width:2;fill:none}
+.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);font-weight:300;padding-top:24px}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .15s}
+.breadcrumb a:hover{color:var(--text)}
+.breadcrumb .bc-sep{color:var(--border2)}
+.breadcrumb .bc-cur{color:var(--text);font-weight:400}
+.tldr-wrap{padding:36px 0 0;background:var(--bg)}
+.tldr-card{max-width:900px;margin:0 auto;background:var(--bg3);border:1.5px solid var(--border);border-radius:28px;padding:30px 34px}
+.tldr-label{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--green-d);text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+.tldr-label svg{width:15px;height:15px;stroke:var(--green-d);stroke-width:2;fill:none}
+.tldr-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0}
+.tldr-card li{font-size:15.5px;color:var(--text);font-weight:300;line-height:1.55;display:flex;gap:11px;align-items:flex-start}
+.tldr-card li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);margin-top:8px;flex-shrink:0}
+.toc-wrap{padding:var(--sp-m) 0;background:var(--bg2)}
+.toc-inner{max-width:960px;margin:0 auto}
+.toc-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:24px}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;list-style:none}
+@media(max-width:600px){.toc-grid{grid-template-columns:1fr}}
+.toc-grid li{border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.toc-grid li:nth-child(even){border-right:none}
+@media(max-width:600px){.toc-grid li{border-right:none}}
+.toc-grid a{display:flex;align-items:center;gap:12px;padding:18px 0;font-size:16px;font-weight:300;color:var(--text);text-decoration:none;transition:color .15s}
+.toc-grid a:hover{color:var(--green)}
+.toc-grid a.toc-active{color:var(--green-d);font-weight:500}
+.toc-n{font-size:12px;font-weight:500;color:var(--border2);min-width:24px}
+.section-wrap{padding:var(--sp-l) 0}
+.sec-eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:16px}
+.sec-h2{font-size:clamp(32px,4.6vw,56px);font-weight:500;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px}
+.sec-sub{font-size:18px;color:var(--muted);font-weight:300;line-height:1.5;margin-bottom:40px;max-width:640px}
+.sec-body{max-width:760px}
+.sec-body p{font-size:17px;line-height:1.7;color:var(--muted);font-weight:300;margin-bottom:20px}
+.sec-body p strong{color:var(--text);font-weight:500}
+.sec-body ul{padding-left:0;list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
+.sec-body li{font-size:17px;color:var(--muted);font-weight:300;line-height:1.65;display:flex;gap:12px;align-items:flex-start}
+.sec-body li::before{content:'—';color:var(--green);flex-shrink:0;font-weight:500}
+.table-wrap{overflow-x:auto;margin:32px 0}
+table{width:100%;border-collapse:collapse;font-size:16px;background:var(--bg3);border-radius:24px;overflow:hidden;border:1px solid var(--border)}
+th{background:var(--dark);color:#fff;font-weight:500;padding:16px 24px;text-align:left;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{padding:14px 24px;border-bottom:1px solid var(--border);color:var(--text);font-size:16px;font-weight:300}
+tr:last-child td{border-bottom:none}
+.hl{background:var(--green-lighter);border-left:4px solid var(--green);padding:20px 28px;border-radius:16px;margin:24px 0}
+.hl p{font-size:16px;color:var(--text);font-weight:300;line-height:1.6;margin:0}
+.hl p strong{color:var(--text);font-weight:500}
+.code-block{background:var(--dark);border-radius:20px;padding:24px 28px;margin:24px 0;overflow-x:auto;position:relative}
+.code-block pre{margin:0;font-family:'SF Mono',Consolas,Menlo,monospace;font-size:14px;line-height:1.7;color:#d2f8e5;white-space:pre}
+.code-block .cm{color:rgba(255,255,255,.32)}
+.code-copy-btn{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:none;border-radius:8px;padding:6px 12px;font-family:var(--font);font-size:12.5px;font-weight:500;cursor:pointer;transition:background .15s,color .15s}
+.code-copy-btn:hover{background:rgba(255,255,255,.16);color:#fff}
+.steps{display:flex;flex-direction:column;gap:0;margin:32px 0}
+.step{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.step:last-child{border-bottom:none}
+.step-n{width:48px;height:48px;border-radius:50%;background:var(--dark);color:#fff;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:-.02em}
+.step-body strong{font-size:17px;font-weight:500;color:var(--text);display:block;margin-bottom:4px}
+.step-body span{font-size:15px;color:var(--muted);font-weight:300;line-height:1.6}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+@media(max-width:720px){.check-grid{grid-template-columns:1fr}}
+.check-card{background:var(--bg3);border:1.5px solid var(--border);border-radius:24px;padding:24px 26px;display:flex;gap:14px;align-items:flex-start}
+.check-card .ico{width:36px;height:36px;border-radius:11px;background:var(--green-lighter);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.check-card .ico svg{width:18px;height:18px;stroke:var(--green-d);stroke-width:2;fill:none}
+.check-card strong{font-size:16px;font-weight:500;color:var(--text);display:block;margin-bottom:4px}
+.check-card span{font-size:14px;color:var(--muted);font-weight:300;line-height:1.55}
+.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.rel-grid{grid-template-columns:1fr}}
+.rel-card{display:flex;gap:16px;align-items:flex-start;background:var(--bg3);border:1.5px solid var(--border);border-radius:24px;padding:24px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.rel-card:hover{transform:translateY(-2px);box-shadow:var(--sh2);border-color:var(--border2)}
+.rel-ico{width:40px;height:40px;border-radius:12px;background:var(--green-lighter);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rel-ico svg{width:19px;height:19px;stroke:var(--green-d)}
+.rel-tag{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--green-d);background:var(--green-lighter);padding:3px 8px;border-radius:7px}
+.rel-card h4{font-size:17px;font-weight:500;letter-spacing:-.015em;margin:8px 0 6px;color:var(--text)}
+.rel-card p{font-size:14px;color:var(--muted);font-weight:300;line-height:1.5;margin:0}
+.faq-s{border-bottom:1px solid var(--border);cursor:pointer}
+.faq-s:first-child{border-top:1px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;font-size:18px;font-weight:500;letter-spacing:-.02em;user-select:none;color:var(--text)}
+.faq-ico{width:28px;height:28px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .25s}
+.faq-s.open .faq-ico{background:var(--dark);transform:rotate(45deg)}
+.faq-ico svg{width:12px;height:12px;stroke:var(--text);stroke-width:2;fill:none}
+.faq-s.open .faq-ico svg{stroke:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,margin .3s}
+.faq-s.open .faq-a{max-height:400px;margin-bottom:24px}
+.faq-a p{font-size:16px;color:var(--muted);font-weight:300;line-height:1.7}
+.cta-wrap{padding:var(--sp-m) 0 var(--sp-l);background:var(--bg)}
+.cta-block{background:var(--bg2);border-radius:64px;padding:80px 100px;text-align:center;border:1px solid var(--border)}
+@media(max-width:860px){.cta-block{padding:48px 28px;border-radius:32px}}
+.cta-block h2{font-size:clamp(32px,5.4vw,64px);font-weight:500;letter-spacing:-.04em;margin-bottom:16px;line-height:1.04}
+.cta-block p{font-size:18px;color:var(--muted);font-weight:300;margin-bottom:40px;line-height:1.5}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.read-progress{position:fixed;top:0;left:0;height:3px;background:var(--green);width:0%;z-index:9999;transition:width .08s linear}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--dark);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:400}
+.back-to-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.back-to-top svg{width:20px;height:20px;stroke:#fff;stroke-width:2;fill:none}
+.share-bar{display:flex;gap:10px;flex-wrap:wrap;padding:20px 0 0}
+.share-btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font);font-size:14px;font-weight:500;color:var(--text);background:var(--bg2);border:1px solid var(--border);border-radius:999px;padding:9px 16px;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s}
+.share-btn:hover{background:#eceef1;border-color:var(--border2)}
+.share-btn svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}
+.skip-link{position:fixed;top:-60px;left:16px;z-index:99999;background:#121212;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;transition:top .2s}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--green-d,#149955);outline-offset:2px}
+.cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--bg3);border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+.cookie-text{font-size:15px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
+.cookie-text a{color:var(--green-d);text-decoration:none}
+.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer}
+@media(max-width:720px){.cookie-banner{bottom:80px;flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.hero-block h1{font-size:clamp(32px,9vw,44px)}.section-wrap{padding:60px 0}}
+  </style>
+</head>
+<body>
+<div class="read-progress" id="readProgress"></div>
+<a href="#main" class="skip-link">Перейти к содержанию</a>
+
+<script src="https://blog.antviz.ru/blog-nav.js" data-page="articles"></script>
+
+<div class="container">
+  <nav class="breadcrumb reveal" aria-label="Хлебные крошки">
+    <a href="../">Блог</a><span class="bc-sep">/</span>
+    <a href="../articles">Статьи</a><span class="bc-sep">/</span>
+    <span class="bc-cur">Логи и мониторинг для небольшого сайта</span>
+  </nav>
+</div>
+<div class="container">
+  <div class="share-bar reveal">
+    <button class="share-btn" id="shareCopy"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопировать ссылку</button>
+    <a class="share-btn" href="https://t.me/share/url?url=https%3A%2F%2Fblog.antviz.ru%2Farticles%2Flogi-i-monitoring-dlya-nebolshogo-sajta&text=%D0%9B%D0%BE%D0%B3%D0%B8%20%D0%B8%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B5%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B3%D0%BE%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Поделиться в Telegram</a>
+  </div>
+</div>
+<section class="hero-wrap" id="main">
+  <div class="container">
+    <div class="hero-block reveal">
+      <div class="hero-eyebrow">Блог · Надёжность</div>
+      <div class="pub-date"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>14 ноября 2026</div>
+      <h1>Логи и мониторинг<br/><em>для небольшого сайта</em></h1>
+      <p>Как узнать о падении сайта раньше, чем об этом напишет клиент — без сложных платформ.</p>
+      <div class="hero-btns">
+        <a href="#ch2" class="btn btn-green btn-lg">Мониторинг доступности</a>
+        <a href="#ch3" class="btn btn-inv btn-lg">Логи на VPS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tldr-wrap">
+  <div class="container">
+    <div class="tldr-card reveal">
+      <div class="tldr-label"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2l1.7 4.6 4.6 1.7-4.6 1.7L12 15.8l-1.7-4.6-4.6-1.7 4.6-1.7L12 3.2z"/></svg>Коротко</div>
+      <ul>
+      <li>Мониторинг доступности проверяет, отвечает ли сайт, каждые несколько минут — и уведомляет при сбое</li>
+      <li>Для статики на GitHub Pages важнее всего следить за доменом и сроком действия SSL-сертификата</li>
+      <li>На своём VPS логи backend показывают ошибки раньше, чем о них напишут пользователи</li>
+      <li>Бесплатных тарифов UptimeRobot или аналогов достаточно для сайта такого масштаба</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="toc-wrap">
+  <div class="container">
+    <div class="toc-inner reveal">
+      <div class="toc-label">Содержание</div>
+      <ul class="toc-grid">
+        <li><a href="#ch1"><span class="toc-n">01</span>Зачем это небольшому сайту</a></li>
+        <li><a href="#ch2"><span class="toc-n">02</span>Мониторинг доступности</a></li>
+        <li><a href="#ch3"><span class="toc-n">03</span>Логи на своём сервере</a></li>
+        <li><a href="#ch4"><span class="toc-n">04</span>Куда присылать уведомления</a></li>
+        <li><a href="#ch5"><span class="toc-n">05</span>Частые вопросы</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="ch1" class="section-wrap" style="background:var(--bg)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">01 / Зачем</div>
+    <h2 class="sec-h2">Зачем это небольшому сайту</h2>
+    <p class="sec-sub">Первым о проблеме должен узнавать не клиент</p>
+    <div class="sec-body">
+      <p>Худший сценарий — когда о недоступности сайта или сломанной форме заявки узнают из звонка расстроенного клиента. Простой мониторинг стоит внедрить, даже если сайт маленький: разница между «сайт упал ночью, а мы узнали утром сами» и «сайт упал ночью, клиент написал в директ через два дня» — это доверие к бизнесу.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ch2" class="section-wrap" style="background:var(--bg2)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">02 / Доступность</div>
+    <h2 class="sec-h2">Мониторинг доступности</h2>
+    <p class="sec-sub">Проверка раз в несколько минут — и всё</p>
+    <div class="sec-body">
+      <p>Сервисы вроде UptimeRobot или Better Uptime раз в 1-5 минут отправляют запрос на ваш сайт и присылают уведомление, если он не ответил. Настройка занимает пять минут: указать URL, интервал проверки и куда слать уведомление.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Что проверять</th><th>Зачем</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Главная страница</strong></td><td>Базовая проверка, что сайт вообще отвечает</td></tr>
+          <tr><td><strong>SSL-сертификат</strong></td><td>Уведомление за несколько дней до истечения срока действия</td></tr>
+          <tr><td><strong>Ключевой API-эндпоинт</strong></td><td>Например, форма заявки — чтобы знать, если именно она сломалась</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="ch3" class="section-wrap" style="background:var(--bg)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">03 / Логи</div>
+    <h2 class="sec-h2">Логи на своём сервере</h2>
+    <p class="sec-sub">Если есть backend на VPS</p>
+    <div class="sec-body">
+      <p>Для статики на GitHub Pages логов backend просто нет — а вот если есть свой сервер с API, важно логировать ошибки и необычные запросы. Простейший вариант — писать структурированные логи в файл и настроить <code>logrotate</code>, чтобы они не разрастались бесконечно.</p>
+      <p>Для более серьёзного уровня — сервисы вроде Sentry бесплатно ловят ошибки в реальном времени и присылают уведомление с полным контекстом (стек вызовов, данные запроса), а не просто строку в файле.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ch4" class="section-wrap" style="background:var(--bg2)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">04 / Уведомления</div>
+    <h2 class="sec-h2">Куда присылать уведомления</h2>
+    <p class="sec-sub">Туда, где вы точно увидите вовремя</p>
+    <div class="sec-body">
+      <ul>
+        <li><strong>Telegram-бот</strong> — самый быстрый способ увидеть уведомление, большинство сервисов мониторинга это поддерживают</li>
+        <li><strong>Email</strong> — надёжно, но можно пропустить среди других писем</li>
+        <li><strong>SMS/звонок</strong> — для критичных сбоев, если есть такой тариф у сервиса мониторинга</li>
+      </ul>
+    </div>
+    <div class="hl"><p><strong>Совет:</strong> настройте хотя бы два канала уведомлений — если один канал сам временно недоступен (например, упал Telegram), второй подстрахует.</p></div>
+  </div>
+</section>
+
+<section id="ch5" class="section-wrap" style="background:var(--bg)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">05 / FAQ</div>
+    <h2 class="sec-h2">Частые вопросы</h2>
+    <p class="sec-sub">Короткие ответы на главное</p>
+    <div style="max-width:800px">
+      <div class="faq-s"><div class="faq-q">Нужен ли мониторинг статическому сайту на GitHub Pages?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><p>Сам GitHub Pages падает крайне редко, но полезно мониторить домен и SSL-сертификат — истёкший сертификат положит сайт для всех посетителей.</p></div></div>
+      <div class="faq-s"><div class="faq-q">Сколько стоит базовый мониторинг доступности?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><p>Большинство сервисов вроде UptimeRobot имеют бесплатный тариф, которого достаточно для одного-двух сайтов с проверкой раз в 5 минут.</p></div></div>
+      <div class="faq-s"><div class="faq-q">Что делать с логами на VPS, если их становится слишком много?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="faq-a"><p>Настройте ротацию логов (logrotate) — старые записи автоматически архивируются и удаляются, не занимая место на диске бесконечно.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="related-wrap section-wrap" style="background:var(--bg2);padding-top:0">
+  <div class="container reveal">
+    <div class="sec-eyebrow">Читайте также</div>
+    <h2 class="sec-h2" style="font-size:clamp(26px,3.4vw,38px);margin-bottom:32px">Похожие статьи</h2>
+    <div class="rel-grid">
+      <a href="rezervnye-kopii-saita" class="rel-card">
+        <div class="rel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6z"/></svg></div>
+        <div><span class="rel-tag">Надёжность</span><h4>Резервные копии сайта</h4><p>Мониторинг и бэкапы — две стороны одной задачи: не терять данные и время простоя.</p></div>
+      </a>
+      <a href="https-i-sertifikaty-prosto" class="rel-card">
+        <div class="rel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div><span class="rel-tag">Безопасность</span><h4>HTTPS и сертификаты просто</h4><p>Истёкший сертификат — одна из главных причин мониторить домен.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-wrap">
+  <div class="container">
+    <div class="cta-block reveal">
+      <h2>Хотите узнавать о проблемах раньше клиентов?</h2>
+      <p>Настроим мониторинг доступности, SSL и логи для вашего сайта.</p>
+      <div class="cta-btns">
+        <a href="https://antviz.ru/order" class="btn btn-green btn-lg">Заказать сайт</a>
+        <a href="https://antviz.ru/profile/support" class="btn btn-dark btn-lg">Задать вопрос</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Наверх"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+
+<script src="https://blog.antviz.ru/blog-footer.js" data-page="articles"></script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">Мы используем файлы cookie. <a href="https://antviz.ru/privacy">Политика</a>.</div>
+  <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
+
+<script>
+const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function copyCode(btn){
+  const pre = btn.nextElementSibling;
+  if(!pre) return;
+  navigator.clipboard.writeText(pre.textContent).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Скопировано!';
+    setTimeout(() => { btn.textContent = orig; }, 1600);
+  });
+}
+
+document.querySelectorAll('.faq-s').forEach(s=>{
+  s.addEventListener('click',()=>{
+    const was=s.classList.contains('open');
+    document.querySelectorAll('.faq-s').forEach(x=>x.classList.remove('open'));
+    if(!was)s.classList.add('open');
+  });
+});
+
+(function(){
+  const bar = document.getElementById('readProgress');
+  function upd(){
+    const h = document.documentElement;
+    const sc = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    if(bar) bar.style.width = (isFinite(sc)?sc:0) + '%';
+  }
+  document.addEventListener('scroll', upd, {passive:true});
+  upd();
+})();
+
+(function(){
+  const btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', () => { btn.classList.toggle('show', window.scrollY > 600); }, {passive:true});
+  btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+})();
+
+(function(){
+  const copyBtn = document.getElementById('shareCopy');
+  if(!copyBtn) return;
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const orig = copyBtn.innerHTML;
+      copyBtn.textContent = 'Скопировано!';
+      setTimeout(() => copyBtn.innerHTML = orig, 1800);
+    });
+  });
+})();
+
+(function(){
+  const links = document.querySelectorAll('.toc-grid a[href^="#"]');
+  if(!links.length) return;
+  const map = new Map();
+  links.forEach(a => {
+    const sec = document.getElementById(a.getAttribute('href').slice(1));
+    if(sec) map.set(sec, a);
+  });
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      const a = map.get(en.target);
+      if(!a || !en.isIntersecting) return;
+      links.forEach(l => l.classList.remove('toc-active'));
+      a.classList.add('toc-active');
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  map.forEach((a, sec) => spy.observe(sec));
+})();
+
+(function(){if(localStorage.getItem('cookie_consent')!=='true')setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),800);})();
+window.acceptCookies=function(){localStorage.setItem('cookie_consent','true');const b=document.getElementById('cookieBanner');b.style.opacity='0';b.style.transform='translateX(-50%) translateY(120px)';setTimeout(()=>b.remove(),400);};
+</script>
+</body>
+</html>
