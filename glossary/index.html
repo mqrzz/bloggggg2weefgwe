@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Глоссарий терминов — Блог Antviz</title>
+  <meta name="description" content="Простые объяснения терминов: домен, DNS, CDN, TTL, SSL, HTTPS, хостинг, VPS, serverless, JSON-LD и другие — без воды." />
+  <link rel="canonical" href="https://blog.antviz.ru/glossary" />
+  <link rel="alternate" type="application/rss+xml" title="Блог Antviz" href="https://blog.antviz.ru/feed.xml" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
+  <link rel="manifest" href="https://blog.antviz.ru/manifest.json" />
+  <link rel="apple-touch-icon" href="https://antviz.ru/img/favicon.png" />
+  <meta name="theme-color" content="#121212" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Глоссарий терминов — Блог Antviz" />
+  <meta property="og:description" content="Простые объяснения терминов из мира сайтов, доменов и хостинга — без воды." />
+  <meta property="og:url" content="https://blog.antviz.ru/glossary" />
+  <meta property="og:image" content="https://blog.antviz.ru/img/og/glossary.png" />
+  <meta property="og:site_name" content="Блог Antviz" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-serif;font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+:root{--bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;--border:#dfe3e8;--border2:#cbcdd6;--dark:#191b1e;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-h:#1ac16b;--muted:#707a8a;--sp-l:100px;--text:#191b1e;}
+.container{max-width:1120px;margin:0 auto;padding:0 20px;width:100%}
+@media(min-width:1024px){.container{padding:0 40px}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green-d);margin-bottom:14px}
+.read-progress{position:fixed;top:0;left:0;height:3px;background:var(--green);width:0%;z-index:9999;transition:width .08s linear}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--dark);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:400}
+.back-to-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.back-to-top svg{width:20px;height:20px;stroke:#fff;stroke-width:2;fill:none}
+
+.hero-wrap{padding:var(--sp-l) 0 56px;background:var(--bg)}
+.hero-wrap h1{font-size:clamp(38px,6vw,68px);font-weight:500;letter-spacing:-.04em;line-height:1.05;margin-bottom:16px}
+.hero-wrap p{font-size:17px;color:var(--muted);font-weight:300;max-width:560px;line-height:1.55}
+
+.search-box{
+  display:flex;align-items:center;gap:12px;
+  background:var(--bg2);border:1.5px solid var(--border);border-radius:18px;
+  padding:16px 20px;margin-top:32px;max-width:420px;
+}
+.search-box:focus-within{border-color:var(--border2)}
+.search-box svg{width:18px;height:18px;stroke:var(--muted);stroke-width:2;fill:none;flex-shrink:0}
+.search-box input{border:none;background:transparent;outline:none;flex:1;font-family:var(--font);font-size:15px;font-weight:300;color:var(--text)}
+.search-box input::placeholder{color:var(--muted)}
+    .kbd-hint{font-size:12px;color:var(--muted);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:2px 7px;font-family:monospace;flex-shrink:0}
+
+.az-nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px}
+.az-nav a{width:32px;height:32px;border-radius:9px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:background .15s,color .15s}
+.az-nav a:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
+
+.terms-wrap{padding:20px 0 var(--sp-l)}
+.letter-group{padding:36px 0;border-bottom:1px solid var(--border)}
+.letter-group:first-child{padding-top:0}
+.letter-h{font-size:14px;font-weight:600;color:var(--green-d);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.term{padding:18px 0;border-top:1px solid var(--border)}
+.term:first-child{border-top:none}
+.term dt{font-size:19px;font-weight:500;letter-spacing:-.015em;color:var(--text);margin-bottom:6px}
+.term dd{font-size:15.5px;color:var(--muted);font-weight:300;line-height:1.6;max-width:680px}
+.term dd a{color:var(--green-d);text-decoration:none;font-weight:500}
+.term dd a:hover{text-decoration:underline}
+.term.hidden{display:none}
+#noResults{display:none;font-size:15px;color:var(--muted);font-weight:300;padding:24px 0}
+
+.cta-wrap{padding:0 0 var(--sp-l)}
+.cta-block{background:var(--bg2);border-radius:56px;padding:56px 64px;text-align:center;border:1px solid var(--border)}
+@media(max-width:760px){.cta-block{padding:40px 24px;border-radius:32px}}
+.cta-block h2{font-size:clamp(24px,3.6vw,38px);font-weight:500;letter-spacing:-.03em;margin-bottom:10px}
+.cta-block p{font-size:15.5px;color:var(--muted);font-weight:300;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-weight:500;text-decoration:none;cursor:pointer;border:none;border-radius:12px;padding:15px 28px;font-size:15px;transition:background .1s,transform .12s}
+.btn:hover{transform:translateY(-1px)}
+.btn-green{background:var(--green);color:var(--dark)}.btn-green:hover{background:var(--green-h)}
+
+.cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--bg3);border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+.cookie-text{font-size:14px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
+.cookie-text a{color:var(--green-d);text-decoration:none}
+.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer}
+@media(max-width:720px){.cookie-banner{bottom:80px;flex-direction:column;align-items:flex-start}}
+
+
+.skip-link{position:fixed;top:-60px;left:16px;z-index:99999;background:#121212;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;transition:top .2s}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--green-d,#149955);outline-offset:2px}
+  </style>
+</head>
+<body>
+<div class="read-progress" id="readProgress"></div>
+<a href="#main" class="skip-link">Перейти к содержанию</a>
+
+<script src="https://blog.antviz.ru/blog-nav.js" data-page="glossary"></script>
+
+<section class="hero-wrap" id="main">
+  <div class="container reveal">
+    <p class="eyebrow">Справка</p>
+    <h1>Глоссарий терминов</h1>
+    <p>Термины, на которые мы то и дело ссылаемся в статьях — простыми словами, без воды.</p>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="glossarySearch" placeholder="Найти термин — например, «CDN»" autocomplete="off">
+      <span class="kbd-hint">/</span>
+    </div>
+  </div>
+</section>
+
+<section class="terms-wrap">
+  <div class="container">
+    <p id="noResults">Ничего не нашлось. Попробуйте другой запрос.</p>
+    <div id="termsList">
+
+    <div class="letter-group">
+      <div class="letter-h">A–D</div>
+
+      <dl>
+        <div class="term"><dt>API</dt><dd>Application Programming Interface — способ, которым одна программа обращается к другой. Например, ваш сайт может через API получать курс валют или отправлять сообщение в Telegram-бота.</dd></div>
+        <div class="term"><dt>CDN</dt><dd>Content Delivery Network — сеть серверов по всему миру, которая раздаёт файлы сайта из точки, ближайшей к пользователю. Подробнее — в статье <a href="../articles/skorost-zagruzki-saita">о скорости загрузки</a>.</dd></div>
+        <div class="term"><dt>CMS</dt><dd>Content Management System — система управления контентом (например, WordPress). Позволяет редактировать сайт через админку без правки кода — ценой более тяжёлого и медленного сайта.</dd></div>
+        <div class="term"><dt>DNS</dt><dd>Domain Name System — «телефонная книга» интернета: превращает имя домена (antviz.ru) в IP-адрес сервера, на который нужно отправить запрос.</dd></div>
+        <div class="term"><dt>Домен</dt><dd>Человекочитаемое имя сайта (antviz.ru) вместо цифрового IP-адреса. Полностью разобрали в <a href="../domain/vse-o-domene-instruktsiya">гайде по доменам</a>.</dd></div>
+      </dl>
+    </div>
+
+    <div class="letter-group">
+      <div class="letter-h">H–J</div>
+      <dl>
+        <div class="term"><dt>Honeypot</dt><dd>Приём защиты формы от спам-ботов: скрытое CSS-полем поле, которое видят и заполняют только автоматические боты — а значит, заполненное поле выдаёт спам.</dd></div>
+        <div class="term"><dt>HTTPS</dt><dd>HTTP поверх шифрования TLS. Защищает данные между браузером и сервером от перехвата. Разобрали в статье <a href="../articles/https-i-sertifikaty-prosto">про HTTPS и сертификаты</a>.</dd></div>
+        <div class="term"><dt>JSON-LD</dt><dd>Формат микроразметки Schema.org — блок кода, который объясняет поисковику, что за контент на странице (статья, товар, организация). Разобрали в <a href="../articles/seo-dlya-staticheskih-saitov">статье про SEO</a>.</dd></div>
+      </dl>
+    </div>
+
+    <div class="letter-group">
+      <div class="letter-h">L–R</div>
+      <dl>
+        <div class="term"><dt>Let's Encrypt</dt><dd>Бесплатный центр сертификации, который выпускает SSL-сертификаты на 90 дней с возможностью автопродления. Стандарт для большинства современных сайтов.</dd></div>
+        <div class="term"><dt>Robots.txt</dt><dd>Текстовый файл в корне сайта, который говорит поисковым роботам, какие разделы можно индексировать, а какие — нет.</dd></div>
+      </dl>
+    </div>
+
+    <div class="letter-group">
+      <div class="letter-h">S</div>
+      <dl>
+        <div class="term"><dt>Serverless</dt><dd>Код, который выполняется в облаке только в момент вызова — без постоянно работающего сервера. Пример использования — в статье <a href="../articles/formy-bez-backenda">про формы без бэкенда</a>.</dd></div>
+        <div class="term"><dt>Sitemap.xml</dt><dd>Файл-список всех страниц сайта, который явно передаётся поисковику, чтобы он быстрее находил новый контент.</dd></div>
+        <div class="term"><dt>SSL / TLS</dt><dd>Протоколы шифрования соединения между браузером и сервером. SSL — устаревшее название, сейчас везде используется TLS, но термин «SSL-сертификат» прижился по привычке.</dd></div>
+        <div class="term"><dt>Static site / статический сайт</dt><dd>Сайт из готовых HTML/CSS/JS-файлов без сборки на сервере «на лету» — быстрее и проще в поддержке, чем сайт на CMS.</dd></div>
+      </dl>
+    </div>
+
+    <div class="letter-group">
+      <div class="letter-h">T</div>
+      <dl>
+        <div class="term"><dt>TTFB</dt><dd>Time To First Byte — время от запроса страницы до получения первого байта ответа от сервера. Один из ключевых показателей скорости.</dd></div>
+        <div class="term"><dt>TTL</dt><dd>Time To Live — время жизни записи в кэше или DNS, после которого данные считаются устаревшими и запрашиваются заново.</dd></div>
+      </dl>
+    </div>
+
+    <div class="letter-group">
+      <div class="letter-h">V–Я</div>
+      <dl>
+        <div class="term"><dt>VPS</dt><dd>Virtual Private Server — виртуальный сервер с полным доступом, на котором можно запускать любой backend. Сравнение с GitHub Pages — в <a href="../articles/hosting-github-pages-vs-vps">статье про хостинг</a>.</dd></div>
+        <div class="term"><dt>Вебвизор</dt><dd>Инструмент Yandex Metrika, который записывает реальные сессии посетителей — видно, где именно человек теряется на сайте.</dd></div>
+        <div class="term"><dt>Критический CSS</dt><dd>Стили только для первого экрана, вставленные напрямую в &lt;head&gt;, чтобы браузер не ждал загрузки всего CSS-файла перед отрисовкой.</dd></div>
+        <div class="term"><dt>Кэш</dt><dd>Временное хранилище данных, которое позволяет не запрашивать одно и то же заново — например, браузер кэширует картинки и шрифты сайта.</dd></div>
+        <div class="term"><dt>Микроразметка</dt><dd>Дополнительная разметка на странице, которая объясняет поисковику структуру и тип контента. Смотрите JSON-LD выше.</dd></div>
+      </dl>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-wrap">
+  <div class="container">
+    <div class="cta-block reveal">
+      <h2>Не нашли термин?</h2>
+      <p>Напишите в поддержку — добавим объяснение в глоссарий.</p>
+      <a href="https://antviz.ru/profile/support" class="btn btn-green">Написать в поддержку</a>
+    </div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Наверх"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+
+<script src="https://blog.antviz.ru/blog-footer.js" data-page="glossary"></script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">Мы используем файлы cookie. <a href="https://antviz.ru/privacy">Политика</a>.</div>
+  <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
+
+<script>
+const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+(function(){
+  const bar = document.getElementById('readProgress');
+  function upd(){
+    const h = document.documentElement;
+    const sc = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    if(bar) bar.style.width = (isFinite(sc)?sc:0) + '%';
+  }
+  document.addEventListener('scroll', upd, {passive:true});
+  upd();
+})();
+
+(function(){
+  const btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', () => { btn.classList.toggle('show', window.scrollY > 600); }, {passive:true});
+  btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+})();
+
+(function(){
+  const input = document.getElementById('glossarySearch');
+  const terms = Array.from(document.querySelectorAll('.term'));
+  const groups = Array.from(document.querySelectorAll('.letter-group'));
+  const noResults = document.getElementById('noResults');
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    let visible = 0;
+    terms.forEach(t => {
+      const match = !q || t.textContent.toLowerCase().includes(q);
+      t.classList.toggle('hidden', !match);
+      if (match) visible++;
+    });
+    groups.forEach(g => {
+      const anyVisible = Array.from(g.querySelectorAll('.term')).some(t => !t.classList.contains('hidden'));
+      g.style.display = anyVisible ? '' : 'none';
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement !== input && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      input.focus();
+    }
+  });
+})();
+
+(function(){if(localStorage.getItem('cookie_consent')!=='true')setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),800);})();
+window.acceptCookies=function(){localStorage.setItem('cookie_consent','true');const b=document.getElementById('cookieBanner');b.style.opacity='0';b.style.transform='translateX(-50%) translateY(120px)';setTimeout(()=>b.remove(),400);};
+</script>
+</body>
+</html>
