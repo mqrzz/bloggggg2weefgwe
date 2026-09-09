@@ -1,4 +1,4 @@
-Contact: mailto:support@antviz.ru
+Contact: mailto:support@antviz.ru 
 Contact: https://antviz.ru/profile/support
 Preferred-Languages: ru, en
 Canonical: https://blog.antviz.ru/.well-known/security.txt
