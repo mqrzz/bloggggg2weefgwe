@@ -13,18 +13,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-serif;font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
-:root{
-  --green:#1ede7b;--green-h:#1ac16b;--green-d:#149955;
-  --green-light:#d2f8e5;--green-lighter:#e8fcf2;
-  --bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;
-  --text:#191b1e;--muted:#707a8a;
-  --border:#dfe3e8;--border2:#cbcdd6;
-  --dark:#191b1e;--dark2:#2b2f33;
-  --sh1:0 4px 16px rgba(0,51,153,.04),0 2px 2px rgba(0,51,153,.08);
-  --sh2:0 8px 20px rgba(0,51,153,.08),0 4px 8px rgba(0,51,153,.08);
-  --font:'Geologica','Inter','Arial',sans-serif;
-  --sp-l:100px;--sp-m:60px;
-}
+:root{--bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;--border:#dfe3e8;--border2:#cbcdd6;--dark:#191b1e;--dark2:#2b2f33;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-h:#1ac16b;--green-lighter:#e8fcf2;--muted:#707a8a;--sh2:0 8px 20px rgba(0,51,153,.08), 0 4px 8px rgba(0,51,153,.08);--sp-l:100px;--text:#191b1e;}
 .container{max-width:1328px;margin:0 auto;padding:0 20px;width:100%}
 @media(min-width:1024px){.container{padding:0 64px}}
 @media(min-width:1280px){.container{padding:0 96px}}
@@ -139,26 +128,11 @@ body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-
       </a>
 
       <!--
-        Карточка одной новости — копируй блок ниже для каждой новой записи.
-        Файл на диске называется slug-novosti.html, но в href пиши БЕЗ .html —
-        GitHub Pages сам отдаёт чистый адрес /news/slug-novosti
+        Карточка одной новости — копируй блок выше (.news-card, не featured)
+        для каждой новой записи. Файл на диске называется slug-novosti.html,
+        но в href пиши БЕЗ .html — GitHub Pages сам отдаёт чистый адрес
+        /news/slug-novosti
       -->
-      <a href="example-news-2" class="news-card reveal">
-        <div class="ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 18h-5"/><path d="M18 14h-8"/>
-            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/>
-            <rect width="8" height="4" x="10" y="6" rx="1"/>
-          </svg>
-        </div>
-        <div class="meta">
-          <span class="tag">Сервис</span>
-          <span class="date">—</span>
-        </div>
-        <h3>Заголовок второй новости</h3>
-        <p>Краткое описание — пара предложений о том, что произошло.</p>
-        <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      </a>
 
     </div>
 
