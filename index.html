@@ -4,10 +4,35 @@
   <meta name="yandex-verification" content="4a92c5772cf23963" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Блог Antviz — скоро</title>
-  <meta name="description" content="Блог Antviz в разработке. Скоро здесь появятся статьи о веб-разработке, SEO и дизайне." />
-  <link rel="canonical" href="https://antviz.ru/blog" />
-  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <title>Блог Antviz — статьи о сайтах, доменах и хостинге</title>
+  <meta name="description" content="Блог Antviz: гайды по доменам, хостингу, SEO, скорости и вёрстке, новости сервиса и история обновлений." />
+  <link rel="canonical" href="https://blog.antviz.ru/" />
+  <link rel="alternate" type="application/rss+xml" title="Блог Antviz" href="https://blog.antviz.ru/feed.xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Блог Antviz — статьи о сайтах, доменах и хостинге" />
+  <meta property="og:description" content="Гайды по доменам, хостингу, SEO, скорости и вёрстке, новости сервиса и история обновлений." />
+  <meta property="og:url" content="https://blog.antviz.ru/" />
+  <meta property="og:image" content="https://blog.antviz.ru/img/og/home.png" />
+  <meta property="og:site_name" content="Блог Antviz" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.antviz.ru/img/og/home.png" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
+  <link rel="manifest" href="https://blog.antviz.ru/manifest.json" />
+  <link rel="apple-touch-icon" href="https://antviz.ru/img/favicon.png" />
+  <meta name="theme-color" content="#121212" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Блог Antviz",
+    "url": "https://blog.antviz.ru/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.antviz.ru/articles?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
   <style>
@@ -15,25 +40,7 @@
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body { background: var(--bg); color: var(--text); font-family: var(--font); font-weight: 300; line-height: 1.25; letter-spacing: -0.02em; -webkit-font-smoothing: antialiased; overflow-x: hidden; max-width: 100%; }
     :root {
-      --green: #1ede7b;
-      --green-h: #1ac16b;
-      --green-d: #149955;
-      --green-light: #d2f8e5;
-      --green-lighter: #e8fcf2;
-      --bg: #fff;
-      --bg2: #f2f4f7;
-      --bg3: #f9fafc;
-      --text: #191b1e;
-      --muted: #707a8a;
-      --border: #dfe3e8;
-      --border2: #cbcdd6;
-      --dark: #191b1e;
-      --dark2: #2b2f33;
-      --sh1: 0 4px 16px rgba(0,51,153,.04), 0 2px 2px rgba(0,51,153,.08);
-      --sh2: 0 8px 20px rgba(0,51,153,.08), 0 4px 8px rgba(0,51,153,.08);
-      --font: 'Geologica', 'Inter', 'Arial', sans-serif;
-      --sp-l: 100px;
-      --sp-m: 60px;
+      --amber-d:#a8690c;--amber-lighter:#fdf1de;--bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;--border:#dfe3e8;--border2:#cbcdd6;--dark:#191b1e;--dark2:#2b2f33;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-h:#1ac16b;--green-lighter:#e8fcf2;--muted:#707a8a;--sh2:0 8px 20px rgba(0,51,153,.08), 0 4px 8px rgba(0,51,153,.08);--sp-l:100px;--text:#191b1e;
     }
     .container { max-width: 1328px; margin: 0 auto; padding: 0 20px; width: 100%; }
     @media (min-width: 1024px) { .container { padding: 0 64px; } }
@@ -43,7 +50,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     .eyebrow { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 12px; }
-    .eyebrow.g { color: var(--green); }
+    .eyebrow.g { color: var(--green-d); }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px; font-family: var(--font); font-weight: 500;
@@ -63,96 +70,120 @@
 
     /* HERO */
     .hero-wrap { padding: var(--sp-l) 0 0; background: var(--bg); }
-    .hero-block {
-      background: var(--dark);
-      border-radius: 64px;
-      padding: 80px 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    @media (max-width: 860px) { .hero-block { padding: 48px 32px; border-radius: 32px; } }
+    .hero-block { background: var(--dark); border-radius: 64px; padding: 80px 100px 56px; text-align: center; position: relative; overflow: hidden; }
+    @media (max-width: 860px) { .hero-block { padding: 48px 32px 40px; border-radius: 32px; } }
     .hero-eyebrow { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; color: var(--green); margin-bottom: 24px; }
-    .hero-block h1 { font-size: clamp(44px, 7vw, 88px); font-weight: 500; letter-spacing: -.04em; line-height: 1.02; color: #fff; margin-bottom: 24px; }
+    .hero-block h1 { font-size: clamp(40px, 6.6vw, 84px); font-weight: 500; letter-spacing: -.04em; line-height: 1.03; color: #fff; margin-bottom: 24px; }
     .hero-block h1 em { font-style: normal; color: var(--green); }
-    .hero-block p { font-size: clamp(16px, 1.5vw, 20px); color: rgba(255,255,255,.45); font-weight: 300; line-height: 1.5; max-width: 600px; margin: 0 auto 40px; }
-    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-block > .container > p { font-size: clamp(16px, 1.5vw, 20px); color: rgba(255,255,255,.45); font-weight: 300; line-height: 1.5; max-width: 620px; margin: 0 auto 40px; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
 
-    /* ТАЙМЕР */
-    .timer-wrap { padding: var(--sp-l) 0 0; background: var(--bg); }
-    .timer-block {
-      background: var(--bg2);
-      border-radius: 64px;
-      padding: 56px 80px;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-    @media (max-width: 860px) { .timer-block { padding: 40px 32px; border-radius: 32px; } }
-    .timer-grid {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-    .timer-item {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 20px 28px;
-      min-width: 80px;
-      box-shadow: var(--sh1);
-    }
-    .timer-item .num {
-      font-size: 48px;
-      font-weight: 500;
-      letter-spacing: -.03em;
-      line-height: 1;
-      color: var(--dark);
-    }
-    .timer-item .label {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 300;
-      margin-top: 6px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-    @media (max-width: 480px) {
-      .timer-item { padding: 14px 18px; min-width: 60px; }
-      .timer-item .num { font-size: 32px; }
-    }
+    .hero-badges { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.08); padding-top: 36px; }
+    .hero-badge { display: flex; align-items: center; gap: 10px; padding: 0 28px; }
+    @media (max-width: 760px) { .hero-badge { padding: 8px 16px; } }
+    .hero-badge .ico { width: 34px; height: 34px; border-radius: 11px; background: rgba(30,222,123,.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hero-badge .ico svg { width: 17px; height: 17px; stroke: var(--green); stroke-width: 2; fill: none; }
+    .hero-badge span { font-size: 14px; color: rgba(255,255,255,.55); font-weight: 400; text-align: left; line-height: 1.3; }
 
-    /* ТЕМЫ СТАТЕЙ — в стиле type-card */
+    /* КАТЕГОРИИ */
+    .cat-wrap { padding: var(--sp-l) 0 0; background: var(--bg); }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .section-head h2 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 500; letter-spacing: -.03em; line-height: 1.06; }
+    .section-link { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 500; color: var(--text); text-decoration: none; padding-bottom: 6px; white-space: nowrap; }
+    .section-link svg { width: 14px; height: 14px; stroke: var(--text); stroke-width: 2; fill: none; transition: transform .15s; }
+    .section-link:hover svg { transform: translateX(3px); }
+
+    .cat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 40px; }
+    @media (max-width: 1023px) { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+    .cat-card { display: flex; flex-direction: column; gap: 14px; background: var(--bg3); border: 1.5px solid var(--border); border-radius: 26px; padding: 24px 20px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s, border-color .15s; }
+    .cat-card:hover { transform: translateY(-3px); box-shadow: var(--sh2); border-color: var(--border2); }
+    .cat-card .ico { width: 42px; height: 42px; border-radius: 13px; display: flex; align-items: center; justify-content: center; }
+    .cat-card .ico svg { width: 20px; height: 20px; stroke-width: 1.8; fill: none; }
+    .cat-card h3 { font-size: 15px; font-weight: 500; letter-spacing: -.01em; }
+    .cat-card span { font-size: 13px; color: var(--muted); font-weight: 300; }
+
+    /* СТАТЬИ / НОВОСТИ */
+    .news-wrap { padding: var(--sp-l) 0 0; background: var(--bg); }
+    .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+    @media (max-width: 760px) { .news-grid { grid-template-columns: 1fr; } }
+    .news-card {
+      display: flex; flex-direction: column; gap: 16px;
+      background: var(--bg3); border: 1.5px solid var(--border); border-radius: 40px;
+      padding: 36px 36px 32px; text-decoration: none; color: inherit;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+    }
+    .news-card:hover { transform: translateY(-3px); box-shadow: var(--sh2); border-color: var(--border2); }
+    .news-card .ico { width: 48px; height: 48px; border-radius: 16px; background: var(--green-lighter); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .news-card .ico svg { width: 22px; height: 22px; stroke: var(--green-d); stroke-width: 1.8; fill: none; }
+    .news-card .meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .news-card .date { font-size: 13px; color: var(--muted); font-weight: 300; letter-spacing: 0; }
+    .news-card .tag { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: var(--green-d); background: var(--green-lighter); padding: 4px 10px; border-radius: 8px; }
+    .news-card h3 { font-size: 22px; font-weight: 500; letter-spacing: -.02em; line-height: 1.22; margin-top: 2px; }
+    .news-card p { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.6; }
+    .news-card .cardfoot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; gap: 12px; }
+    .news-card .read { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--text); }
+    .news-card .read svg { width: 14px; height: 14px; stroke: var(--text); stroke-width: 2; fill: none; transition: transform .15s; }
+    .news-card:hover .read svg { transform: translateX(3px); }
+    .news-card .rtime { font-size: 13px; color: var(--muted); font-weight: 300; display: flex; align-items: center; gap: 5px; }
+    .news-card .rtime svg { width: 13px; height: 13px; stroke: var(--muted); stroke-width: 1.8; fill: none; }
+
+    .news-card.featured { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 40px; padding: 48px; background: var(--dark); border-color: var(--dark); }
+    @media (max-width: 760px) { .news-card.featured { flex-direction: column; padding: 32px 28px; } }
+    .news-card.featured .ico { width: 64px; height: 64px; border-radius: 20px; background: rgba(30,222,123,.14); }
+    .news-card.featured .ico svg { width: 28px; height: 28px; stroke: var(--green); }
+    .news-card.featured .text { flex: 1; }
+    .news-card.featured h3 { font-size: 32px; color: #fff; }
+    .news-card.featured .tag { background: rgba(30,222,123,.16); color: var(--green); }
+    .news-card.featured .date { color: rgba(255,255,255,.4); }
+    .news-card.featured p { color: rgba(255,255,255,.45); }
+    .news-card.featured .read { color: #fff; }
+    .news-card.featured .read svg { stroke: #fff; }
+    .news-card.featured .rtime { color: rgba(255,255,255,.35); }
+    .news-card.featured .rtime svg { stroke: rgba(255,255,255,.35); }
+    .news-card.featured:hover { border-color: var(--dark2); }
+
+    /* ПРЕВЬЮ "ЧТО НОВОГО" */
+    .update-preview {
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 32px;
+      padding: 28px 32px; margin-top: 16px; text-decoration: none; color: inherit;
+      transition: border-color .15s, background .15s;
+    }
+    .update-preview:hover { border-color: var(--border2); background: #eef1f4; }
+    .update-preview .v { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .update-preview .v-num { font-size: 26px; font-weight: 500; letter-spacing: -.02em; color: var(--dark); }
+    .update-preview .v-badge { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: var(--amber-d); background: var(--amber-lighter); padding: 3px 9px; border-radius: 7px; }
+    .update-preview .v-text { flex: 1; min-width: 200px; font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+    .update-preview .v-text b { color: var(--text); font-weight: 500; }
+    .update-preview .read { flex-shrink: 0; display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--text); }
+    .update-preview .read svg { width: 14px; height: 14px; stroke: var(--text); stroke-width: 2; fill: none; transition: transform .15s; }
+    .update-preview:hover .read svg { transform: translateX(3px); }
+
+    /* TELEGRAM CTA */
+    .tg-wrap { padding: var(--sp-l) 0; background: var(--bg2); }
+    .tg-block { display: flex; align-items: center; gap: 48px; background: var(--bg); border: 1px solid var(--border); border-radius: 56px; padding: 56px 72px; }
+    @media (max-width: 860px) { .tg-block { flex-direction: column; text-align: center; padding: 40px 28px; border-radius: 32px; gap: 28px; } }
+    .tg-ico { width: 88px; height: 88px; border-radius: 26px; background: #24A1DE; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .tg-ico svg { width: 44px; height: 44px; fill: #fff; }
+    .tg-text { flex: 1; }
+    .tg-text h2 { font-size: clamp(26px, 3.6vw, 38px); font-weight: 500; letter-spacing: -.03em; margin-bottom: 8px; }
+    .tg-text p { font-size: 16px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+    /* СКОРО В БЛОГЕ */
     .topics-wrap { padding: var(--sp-l) 0; background: var(--bg); }
-    .topics-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 48px;
-    }
-    @media (max-width: 720px) { .topics-grid { grid-template-columns: 1fr; } }
-    .topic-card {
-      background: var(--bg3);
-      border: 1.5px solid var(--border);
-      border-radius: 40px;
-      padding: 40px 36px;
-      transition: transform .15s, box-shadow .15s;
-    }
+    .topics-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 40px; }
+    @media (max-width: 860px) { .topics-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .topics-grid { grid-template-columns: 1fr; } }
+    .topic-card { background: var(--bg3); border: 1.5px solid var(--border); border-radius: 28px; padding: 28px 24px; transition: transform .15s, box-shadow .15s; }
     .topic-card:hover { transform: translateY(-2px); box-shadow: var(--sh2); }
-    .topic-card .topic-n { font-size: 12px; font-weight: 500; letter-spacing: .1em; color: var(--border2); text-transform: uppercase; margin-bottom: 12px; }
-    .topic-card h3 { font-size: 24px; font-weight: 500; letter-spacing: -.02em; margin-bottom: 6px; }
-    .topic-card p { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.6; }
+    .topic-card .topic-n { font-size: 12px; font-weight: 500; letter-spacing: .1em; color: var(--border2); text-transform: uppercase; margin-bottom: 10px; }
+    .topic-card h3 { font-size: 18px; font-weight: 500; letter-spacing: -.02em; margin-bottom: 6px; }
+    .topic-card p { font-size: 14px; color: var(--muted); font-weight: 300; line-height: 1.55; }
 
     /* ПОДДЕРЖКА */
-    .support-wrap { padding: var(--sp-m) 0 var(--sp-l); background: var(--bg2); }
-    .support-block {
-      background: var(--bg);
-      border-radius: 64px;
-      padding: 64px 80px;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
+    .support-wrap { padding: var(--sp-l) 0; background: var(--bg2); }
+    .support-block { background: var(--bg); border-radius: 64px; padding: 64px 80px; text-align: center; border: 1px solid var(--border); }
     @media (max-width: 860px) { .support-block { padding: 48px 32px; border-radius: 32px; } }
     .support-block h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 500; letter-spacing: -.03em; margin-bottom: 12px; line-height: 1.04; }
     .support-block p { font-size: 18px; color: var(--muted); font-weight: 300; margin-bottom: 32px; line-height: 1.5; }
@@ -171,79 +202,262 @@
     .cookie-text a { color: var(--green-d); text-decoration: none; }
     .cookie-btn { background: var(--dark); color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-family: var(--font); font-size: 14px; font-weight: 500; cursor: pointer; }
     .cookie-btn:hover { background: var(--dark2); }
+    @media (max-width: 720px) { .cookie-banner { bottom: 80px; flex-direction: column; align-items: flex-start; } }
 
     @media (max-width: 480px) {
       .hero-block h1 { font-size: clamp(32px, 9vw, 44px); word-break: break-word; hyphens: auto; }
-      .topic-card { padding: 28px 20px; }
+      .topic-card { padding: 22px 18px; }
     }
+
+    .read-progress{position:fixed;top:0;left:0;height:3px;background:var(--green);width:0%;z-index:9999;transition:width .08s linear}
+    .back-to-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--dark);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:400}
+    .back-to-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+    .back-to-top svg{width:20px;height:20px;stroke:#fff;stroke-width:2;fill:none}
+
+
+.skip-link{position:fixed;top:-60px;left:16px;z-index:99999;background:#121212;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;transition:top .2s}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--green-d,#149955);outline-offset:2px}
   </style>
 </head>
 <body>
+<div class="read-progress" id="readProgress"></div>
+<a href="#main" class="skip-link">Перейти к содержанию</a>
 <script src="https://blog.antviz.ru/blog-nav.js" data-page="blog"></script>
-<script src="/GEOBLOCK.js"></script>
 
 <!-- ══ 01 HERO ══ -->
-<section class="hero-wrap">
+<section class="hero-wrap" id="main">
   <div class="container">
     <div class="hero-block reveal">
-      <div class="hero-eyebrow">Блог Antviz</div>
-      <h1>Скоро здесь<br/><em>появится контент</em></h1>
-      <p>Мы готовим для вас полезные статьи о веб-разработке, дизайне, SEO и оптимизации. Следите за обновлениями.</p>
-      <div class="hero-btns">
-        <a href="" class="btn btn-green btn-lg">На главную</a>
-        <a href="https://antviz.ru/profile/support" class="btn btn-inv btn-lg">Поддержка</a>
+      <div class="container" style="padding:0">
+        <div class="hero-eyebrow">Блог Antviz</div>
+        <h1>Статьи о сайтах,<br/><em>доменах и хостинге</em></h1>
+        <p>Разбираем веб-разработку, домены, хостинг и SEO простыми словами — плюс новости сервиса и история обновлений в одном месте.</p>
+        <div class="hero-btns">
+          <a href="#articles" class="btn btn-green btn-lg">Читать статьи</a>
+          <a href="https://t.me/antviz_official" target="_blank" rel="noopener" class="btn btn-inv btn-lg">Telegram-канал</a>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+            <span>Практические гайды,<br/>без воды</span>
+          </div>
+          <div class="hero-badge">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <span>Пишем сами,<br/>проверяем на своих проектах</span>
+          </div>
+          <div class="hero-badge">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.5-1.5 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9.5 8 11z"/></svg></div>
+            <span>Актуально на 2026 год,<br/>обновляем при изменениях</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 02 ТАЙМЕР ══ -->
-<section class="timer-wrap">
+<!-- ══ 02 КАТЕГОРИИ ══ -->
+<section class="cat-wrap">
   <div class="container">
-    <div class="timer-block reveal">
-      <p class="eyebrow g">До запуска</p>
-      <div class="timer-grid" id="timerGrid">
-        <div class="timer-item"><div class="num" id="days">--</div><div class="label">Дней</div></div>
-        <div class="timer-item"><div class="num" id="hours">--</div><div class="label">Часов</div></div>
-        <div class="timer-item"><div class="num" id="minutes">--</div><div class="label">Минут</div></div>
-        <div class="timer-item"><div class="num" id="seconds">--</div><div class="label">Секунд</div></div>
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow g">Разделы</p>
+        <h2>О чём пишем</h2>
       </div>
-      <p style="margin-top: 20px; font-size: 14px; color: var(--muted); font-weight: 300;">20 июля 2026, 12:00 по московскому времени</p>
+    </div>
+    <div class="cat-grid">
+      <a href="articles#ch-domain" class="cat-card reveal">
+        <div class="ico" style="background:var(--green-lighter)"><svg viewBox="0 0 24 24" stroke="var(--green-d)"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Домены</h3>
+        <span>1 статья</span>
+      </a>
+      <a href="articles#ch-hosting" class="cat-card reveal">
+        <div class="ico" style="background:#e9f0ff"><svg viewBox="0 0 24 24" stroke="#3b6fd6"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+        <h3>Хостинг</h3>
+        <span>1 статья</span>
+      </a>
+      <a href="articles#ch-seo" class="cat-card reveal">
+        <div class="ico" style="background:var(--amber-lighter)"><svg viewBox="0 0 24 24" stroke="var(--amber-d)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <h3>SEO</h3>
+        <span>1 статья</span>
+      </a>
+      <a href="articles#ch-perf" class="cat-card reveal">
+        <div class="ico" style="background:#fde9ec"><svg viewBox="0 0 24 24" stroke="#d64362"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Скорость</h3>
+        <span>1 статья</span>
+      </a>
+      <a href="articles#ch-code" class="cat-card reveal">
+        <div class="ico" style="background:#eee9fd"><svg viewBox="0 0 24 24" stroke="#7c5cd6"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Вёрстка</h3>
+        <span>1 статья</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ══ 03 ТЕМЫ СТАТЕЙ ══ -->
+<!-- ══ 03 СТАТЬИ ══ -->
+<section class="news-wrap" id="articles">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow g">Материалы</p>
+        <h2>Последние статьи</h2>
+      </div>
+      <a href="articles" class="section-link">Все статьи <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="news-grid">
+      <a href="domain/vse-o-domene-instruktsiya" class="news-card featured reveal">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <div class="text">
+          <span class="tag">Гайд · Домены</span>
+          <h3 style="margin-top:10px">Доменное имя — полное руководство</h3>
+          <p>Что такое домен, как выбрать имя, купить, настроить DNS, поддомены, почту, продление и безопасность — всё простыми словами, по шагам.</p>
+          <div class="cardfoot">
+            <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+            <div class="rtime"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>12 мин</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="articles/veb-shrifty-kak-ne-teryat-skorost" class="news-card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M9 20 12 4l3 16M7 14h10"/></svg></div>
+        <span class="tag">Производительность</span>
+        <h3>Веб-шрифты: как не терять скорость</h3>
+        <p>font-display, подмножества символов и сколько начертаний реально нужно.</p>
+        <div class="cardfoot">
+          <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+          <div class="rtime"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 мин</div>
+        </div>
+      </a>
+
+      <a href="articles/ab-testy-na-staticheskom-sajte" class="news-card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5"/><rect x="14" y="8" width="3" height="9"/></svg></div>
+        <span class="tag">Тестирование</span>
+        <h3>A/B-тесты на статическом сайте</h3>
+        <p>Как проверять гипотезы без сложных платформ — на чистом JavaScript.</p>
+        <div class="cardfoot">
+          <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+          <div class="rtime"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 мин</div>
+        </div>
+      </a>
+
+      <a href="articles/mikroanimacii-kotorye-ne-besyat" class="news-card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <span class="tag">Дизайн</span>
+        <h3>Микроанимации, которые не бесят</h3>
+        <p>Где анимация помогает интерфейсу, а где — просто раздражает.</p>
+        <div class="cardfoot">
+          <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+          <div class="rtime"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 мин</div>
+        </div>
+      </a>
+
+      <a href="articles/logi-i-monitoring-dlya-nebolshogo-sajta" class="news-card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <span class="tag">Надёжность</span>
+        <h3>Логи и мониторинг для небольшого сайта</h3>
+        <p>Как узнать о падении сайта раньше, чем об этом напишет клиент.</p>
+        <div class="cardfoot">
+          <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+          <div class="rtime"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 мин</div>
+        </div>
+      </a>
+
+      <a href="articles/api-first-podhod" class="news-card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+        <span class="tag">Архитектура</span>
+        <h3>API-first: сайт и приложение</h3>
+        <p>Как спроектировать backend, чтобы сайт и приложение делили один API.</p>
+        <div class="cardfoot">
+          <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+          <div class="rtime"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 мин</div>
+        </div>
+      </a>
+
+      <a href="articles/migraciya-sajta-bez-poteri-seo" class="news-card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <span class="tag">SEO</span>
+        <h3>Миграция сайта без потери SEO</h3>
+        <p>Редиректы 301, перенос позиций и чек-лист перед сменой домена.</p>
+        <div class="cardfoot">
+          <div class="read">Читать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+          <div class="rtime"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 мин</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 ЧТО НОВОГО ══ -->
+<section class="news-wrap">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow reveal">Сервис</p>
+        <h2 style="font-size: clamp(28px, 3.6vw, 40px);">Что нового в Antviz</h2>
+      </div>
+      <a href="updates" class="section-link">Вся история <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+
+    <a href="updates" class="update-preview reveal">
+      <div class="v">
+        <span class="v-num">v1.2.0</span>
+        <span class="v-badge">Свежее</span>
+      </div>
+      <div class="v-text"><b>Переделана страница регистрации и входа</b>, поправлены баги по всему сайту, ускорена загрузка профиля.</div>
+      <div class="read">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+    </a>
+  </div>
+</section>
+
+<!-- ══ 05 TELEGRAM ══ -->
+<section class="tg-wrap">
+  <div class="container">
+    <div class="tg-block reveal">
+      <div class="tg-ico">
+        <svg viewBox="0 0 16 16"><path d="M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/><path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/></svg>
+      </div>
+      <div class="tg-text">
+        <h2>Читайте нас в Telegram</h2>
+        <p>Новости сервиса, апдейты и анонсы новых статей — коротко, без рассылок на почту.</p>
+      </div>
+      <a href="https://t.me/antviz_official" target="_blank" rel="noopener" class="btn btn-dark btn-lg">Подписаться</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 СКОРО В БЛОГЕ ══ -->
 <section class="topics-wrap">
   <div class="container">
-    <p class="eyebrow reveal">Что будет в блоге</p>
-    <h2 class="reveal" style="font-size: clamp(36px, 5vw, 64px); font-weight: 500; letter-spacing: -.03em; line-height: 1.06;">Темы, которые мы разберём</h2>
+    <p class="eyebrow g reveal">Готовим</p>
+    <h2 class="reveal" style="font-size: clamp(30px, 4.2vw, 52px); font-weight: 500; letter-spacing: -.03em; line-height: 1.08; margin-bottom: 8px;">Скоро в блоге</h2>
+    <p class="reveal" style="font-size:16px;color:var(--muted);font-weight:300;max-width:520px">Следующие темы, которые уже пишем — подпишитесь в Telegram, чтобы не пропустить.</p>
     <div class="topics-grid">
       <div class="topic-card reveal">
-        <div class="topic-n">01</div>
-        <h3>SEO для статических сайтов</h3>
-        <p>Как продвигать сайт на чистом HTML/CSS/JS без CMS. Микроразметка, мета-теги, структура URL, работа с Google и Яндекс.</p>
+        <div class="topic-n">23</div>
+        <h3>Мультитенантность на одном коде</h3>
+        <p>Как обслуживать нескольких клиентов одной кодовой базой без дублирования.</p>
       </div>
       <div class="topic-card reveal">
-        <div class="topic-n">02</div>
-        <h3>Скорость загрузки: максимум</h3>
-        <p>Почему статика быстрее WordPress и Tilda. Кэширование, CDN, оптимизация изображений, критический CSS — все инструменты.</p>
+        <div class="topic-n">24</div>
+        <h3>Доступность форм (a11y)</h3>
+        <p>Метки, ошибки и фокус — как сделать формы удобными для скринридеров.</p>
       </div>
       <div class="topic-card reveal">
-        <div class="topic-n">03</div>
-        <h3>Выбор хостинга: GitHub vs VPS</h3>
-        <p>Когда достаточно бесплатного хостинга, а когда нужен сервер. Сравнение, плюсы и минусы, реальные кейсы.</p>
-      </div>
-      <div class="topic-card reveal">
-        <div class="topic-n">04</div>
-        <h3>Вёрстка без конструкторов</h3>
-        <p>Почему ручная вёрстка даёт больше контроля. Адаптив, доступность, семантическая разметка — объясняем на примерах.</p>
+        <div class="topic-n">25</div>
+        <h3>Кэширование API-ответов</h3>
+        <p>ETag, Cache-Control и когда backend может не считать данные заново.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 04 ПОДДЕРЖКА ══ -->
+<!-- ══ 07 ПОДДЕРЖКА ══ -->
 <section id="support" class="support-wrap">
   <div class="container">
     <div class="support-block reveal">
@@ -256,40 +470,16 @@
 
 <!-- COOKIE -->
 <div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-text">Мы используем файлы cookie. <a href="privacy">Политика конфиденциальности</a>.</div>
+  <div class="cookie-text">Мы используем файлы cookie. <a href="https://antviz.ru/privacy">Политика конфиденциальности</a>.</div>
   <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
 </div>
 
 <script>
-  // REVEAL
   const obs = new IntersectionObserver(e => {
     e.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
   }, { threshold: .07 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // ТАЙМЕР до 20 июля 2026 12:00 МСК (UTC+3)
-  const target = new Date('2026-07-20T12:00:00+03:00').getTime();
-
-  function updateTimer() {
-    const now = Date.now();
-    let diff = target - now;
-    if (diff < 0) diff = 0;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-  }
-
-  updateTimer();
-  setInterval(updateTimer, 1000);
-
-  // COOKIE
   function getCookieConsent(){ return localStorage.getItem('cookie_consent') === 'true'; }
   function setCookieConsent(){ localStorage.setItem('cookie_consent','true'); localStorage.setItem('cookie_consent_date',Date.now()); }
   (function(){
@@ -304,7 +494,25 @@
     b.style.opacity = '0';
     setTimeout(() => b.remove(), 400);
   };
+
+  (function(){
+    const bar = document.getElementById('readProgress');
+    function upd(){
+      const h = document.documentElement;
+      const sc = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      if(bar) bar.style.width = (isFinite(sc)?sc:0) + '%';
+    }
+    document.addEventListener('scroll', upd, {passive:true});
+    upd();
+  })();
+  (function(){
+    const btn = document.getElementById('backToTop');
+    if(!btn) return;
+    window.addEventListener('scroll', () => { btn.classList.toggle('show', window.scrollY > 600); }, {passive:true});
+    btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  })();
 </script>
 <script src="https://blog.antviz.ru/blog-footer.js" data-page="blog"></script>
+<button class="back-to-top" id="backToTop" aria-label="Наверх"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
 </body>
 </html>
