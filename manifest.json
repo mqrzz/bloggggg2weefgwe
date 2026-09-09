@@ -1,0 +1,23 @@
+{
+  "name": "Блог Antviz",
+  "short_name": "Antviz Blog",
+  "description": "Статьи о создании сайтов, доменах, хостинге и веб-разработке от команды Antviz.",
+  "start_url": "https://blog.antviz.ru/",
+  "scope": "https://blog.antviz.ru/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#121212",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "https://antviz.ru/img/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://antviz.ru/img/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

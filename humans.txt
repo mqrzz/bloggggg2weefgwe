@@ -1,0 +1,13 @@
+/* TEAM */
+Made by: Antviz
+Site: https://antviz.ru
+Contact: support@antviz.ru
+Telegram: https://t.me/antviz_official
+
+/* SITE */
+Last update: 2026/08/30
+Language: Russian
+Doctype: HTML5
+Standards: CSS3
+Components: vanilla JS, no frameworks
+Software: hand-written

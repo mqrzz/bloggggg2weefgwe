@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Блог Antviz</title>
+  <link>https://blog.antviz.ru/</link>
+  <atom:link href="https://blog.antviz.ru/feed.xml" rel="self" type="application/rss+xml" />
+  <description>Статьи о создании сайтов, доменах, хостинге и веб-разработке от команды Antviz.</description>
+  <language>ru</language>
+  <lastBuildDate>Sat, 21 Nov 2026 12:00:00 +0300</lastBuildDate>
+
+  <item>
+    <title>Микроанимации, которые не бесят</title>
+    <link>https://blog.antviz.ru/articles/mikroanimacii-kotorye-ne-besyat</link>
+    <guid>https://blog.antviz.ru/articles/mikroanimacii-kotorye-ne-besyat</guid>
+    <pubDate>Sat, 21 Nov 2026 12:00:00 +0300</pubDate>
+    <description>Где анимация помогает интерфейсу, а где — просто раздражает и тормозит.</description>
+  </item>
+
+  <item>
+    <title>Логи и мониторинг для небольшого сайта</title>
+    <link>https://blog.antviz.ru/articles/logi-i-monitoring-dlya-nebolshogo-sajta</link>
+    <guid>https://blog.antviz.ru/articles/logi-i-monitoring-dlya-nebolshogo-sajta</guid>
+    <pubDate>Sat, 14 Nov 2026 12:00:00 +0300</pubDate>
+    <description>Как узнать о падении сайта раньше, чем об этом напишет клиент.</description>
+  </item>
+
+  <item>
+    <title>Веб-компоненты без фреймворков</title>
+    <link>https://blog.antviz.ru/articles/veb-komponenty-bez-freimvorkov</link>
+    <guid>https://blog.antviz.ru/articles/veb-komponenty-bez-freimvorkov</guid>
+    <pubDate>Sat, 07 Nov 2026 12:00:00 +0300</pubDate>
+    <description>Custom Elements и Shadow DOM — переиспользуемые блоки на чистом JS.</description>
+  </item>
+
+  <item>
+    <title>Веб-шрифты: как не терять скорость</title>
+    <link>https://blog.antviz.ru/articles/veb-shrifty-kak-ne-teryat-skorost</link>
+    <guid>https://blog.antviz.ru/articles/veb-shrifty-kak-ne-teryat-skorost</guid>
+    <pubDate>Sat, 31 Oct 2026 12:00:00 +0300</pubDate>
+    <description>font-display, подмножества символов и почему лишний шрифт стоит секунды загрузки.</description>
+  </item>
+
+  <item>
+    <title>A/B-тесты на статическом сайте</title>
+    <link>https://blog.antviz.ru/articles/ab-testy-na-staticheskom-sajte</link>
+    <guid>https://blog.antviz.ru/articles/ab-testy-na-staticheskom-sajte</guid>
+    <pubDate>Sat, 24 Oct 2026 12:00:00 +0300</pubDate>
+    <description>Как проверять гипотезы на статическом сайте без сложных платформ — на чистом JS.</description>
+  </item>
+
+  <item>
+    <title>Тёмная тема без мигания</title>
+    <link>https://blog.antviz.ru/articles/temnaya-tema-bez-migania</link>
+    <guid>https://blog.antviz.ru/articles/temnaya-tema-bez-migania</guid>
+    <pubDate>Sat, 17 Oct 2026 12:00:00 +0300</pubDate>
+    <description>Как подключить тёмную тему без вспышки светлого фона при загрузке — anti-FOUC скрипт.</description>
+  </item>
+
+  <item>
+    <title>API-first: сайт и приложение на одной логике</title>
+    <link>https://blog.antviz.ru/articles/api-first-podhod</link>
+    <guid>https://blog.antviz.ru/articles/api-first-podhod</guid>
+    <pubDate>Sat, 10 Oct 2026 12:00:00 +0300</pubDate>
+    <description>Как спроектировать backend так, чтобы сайт и приложение делили один API без дублирования логики.</description>
+  </item>
+
+  <item>
+    <title>Миграция сайта без потери SEO</title>
+    <link>https://blog.antviz.ru/articles/migraciya-sajta-bez-poteri-seo</link>
+    <guid>https://blog.antviz.ru/articles/migraciya-sajta-bez-poteri-seo</guid>
+    <pubDate>Sat, 03 Oct 2026 12:00:00 +0300</pubDate>
+    <description>Редиректы 301, перенос позиций и чек-лист перед сменой домена или хостинга.</description>
+  </item>
+
+  <item>
+    <title>Аналитика воронки без трекеров</title>
+    <link>https://blog.antviz.ru/articles/analitika-voronki-bez-trekerov</link>
+    <guid>https://blog.antviz.ru/articles/analitika-voronki-bez-trekerov</guid>
+    <pubDate>Sat, 26 Sep 2026 12:00:00 +0300</pubDate>
+    <description>Как считать конверсию по событиям на своём backend, без сторонних трекеров.</description>
+  </item>
+
+  <item>
+    <title>PWA: сайт как приложение</title>
+    <link>https://blog.antviz.ru/articles/pwa-sajt-kak-prilozhenie</link>
+    <guid>https://blog.antviz.ru/articles/pwa-sajt-kak-prilozhenie</guid>
+    <pubDate>Sat, 19 Sep 2026 12:00:00 +0300</pubDate>
+    <description>Service worker, офлайн-режим и установка сайта на экран телефона — как сделать PWA.</description>
+  </item>
+
+  <item>
+    <title>Мультиязычный сайт без CMS</title>
+    <link>https://blog.antviz.ru/articles/multiyazychnyj-sajt-bez-cms</link>
+    <guid>https://blog.antviz.ru/articles/multiyazychnyj-sajt-bez-cms</guid>
+    <pubDate>Sat, 12 Sep 2026 12:00:00 +0300</pubDate>
+    <description>Как организовать переводы и переключение языков на статике — структура, SEO, hreflang.</description>
+  </item>
+
+  <item>
+    <title>Telegram-боты для бизнеса</title>
+    <link>https://blog.antviz.ru/articles/telegram-boty-dlya-biznesa</link>
+    <guid>https://blog.antviz.ru/articles/telegram-boty-dlya-biznesa</guid>
+    <pubDate>Sat, 05 Sep 2026 12:00:00 +0300</pubDate>
+    <description>Зачем бизнесу Telegram-бот, какие задачи он решает и с чего начать.</description>
+  </item>
+
+  <item>
+    <title>Резервные копии сайта</title>
+    <link>https://blog.antviz.ru/articles/rezervnye-kopii-saita</link>
+    <guid>https://blog.antviz.ru/articles/rezervnye-kopii-saita</guid>
+    <pubDate>Sat, 29 Aug 2026 12:00:00 +0300</pubDate>
+    <description>Как не потерять сайт и базу данных — простая схема бэкапов, правило 3-2-1 и автоматизация.</description>
+  </item>
+
+  <item>
+    <title>Аналитика без Google Analytics</title>
+    <link>https://blog.antviz.ru/articles/analitika-bez-google-analytics</link>
+    <guid>https://blog.antviz.ru/articles/analitika-bez-google-analytics</guid>
+    <pubDate>Sat, 29 Aug 2026 10:00:00 +0300</pubDate>
+    <description>Yandex Metrika, Plausible и лёгкие альтернативы Google Analytics для статических сайтов.</description>
+  </item>
+
+  <item>
+    <title>Формы без бэкенда</title>
+    <link>https://blog.antviz.ru/articles/formy-bez-backenda</link>
+    <guid>https://blog.antviz.ru/articles/formy-bez-backenda</guid>
+    <pubDate>Thu, 20 Aug 2026 12:00:00 +0300</pubDate>
+    <description>Как принимать заявки со статического сайта: serverless-функции, готовые сервисы, защита от спама.</description>
+  </item>
+
+  <item>
+    <title>HTTPS и сертификаты просто</title>
+    <link>https://blog.antviz.ru/articles/https-i-sertifikaty-prosto</link>
+    <guid>https://blog.antviz.ru/articles/https-i-sertifikaty-prosto</guid>
+    <pubDate>Thu, 20 Aug 2026 10:00:00 +0300</pubDate>
+    <description>Что такое SSL-сертификат, как получить Let's Encrypt, автопродление и частые ошибки.</description>
+  </item>
+
+  <item>
+    <title>Вёрстка без конструкторов</title>
+    <link>https://blog.antviz.ru/articles/verstka-bez-konstruktorov</link>
+    <guid>https://blog.antviz.ru/articles/verstka-bez-konstruktorov</guid>
+    <pubDate>Wed, 12 Aug 2026 12:00:00 +0300</pubDate>
+    <description>Почему ручная вёрстка даёт больше контроля. Адаптив, доступность, семантическая разметка.</description>
+  </item>
+
+  <item>
+    <title>GitHub Pages vs VPS: какой хостинг выбрать</title>
+    <link>https://blog.antviz.ru/articles/hosting-github-pages-vs-vps</link>
+    <guid>https://blog.antviz.ru/articles/hosting-github-pages-vs-vps</guid>
+    <pubDate>Wed, 12 Aug 2026 10:00:00 +0300</pubDate>
+    <description>Когда достаточно бесплатного хостинга, а когда нужен сервер. Сравнение и реальные кейсы.</description>
+  </item>
+
+  <item>
+    <title>Скорость загрузки сайта: максимум</title>
+    <link>https://blog.antviz.ru/articles/skorost-zagruzki-saita</link>
+    <guid>https://blog.antviz.ru/articles/skorost-zagruzki-saita</guid>
+    <pubDate>Wed, 05 Aug 2026 12:00:00 +0300</pubDate>
+    <description>Почему статика быстрее WordPress и Tilda. Кэширование, CDN, изображения и критический CSS.</description>
+  </item>
+
+  <item>
+    <title>SEO для статических сайтов</title>
+    <link>https://blog.antviz.ru/articles/seo-dlya-staticheskih-saitov</link>
+    <guid>https://blog.antviz.ru/articles/seo-dlya-staticheskih-saitov</guid>
+    <pubDate>Wed, 05 Aug 2026 10:00:00 +0300</pubDate>
+    <description>Мета-теги, микроразметка Schema.org, sitemap.xml, robots.txt и индексация в Google и Яндекс.</description>
+  </item>
+
+  <item>
+    <title>Доменное имя — полное руководство</title>
+    <link>https://blog.antviz.ru/domain/vse-o-domene-instruktsiya</link>
+    <guid>https://blog.antviz.ru/domain/vse-o-domene-instruktsiya</guid>
+    <pubDate>Mon, 20 Jul 2026 14:00:00 +0300</pubDate>
+    <description>Что такое домен, как выбрать имя, купить, настроить DNS, поддомены, почту, продление и безопасность.</description>
+  </item>
+
+  <item>
+    <title>Блог Antviz открыт</title>
+    <link>https://blog.antviz.ru/news/zapusk-bloga</link>
+    <guid>https://blog.antviz.ru/news/zapusk-bloga</guid>
+    <pubDate>Mon, 20 Jul 2026 12:00:00 +0300</pubDate>
+    <description>Запускаем раздел со статьями о веб-разработке, SEO и дизайне — и ленту новостей с разделом «Что нового».</description>
+  </item>
+
+</channel>
+</rss>
