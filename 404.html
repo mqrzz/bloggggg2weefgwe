@@ -3,32 +3,24 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>404: Страница не найдена — Antviz</title>
-  <meta name="description" content="Страница не найдена. Вернитесь на главную или посмотрите наши услуги." />
-  <link rel="canonical" href="https://antviz.ru/404" />
-  <link rel="icon" href="img/favicon.png" type="image/png"/>
+  <title>404: Страница не найдена — Блог Antviz</title>
+  <meta name="description" content="Страница не найдена. Вернитесь на главную блога или посмотрите каталог статей." />
+  <link rel="canonical" href="https://blog.antviz.ru/404" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png"/>
+  <link rel="manifest" href="https://blog.antviz.ru/manifest.json" />
+  <link rel="apple-touch-icon" href="https://antviz.ru/img/favicon.png" />
+  <meta name="theme-color" content="#121212" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="404: Страница не найдена — Блог Antviz" />
+  <meta property="og:description" content="Страница не найдена. Вернитесь на главную блога или посмотрите каталог статей." />
+  <meta property="og:url" content="https://blog.antviz.ru/404" />
+  <meta property="og:site_name" content="Блог Antviz" />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --green: #1ede7b;
-      --green-h: #1ac16b;
-      --green-d: #149955;
-      --green-light: #d2f8e5;
-      --green-lighter: #e8fcf2;
-      --bg: #fff;
-      --bg2: #f2f4f7;
-      --bg3: #f9fafc;
-      --text: #191b1e;
-      --muted: #707a8a;
-      --border: #dfe3e8;
-      --border2: #cbcdd6;
-      --dark: #191b1e;
-      --dark2: #2b2f33;
-      --sh1: 0 4px 16px rgba(0,51,153,.04), 0 2px 2px rgba(0,51,153,.08);
-      --sh2: 0 8px 20px rgba(0,51,153,.08), 0 4px 8px rgba(0,51,153,.08);
-      --font: 'Geologica', 'Inter', 'Arial', sans-serif;
+      --bg:#fff;--bg2:#f2f4f7;--border:#dfe3e8;--border2:#cbcdd6;--dark:#191b1e;--dark2:#2b2f33;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-light:#d2f8e5;--muted:#707a8a;--sh1:0 4px 16px rgba(0,51,153,.04), 0 2px 2px rgba(0,51,153,.08);--sh2:0 8px 20px rgba(0,51,153,.08), 0 4px 8px rgba(0,51,153,.08);--text:#191b1e;
     }
     html, body {
       margin: 0;
@@ -309,15 +301,21 @@
       clear: both;
       display: block !important;
     }
+
+    .skip-link{position:fixed;top:-60px;left:16px;z-index:99999;background:#121212;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;transition:top .2s}
+    .skip-link:focus{top:16px}
+    :focus-visible{outline:2px solid var(--green-d,#149955);outline-offset:2px}
   </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Перейти к содержанию</a>
 
 <script src="https://blog.antviz.ru/blog-nav.js" data-page="404"></script>
 
 <div id="particles"></div>
 
-<section class="hero-section">
+<section class="hero-section" id="main">
   <div class="deco-ring deco-ring-1"></div>
   <div class="deco-ring deco-ring-2"></div>
   <div class="deco-ring deco-ring-3"></div>
@@ -345,9 +343,9 @@
           <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
           <path d="M9 21V12h6v9"/>
         </svg>
-        На главную
+        На главную блога
       </a>
-      <a href="antviz.ru/order" class="btn btn-secondary">
+      <a href="https://antviz.ru/order" class="btn btn-secondary">
         Заказать сайт
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -357,29 +355,13 @@
 
     <div class="quick-links reveal reveal-4">
       <div class="quick-links-label">Или перейдите в раздел</div>
-      <a href="antviz.ru/about" class="quick-link">FAQ</a>
-      <a href="antviz.ru/profile/support" class="quick-link">Поддержка</a>
-      <a href="antviz.ru/profile" class="quick-link">Личный кабинет</a>
-      <a href="antviz.ru/rules" class="quick-link">Правила</a>
+      <a href="/articles" class="quick-link">Все статьи</a>
+      <a href="/glossary" class="quick-link">Глоссарий</a>
+      <a href="/about" class="quick-link">О блоге</a>
+      <a href="https://antviz.ru/profile/support" class="quick-link">Поддержка</a>
     </div>
   </div>
 </section>
-
-<script type="module">
-  import { auth } from './firebase-config.js';
-  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  onAuthStateChanged(auth, user => {
-    const np = document.getElementById('navProfile');
-    const nl = document.getElementById('navLogin');
-    if (user) {
-      if (np) np.style.display = 'flex';
-      if (nl) nl.style.display = 'none';
-    } else {
-      if (np) np.style.display = 'none';
-      if (nl) nl.style.display = 'flex';
-    }
-  });
-</script>
 
 <script>
   // ── Появление элементов ──
