@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Инструменты — Блог Antviz</title>
+  <meta name="description" content="Генератор мета-тегов (OG, Twitter Card) и генератор robots.txt — бесплатные инструменты прямо в браузере, без регистрации." />
+  <link rel="canonical" href="https://blog.antviz.ru/tools" />
+  <link rel="alternate" type="application/rss+xml" title="Блог Antviz" href="https://blog.antviz.ru/feed.xml" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
+  <link rel="manifest" href="https://blog.antviz.ru/manifest.json" />
+  <link rel="apple-touch-icon" href="https://antviz.ru/img/favicon.png" />
+  <meta name="theme-color" content="#121212" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Инструменты — Блог Antviz" />
+  <meta property="og:description" content="Генератор мета-тегов и robots.txt — бесплатно, прямо в браузере." />
+  <meta property="og:url" content="https://blog.antviz.ru/tools" />
+  <meta property="og:image" content="https://blog.antviz.ru/img/og/tools.png" />
+  <meta property="og:site_name" content="Блог Antviz" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://blog.antviz.ru/img/og/tools.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-serif;font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+:root{--bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;--border:#dfe3e8;--border2:#cbcdd6;--dark:#191b1e;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-lighter:#e8fcf2;--muted:#707a8a;--sp-m:60px;--text:#191b1e;}
+.container{max-width:1120px;margin:0 auto;padding:0 20px;width:100%}
+@media(min-width:1024px){.container{padding:0 40px}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green-d);margin-bottom:14px}
+.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);font-weight:300;padding-top:24px}
+.breadcrumb a{color:var(--muted);text-decoration:none}
+.breadcrumb a:hover{color:var(--text)}
+.breadcrumb .bc-sep{color:var(--border2)}
+.breadcrumb .bc-cur{color:var(--text);font-weight:400}
+.read-progress{position:fixed;top:0;left:0;height:3px;background:var(--green);width:0%;z-index:9999;transition:width .08s linear}
+.back-to-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--dark);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:400}
+.back-to-top.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.back-to-top svg{width:20px;height:20px;stroke:#fff;stroke-width:2;fill:none}
+.skip-link{position:fixed;top:-60px;left:16px;z-index:99999;background:#121212;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;transition:top .2s}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--green-d,#149955);outline-offset:2px}
+
+.hero-wrap{padding:56px 0 40px;background:var(--bg)}
+.hero-wrap h1{font-size:clamp(36px,5.6vw,60px);font-weight:500;letter-spacing:-.04em;line-height:1.05;margin-bottom:14px}
+.hero-wrap p{font-size:17px;color:var(--muted);font-weight:300;max-width:560px;line-height:1.55}
+
+.tool-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.tool-nav a{font-size:14px;font-weight:500;padding:9px 18px;border-radius:20px;background:var(--bg2);color:var(--text);border:1px solid var(--border);text-decoration:none}
+.tool-nav a:hover{background:#eceef1;border-color:var(--border2)}
+
+.tool-section{padding:var(--sp-m) 0;border-top:1px solid var(--border)}
+.tool-head h2{font-size:clamp(26px,3.6vw,38px);font-weight:500;letter-spacing:-.03em;margin-bottom:10px}
+.tool-head p{font-size:16px;color:var(--muted);font-weight:300;max-width:600px;margin-bottom:36px}
+
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+@media(max-width:860px){.tool-grid{grid-template-columns:1fr}}
+
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;font-weight:500;color:var(--text);margin-bottom:7px}
+.field input, .field textarea{
+  width:100%;border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;
+  font-family:var(--font);font-size:15px;color:var(--text);background:var(--bg3);
+  outline:none;transition:border-color .15s;resize:vertical;
+}
+.field input:focus, .field textarea:focus{border-color:var(--border2)}
+.field .hint{font-size:12.5px;color:var(--muted);margin-top:5px}
+
+.rows-wrap{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.rule-row{display:grid;grid-template-columns:1fr 2fr auto;gap:8px;align-items:center}
+.rule-row select, .rule-row input{border:1.5px solid var(--border);border-radius:10px;padding:9px 10px;font-family:var(--font);font-size:14px;background:var(--bg3);color:var(--text)}
+.rule-row button{background:transparent;border:1.5px solid var(--border);border-radius:10px;width:36px;height:36px;cursor:pointer;color:var(--muted);flex-shrink:0}
+.rule-row button:hover{border-color:#e08a8a;color:#c94747}
+.add-rule-btn{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--green-d);background:var(--green-lighter);border:none;border-radius:10px;padding:9px 16px;cursor:pointer}
+.add-rule-btn:hover{background:#d8f7e6}
+
+.output-wrap{position:sticky;top:100px}
+.output-box{background:var(--dark);border-radius:20px;padding:22px 24px;position:relative}
+.output-box pre{margin:0;font-family:'SF Mono',Consolas,Menlo,monospace;font-size:13px;line-height:1.65;color:#d2f8e5;white-space:pre-wrap;word-break:break-word;max-height:420px;overflow-y:auto}
+.output-copy{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);border:none;border-radius:8px;padding:7px 14px;font-family:var(--font);font-size:12.5px;font-weight:500;cursor:pointer;transition:background .15s,color .15s}
+.output-copy:hover{background:rgba(255,255,255,.16);color:#fff}
+.output-empty{color:rgba(255,255,255,.35);font-size:13px}
+
+.preview-card{background:var(--bg3);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-top:16px}
+.preview-img{height:110px;background:linear-gradient(135deg,#191b1e,#2b2f33);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:12px}
+.preview-body{padding:12px 14px}
+.preview-domain{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.preview-title{font-size:14.5px;font-weight:500;color:var(--text);margin:4px 0 3px;line-height:1.3}
+.preview-desc{font-size:12.5px;color:var(--muted);line-height:1.4}
+
+.cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--bg3);border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+.cookie-text{font-size:15px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
+.cookie-text a{color:var(--green-d);text-decoration:none}
+.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer}
+@media(max-width:720px){.cookie-banner{bottom:80px;flex-direction:column;align-items:flex-start}}
+
+  </style>
+</head>
+<body>
+<div class="read-progress" id="readProgress"></div>
+<a href="#main" class="skip-link">Перейти к содержанию</a>
+
+<script src="https://blog.antviz.ru/blog-nav.js" data-page="tools"></script>
+
+<div class="container">
+  <nav class="breadcrumb reveal" aria-label="Хлебные крошки">
+    <a href="/">Блог</a><span class="bc-sep">/</span>
+    <span class="bc-cur">Инструменты</span>
+  </nav>
+</div>
+
+<section class="hero-wrap" id="main">
+  <div class="container reveal">
+    <p class="eyebrow">Инструменты</p>
+    <h1>Полезные генераторы</h1>
+    <p>Бесплатно, без регистрации, всё считается прямо в браузере — данные никуда не отправляются.</p>
+    <div class="tool-nav">
+      <a href="#meta">Генератор мета-тегов</a>
+      <a href="#robots">Генератор robots.txt</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ГЕНЕРАТОР МЕТА-ТЕГОВ ═══ -->
+<section class="tool-section" id="meta">
+  <div class="container">
+    <div class="tool-head reveal">
+      <h2>Генератор мета-тегов</h2>
+      <p>Заполните поля — получите готовый набор title, description, Open Graph и Twitter Card тегов для вставки в &lt;head&gt;. Подробнее о том, зачем это нужно — в статье <a href="/articles/seo-dlya-staticheskih-saitov" style="color:var(--green-d)">про SEO для статических сайтов</a>.</p>
+    </div>
+    <div class="tool-grid reveal">
+      <div>
+        <div class="field">
+          <label for="mTitle">Заголовок страницы (title)</label>
+          <input type="text" id="mTitle" placeholder="Например: Блог Antviz — статьи о сайтах">
+          <div class="hint">Рекомендуется до 60 символов</div>
+        </div>
+        <div class="field">
+          <label for="mDesc">Описание (description)</label>
+          <textarea id="mDesc" rows="3" placeholder="Краткое описание страницы для поисковой выдачи и соцсетей"></textarea>
+          <div class="hint">Рекомендуется до 155 символов</div>
+        </div>
+        <div class="field">
+          <label for="mUrl">Полный URL страницы</label>
+          <input type="text" id="mUrl" placeholder="https://example.ru/stranica">
+        </div>
+        <div class="field">
+          <label for="mImage">URL изображения (og:image)</label>
+          <input type="text" id="mImage" placeholder="https://example.ru/img/cover.png">
+          <div class="hint">Рекомендуемый размер — 1200×630</div>
+        </div>
+        <div class="field">
+          <label for="mSite">Название сайта (site_name)</label>
+          <input type="text" id="mSite" placeholder="Например: Мой сайт">
+        </div>
+        <div class="preview-card">
+          <div class="preview-img" id="mPreviewImg">Превью og:image</div>
+          <div class="preview-body">
+            <div class="preview-domain" id="mPreviewDomain">example.ru</div>
+            <div class="preview-title" id="mPreviewTitle">Заголовок появится здесь</div>
+            <div class="preview-desc" id="mPreviewDesc">Описание появится здесь</div>
+          </div>
+        </div>
+      </div>
+      <div class="output-wrap">
+        <div class="output-box">
+          <button class="output-copy" id="mCopyBtn">Копировать</button>
+          <pre id="mOutput"><span class="output-empty">Заполните поля слева — теги появятся здесь автоматически</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ГЕНЕРАТОР ROBOTS.TXT ═══ -->
+<section class="tool-section" id="robots">
+  <div class="container">
+    <div class="tool-head reveal">
+      <h2>Генератор robots.txt</h2>
+      <p>Добавьте правила для User-agent, укажите sitemap — получите готовый файл. Что такое robots.txt и зачем он нужен — читайте в той же статье про SEO.</p>
+    </div>
+    <div class="tool-grid reveal">
+      <div>
+        <div class="field">
+          <label for="rSitemap">Адрес sitemap.xml</label>
+          <input type="text" id="rSitemap" placeholder="https://example.ru/sitemap.xml">
+        </div>
+        <div class="field">
+          <label>Правила</label>
+          <div class="rows-wrap" id="rRows"></div>
+          <button class="add-rule-btn" id="rAddRow" type="button">+ Добавить правило</button>
+        </div>
+      </div>
+      <div class="output-wrap">
+        <div class="output-box">
+          <button class="output-copy" id="rCopyBtn">Копировать</button>
+          <pre id="rOutput"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Наверх"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+
+<script src="https://blog.antviz.ru/blog-footer.js" data-page="tools"></script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">Мы используем файлы cookie. <a href="https://antviz.ru/privacy">Политика</a>.</div>
+  <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
+
+<script>
+const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+(function(){
+  const bar = document.getElementById('readProgress');
+  function upd(){
+    const h = document.documentElement;
+    const sc = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    if(bar) bar.style.width = (isFinite(sc)?sc:0) + '%';
+  }
+  document.addEventListener('scroll', upd, {passive:true});
+  upd();
+})();
+(function(){
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => { btn.classList.toggle('show', window.scrollY > 600); }, {passive:true});
+  btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+})();
+
+function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ── Генератор мета-тегов ──
+(function(){
+  const ids = ['mTitle','mDesc','mUrl','mImage','mSite'];
+  const els = {}; ids.forEach(id => els[id] = document.getElementById(id));
+  const out = document.getElementById('mOutput');
+  const copyBtn = document.getElementById('mCopyBtn');
+  const pImg = document.getElementById('mPreviewImg');
+  const pDomain = document.getElementById('mPreviewDomain');
+  const pTitle = document.getElementById('mPreviewTitle');
+  const pDesc = document.getElementById('mPreviewDesc');
+
+  function render(){
+    const title = els.mTitle.value.trim();
+    const desc = els.mDesc.value.trim();
+    const url = els.mUrl.value.trim();
+    const image = els.mImage.value.trim();
+    const site = els.mSite.value.trim();
+
+    if (!title && !desc && !url) {
+      out.innerHTML = '<span class="output-empty">Заполните поля слева — теги появятся здесь автоматически</span>';
+    } else {
+      let lines = [];
+      if (title) lines.push(`<title>${escHtml(title)}</title>`);
+      if (desc) lines.push(`<meta name="description" content="${escHtml(desc)}" />`);
+      if (url) lines.push(`<link rel="canonical" href="${escHtml(url)}" />`);
+      lines.push(`<meta property="og:type" content="website" />`);
+      if (title) lines.push(`<meta property="og:title" content="${escHtml(title)}" />`);
+      if (desc) lines.push(`<meta property="og:description" content="${escHtml(desc)}" />`);
+      if (url) lines.push(`<meta property="og:url" content="${escHtml(url)}" />`);
+      if (image) lines.push(`<meta property="og:image" content="${escHtml(image)}" />`);
+      if (site) lines.push(`<meta property="og:site_name" content="${escHtml(site)}" />`);
+      lines.push(`<meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />`);
+      if (title) lines.push(`<meta name="twitter:title" content="${escHtml(title)}" />`);
+      if (desc) lines.push(`<meta name="twitter:description" content="${escHtml(desc)}" />`);
+      if (image) lines.push(`<meta name="twitter:image" content="${escHtml(image)}" />`);
+      out.textContent = lines.join('\\n');
+    }
+
+    pTitle.textContent = title || 'Заголовок появится здесь';
+    pDesc.textContent = desc || 'Описание появится здесь';
+    try { pDomain.textContent = url ? new URL(url).hostname : 'example.ru'; } catch(e) { pDomain.textContent = url || 'example.ru'; }
+    if (image) { pImg.style.backgroundImage = `url(${image})`; pImg.style.backgroundSize = 'cover'; pImg.style.backgroundPosition = 'center'; pImg.textContent = ''; }
+    else { pImg.style.backgroundImage = ''; pImg.textContent = 'Превью og:image'; }
+  }
+  ids.forEach(id => els[id].addEventListener('input', render));
+  render();
+
+  copyBtn.addEventListener('click', () => {
+    const text = out.textContent;
+    if (!text || out.querySelector('.output-empty')) return;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = copyBtn.textContent;
+      copyBtn.textContent = 'Скопировано!';
+      setTimeout(() => copyBtn.textContent = orig, 1600);
+    });
+  });
+})();
+
+// ── Генератор robots.txt ──
+(function(){
+  const rowsWrap = document.getElementById('rRows');
+  const addBtn = document.getElementById('rAddRow');
+  const sitemapInput = document.getElementById('rSitemap');
+  const out = document.getElementById('rOutput');
+  const copyBtn = document.getElementById('rCopyBtn');
+  let rows = [
+    { type: 'User-agent', value: '*' },
+    { type: 'Allow', value: '/' },
+  ];
+
+  function renderRows(){
+    rowsWrap.innerHTML = rows.map((r, i) => `
+      <div class="rule-row" data-i="${i}">
+        <select data-field="type">
+          <option value="User-agent"${r.type==='User-agent'?' selected':''}>User-agent</option>
+          <option value="Allow"${r.type==='Allow'?' selected':''}>Allow</option>
+          <option value="Disallow"${r.type==='Disallow'?' selected':''}>Disallow</option>
+          <option value="Crawl-delay"${r.type==='Crawl-delay'?' selected':''}>Crawl-delay</option>
+        </select>
+        <input type="text" data-field="value" value="${escHtml(r.value)}" placeholder="значение">
+        <button type="button" data-remove aria-label="Удалить"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      </div>`).join('');
+    renderOutput();
+  }
+
+  function renderOutput(){
+    let lines = [];
+    let lastType = null;
+    rows.forEach(r => {
+      if (r.type === 'User-agent' && lastType && lastType !== 'User-agent') lines.push('');
+      lines.push(`${r.type}: ${r.value}`);
+      lastType = r.type;
+    });
+    if (sitemapInput.value.trim()) {
+      lines.push('');
+      lines.push(`Sitemap: ${sitemapInput.value.trim()}`);
+    }
+    out.textContent = lines.join('\\n');
+  }
+
+  rowsWrap.addEventListener('input', (e) => {
+    const row = e.target.closest('.rule-row');
+    if (!row) return;
+    const i = +row.dataset.i;
+    rows[i][e.target.dataset.field] = e.target.value;
+    renderOutput();
+  });
+  rowsWrap.addEventListener('change', (e) => {
+    const row = e.target.closest('.rule-row');
+    if (!row) return;
+    const i = +row.dataset.i;
+    rows[i][e.target.dataset.field] = e.target.value;
+    renderOutput();
+  });
+  rowsWrap.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-remove]');
+    if (!btn) return;
+    const i = +btn.closest('.rule-row').dataset.i;
+    rows.splice(i, 1);
+    renderRows();
+  });
+  addBtn.addEventListener('click', () => {
+    rows.push({ type: 'Disallow', value: '/' });
+    renderRows();
+  });
+  sitemapInput.addEventListener('input', renderOutput);
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(out.textContent).then(() => {
+      const orig = copyBtn.textContent;
+      copyBtn.textContent = 'Скопировано!';
+      setTimeout(() => copyBtn.textContent = orig, 1600);
+    });
+  });
+
+  renderRows();
+})();
+
+(function(){if(localStorage.getItem('cookie_consent')!=='true')setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),800);})();
+window.acceptCookies=function(){localStorage.setItem('cookie_consent','true');const b=document.getElementById('cookieBanner');b.style.opacity='0';b.style.transform='translateX(-50%) translateY(120px)';setTimeout(()=>b.remove(),400);};
+</script>
+</body>
+</html>
