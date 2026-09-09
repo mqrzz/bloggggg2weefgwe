@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>О блоге — Блог Antviz</title>
+  <meta name="description" content="Кто и зачем ведёт блог Antviz: команда, которая делает сайты и Telegram-ботов, делится тем, что узнаёт на практике." />
+  <link rel="canonical" href="https://blog.antviz.ru/about" />
+  <link rel="alternate" type="application/rss+xml" title="Блог Antviz" href="https://blog.antviz.ru/feed.xml" />
+  <link rel="icon" href="https://antviz.ru/img/favicon.png" type="image/png" />
+  <link rel="manifest" href="https://blog.antviz.ru/manifest.json" />
+  <link rel="apple-touch-icon" href="https://antviz.ru/img/favicon.png" />
+  <meta name="theme-color" content="#121212" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="О блоге — Блог Antviz" />
+  <meta property="og:description" content="Кто и зачем ведёт блог Antviz." />
+  <meta property="og:url" content="https://blog.antviz.ru/about" />
+  <meta property="og:image" content="https://blog.antviz.ru/img/og/about.png" />
+  <meta property="og:site_name" content="Блог Antviz" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#fff;color:#191b1e;font-family:'Geologica','Inter','Arial',sans-serif;font-weight:300;line-height:1.25;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
+:root{--bg:#fff;--bg2:#f2f4f7;--bg3:#f9fafc;--border:#dfe3e8;--dark:#191b1e;--dark2:#2b2f33;--font:'Geologica','Inter','Arial',sans-serif;--green:#1ede7b;--green-d:#149955;--green-h:#1ac16b;--green-lighter:#e8fcf2;--muted:#707a8a;--sp-l:100px;--text:#191b1e;}
+.container{max-width:1328px;margin:0 auto;padding:0 20px;width:100%}
+@media(min-width:1024px){.container{padding:0 64px}}
+@media(min-width:1280px){.container{padding:0 96px}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-weight:500;text-decoration:none;cursor:pointer;border:none;border-radius:12px;padding:17px 32px;font-size:16px;letter-spacing:-0.01em;transition:background .1s,transform .12s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-dark{background:var(--dark);color:#fff}.btn-dark:hover{background:var(--dark2)}
+.btn-green{background:var(--green);color:var(--dark)}.btn-green:hover{background:var(--green-h)}
+.btn-lg{padding:20px 48px;font-size:18px;border-radius:12px}
+.hero-wrap{padding:var(--sp-l) 0 0;background:var(--bg)}
+.hero-block{background:var(--dark);border-radius:64px;padding:80px 100px;text-align:center}
+@media(max-width:860px){.hero-block{padding:48px 32px;border-radius:32px}}
+.hero-eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:24px}
+.hero-block h1{font-size:clamp(38px,6vw,68px);font-weight:500;letter-spacing:-.04em;line-height:1.05;color:#fff;margin-bottom:24px}
+.hero-block p{font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.45);font-weight:300;line-height:1.5;max-width:560px;margin:0 auto}
+.section-wrap{padding:var(--sp-l) 0}
+.sec-eyebrow{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:16px}
+.sec-h2{font-size:clamp(28px,4vw,44px);font-weight:500;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px}
+.sec-body{max-width:720px}
+.sec-body p{font-size:17px;line-height:1.75;color:var(--muted);font-weight:300;margin-bottom:20px}
+.sec-body p strong{color:var(--text);font-weight:500}
+.val-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:40px}
+@media(max-width:760px){.val-grid{grid-template-columns:1fr}}
+.val-card{background:var(--bg3);border:1.5px solid var(--border);border-radius:28px;padding:30px 26px}
+.val-card .ico{width:42px;height:42px;border-radius:13px;background:var(--green-lighter);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.val-card .ico svg{width:20px;height:20px;stroke:var(--green-d);stroke-width:1.8;fill:none}
+.val-card h3{font-size:18px;font-weight:500;letter-spacing:-.01em;margin-bottom:8px}
+.val-card p{font-size:14.5px;color:var(--muted);font-weight:300;line-height:1.6}
+.contact-block{background:var(--bg2);border-radius:56px;padding:64px 72px;text-align:center;border:1px solid var(--border)}
+@media(max-width:860px){.contact-block{padding:44px 28px;border-radius:32px}}
+.contact-block h2{font-size:clamp(28px,4.4vw,48px);font-weight:500;letter-spacing:-.03em;margin-bottom:12px}
+.contact-block p{font-size:17px;color:var(--muted);font-weight:300;margin-bottom:28px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cookie-banner{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:500;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--bg3);border:1px solid var(--border);border-radius:24px;padding:16px 24px;max-width:600px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(0,51,153,.12);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.cookie-banner.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:all}
+.cookie-text{font-size:15px;color:var(--muted);flex:1;line-height:1.4;font-weight:300}
+.cookie-text a{color:var(--green-d);text-decoration:none}
+.cookie-btn{background:var(--dark);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--font);font-size:15px;font-weight:500;cursor:pointer}
+@media(max-width:720px){.cookie-banner{bottom:80px;flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.hero-block h1{font-size:clamp(30px,9vw,42px)}.section-wrap{padding:60px 0}}
+
+
+.skip-link{position:fixed;top:-60px;left:16px;z-index:99999;background:#121212;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;transition:top .2s}
+.skip-link:focus{top:16px}
+:focus-visible{outline:2px solid var(--green-d,#149955);outline-offset:2px}
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Перейти к содержанию</a>
+
+<script src="https://blog.antviz.ru/blog-nav.js" data-page="about"></script>
+
+<section class="hero-wrap" id="main">
+  <div class="container">
+    <div class="hero-block reveal">
+      <div class="hero-eyebrow">О блоге</div>
+      <h1>Пишем то, что<br/>сами проверяем на практике</h1>
+      <p>Блог ведёт команда Antviz — сервиса по разработке сайтов и Telegram-ботов. Всё, что здесь написано, мы применяем в собственных проектах.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap" style="background:var(--bg)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">Кто мы</div>
+    <h2 class="sec-h2">Antviz — веб-студия полного цикла</h2>
+    <div class="sec-body">
+      <p>Antviz делает сайты, Telegram-ботов и мини-приложения на заказ — от лендинга до личного кабинета с оплатой. Мы работаем с собственным стеком: статический фронтенд, свой backend на Node.js, PostgreSQL — без конструкторов и шаблонных решений.</p>
+      <p>Этот блог — побочный продукт нашей же разработки. Когда мы разбираемся с доменами, ускоряем загрузку сайта или настраиваем HTTPS для очередного проекта — записываем это в статью, чтобы не забыть самим и чтобы это могло пригодиться кому-то ещё.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap" style="background:var(--bg2)">
+  <div class="container reveal">
+    <div class="sec-eyebrow">Принципы</div>
+    <h2 class="sec-h2">Как мы пишем</h2>
+    <div class="val-grid">
+      <div class="val-card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Только то, что проверили сами</h3>
+        <p>Никаких статей «по мотивам чужих гайдов» — только то, что реально настраивали в своих проектах.</p>
+      </div>
+      <div class="val-card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <h3>Без воды</h3>
+        <p>Конкретные шаги, таблицы и примеры кода — вместо пересказа очевидного на 10 экранов.</p>
+      </div>
+      <div class="val-card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.5-1.5 8-6 8-11V5l-8-3-8 3v6c0 5 2.5 9.5 8 11z"/></svg></div>
+        <h3>Обновляем при изменениях</h3>
+        <p>Если технология или сервис меняется — правим статью, а не оставляем её протухать.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-wrap" style="background:var(--bg)">
+  <div class="container">
+    <div class="contact-block reveal">
+      <h2>Есть вопрос или предложение по теме статьи?</h2>
+      <p>Пишите в поддержку или в Telegram — читаем всё.</p>
+      <div class="cta-btns">
+        <a href="https://antviz.ru/profile/support" class="btn btn-dark btn-lg">Поддержка</a>
+        <a href="https://t.me/antviz_official" target="_blank" rel="noopener" class="btn btn-green btn-lg">Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script src="https://blog.antviz.ru/blog-footer.js" data-page="about"></script>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">Мы используем файлы cookie. <a href="https://antviz.ru/privacy">Политика</a>.</div>
+  <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+</div>
+<script>
+(function(){if(localStorage.getItem('cookie_consent')!=='true')setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'),800);})();
+window.acceptCookies=function(){localStorage.setItem('cookie_consent','true');const b=document.getElementById('cookieBanner');b.style.opacity='0';b.style.transform='translateX(-50%) translateY(120px)';setTimeout(()=>b.remove(),400);};
+</script>
+</body>
+</html>
